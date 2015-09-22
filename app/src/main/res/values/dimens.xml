@@ -1,0 +1,34 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+
+    <!--fragment_participant.xml -->
+    <dimen name="floating_layout_margin">16dp</dimen>
+
+    <!-- toolbar.xml -->
+    <dimen name="toolbar_titleMarginStart">16dp</dimen>
+
+    <!-- fragment_participant_item.xml -->
+    <dimen name="txtShirtSize_layout_width">40dp</dimen>
+    <dimen name="txtShirtSize_layout_height">40dp</dimen>
+    <dimen name="txtShirtSize_textSize">20sp</dimen>
+
+    <dimen name="txtName_textSize">16sp</dimen>
+    <dimen name="txtEmail_textSize">14sp</dimen>
+
+    <dimen name="linear_layout_height">72dp</dimen>
+    <dimen name="linear_layout_marginLeft">16dp</dimen>
+    <dimen name="linear_layout_marginRight">16dp</dimen>
+    <dimen name="linear_layout_marginStart">16dp</dimen>
+
+    <dimen name="viewSeparator_layout_marginLeft">72dp</dimen>
+    <dimen name="viewSeparator_layout_marginStart">72dp</dimen>
+    <dimen name="viewSeparator_layout_marginTop">6dp</dimen>
+
+    <!-- activity_new_participant.xml -->
+    <dimen name="linear_editText_layout_marginLeft">28dp</dimen>
+    <dimen name="linear_editText_layout_marginStart">28dp</dimen>
+
+    <!-- activity_participant_detail.xml -->
+    <dimen name="cardView_layout_margin">16dp</dimen>
+    <dimen name="appBarLayout_layout_height">256dp</dimen>
+</resources>

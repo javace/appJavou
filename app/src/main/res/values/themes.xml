@@ -1,0 +1,47 @@
+<resources>
+
+    <style name="Theme.nLiveo" parent="AppTheme">
+    </style>
+
+    <!--Customize here the subject of your application-->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="android:textColorPrimary">@color/primaryText</item>
+        <item name="android:textColorSecondary">@color/secundaryText</item>
+
+        <item name="searchViewStyle">@style/MySearchViewStyle</item>
+
+        <item name="windowActionModeOverlay">true</item>
+        <item name="android:windowBackground">@color/windowBackground</item>
+        <item name="actionModeBackground">@color/colorActionModePrimary</item>
+    </style>
+
+    <style name="Widget.CardContent" parent="android:Widget">
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingRight">16dp</item>
+        <item name="android:paddingTop">24dp</item>
+        <item name="android:paddingBottom">24dp</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="MySearchViewStyle" parent="Widget.AppCompat.SearchView">
+        <!-- Background for the search query section (e.g. EditText) -->
+        <item name="queryBackground">@color/white</item>
+        <!-- Background for the actions section (e.g. voice, submit) -->
+        <item name="submitBackground">@color/dividerColor</item>
+        <!-- Close button icon -->
+        <item name="closeIcon">@drawable/ic_delete_white_24dp</item>
+        <!-- Search button icon -->
+        <item name="searchIcon">@drawable/ic_search_white_24dp</item>
+        <!-- Go/commit button icon -->
+        <item name="goIcon">@drawable/abc_ic_go_search_api_mtrl_alpha</item>
+        <!-- Voice search button icon -->
+        <item name="voiceIcon">@drawable/abc_ic_voice_search_api_mtrl_alpha</item>
+        <!-- Commit icon shown in the query suggestion row -->
+        <item name="commitIcon">@drawable/abc_ic_commit_search_api_mtrl_alpha</item>
+    </style>
+</resources>

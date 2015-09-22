@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">SearchLiveo</string>
+
+    <string name="searchview_search">Pesquisar</string>
+    <string name="searchview_voice">Pesquisa por voz</string>
+    <string name="not_supported">Not Supported</string>
+    <string name="warning_listener">Activity must implement OnSearchListener.</string>
+    <string name="warning_fragment_listener">Fragment must implement OnSearchListener.</string>
+    <string name="warning_with">use the method with(this|getActivity()) before any other method of SearchLiveo.</string>
+</resources>

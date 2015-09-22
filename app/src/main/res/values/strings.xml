@@ -1,0 +1,96 @@
+<resources>
+    <!-- App -->
+
+    <string name="yes">Sim</string>
+    <string name="no">Não</string>
+
+    <string name="undo">Desfazer</string>
+    <string name="app_name">Javou!</string>
+    <string name="delete">Excluir</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="discard_records">Descartar registro</string>
+    <string name="delete_participant">Excluir participante</string>
+
+    <string name="javou_five">#Javou 05</string>
+    <string name="participant">Participantes</string>
+    <string name="presentation">Palestras</string>
+    <string name="presentation_detail">Detalhes da palestra</string>
+
+    <string name="sex_m">M</string>
+    <string name="sex_f">F</string>
+
+    <string name="male">Masculino</string>
+    <string name="female">Feminino</string>
+
+    <string name="shirt_size_p">P</string>
+    <string name="shirt_size_m">M</string>
+    <string name="shirt_size_g">G</string>
+    <string name="shirt_size_gg">GG</string>
+    <string name="shirt_size_eg">EG</string>
+
+    <!-- New participant -->
+    <string name="wait">Aguarde</string>
+    <string name="name">Nome</string>
+    <string name="email">Email</string>
+    <string name="phone">Telefone</string>
+    <string name="company">Empresa</string>
+    <string name="birthDate">Data Nascimento</string>
+    <string name="new_participant">Novo participante</string>
+    <string name="confirm_participation_event">Confirmar participação no evento?</string>
+    <string name="raffling">Sorteando…</string>
+
+    <string name="participant_fortunate">Participante Sorteado</string>
+    <!-- New participant -->
+    <string name="attended_event">Já confirmou sua presença no evento</string>
+    <string name="not_attended_event">Não confirmou sua presença no evento</string>
+
+    <!-- Presentaions -->
+    <string name="link">Link</string>
+    <string name="resumo">Resumo</string>
+
+    <!-- Parse -->
+    <string name="parse_app_id">lWVMxC9FdBVAP7bMK60Vdb3qQjAlPqFiiur9rq7T</string>
+    <string name="parse_client_key">aOC6cHvPqYSvkXztBQZy92l52ksxqUtq8v6knLB2</string>
+
+    <!-- Warning and error -->
+    <string name="warning_no_name">Informe o nome do participante</string>
+    <string name="warning_no_email">Informe o e-mail do participante</string>
+
+    <string name="warning_save_participante">Participante salvo com sucesso.</string>
+    <string name="warning_save_wait_participante">Salvando participante</string>
+    <string name="error_save_participante">Erro ao tentar salvar participante. Por favor, tente mais tarde.</string>
+
+    <string name="warning_wait_confirmed_presence">Confirmando presença.</string>
+    <string name="warning_wait_undo_confirmed_presence">Desfazendo confirmação de presença.</string>
+
+    <string name="warning_confirmed_presence">Presença confirmada.</string>
+    <string name="warning_undo_confirmed_presence">Confirmação de presença foi cancelada.</string>
+
+    <string name="error_confirmed_presence">Erro ao tentar confirmar presença. Verifiquei sua conexão.</string>
+    <string name="error_undo_confirmed_presence">Erro ao tentar desfazer confirmação de presença. Verifiquei sua conexão.</string>
+
+    <string name="warning_delete_participante">Participante excluido com sucesso.</string>
+    <string name="warning_delete_wait_participante">Excluindo participante</string>
+    <string name="error_delete_participante">Erro ao tentar excluir participante. Por favor, tente mais tarde.</string>
+
+    <string name="warning_participant_excluded">Este participante será excluido.</string>
+
+    <string name="warning_no_connection">Sem conexão de internet.</string>
+    <string name="error_list_participant">Erro ao consultar participantes. Por favor, tente mais tarde.</string>
+    <string name="error_list_presentations">Erro ao consultar palestras. Por favor, tente mais tarde.</string>
+    <string name="raffle_participant">Sorteia participante</string>
+
+    <!-- login user administrator-->
+    <string name="field_user">Digite seu usuario</string>
+    <string name="login">Login</string>
+    <string name="field_pass">Digite sua senha</string>
+    <string name="btn_login">Acesso Administrativo</string>
+    <string name="version_app">Versão</string>
+    <string name="warning_user_pass_blank">Usuario e senha são obrigatórios</string>
+    <string name="NextEvent">Proximo Evento: </string>
+    <string name="dialog_enviroment_text">Informe a senha para ambiente admistrativo</string>
+    <string name="dialog_enviroment_title">Ambiente Administrativo</string>
+    <string name="wrong_pass_adm">Senha admistrativa incorreta</string>
+
+</resources>

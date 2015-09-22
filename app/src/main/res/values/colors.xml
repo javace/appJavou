@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="transparent">#00000000</color>
+
+    <!-- Color app -->
+    <color name="colorPrimary">#00BCD4</color>
+    <color name="colorPrimaryDark">#0097A7</color>
+    <color name="colorAccent">#03A9F4</color>
+
+    <color name="primaryText">#212121</color>
+    <color name="secundaryText">#80727272</color>
+    <color name="primaryLightText">#B2EBF2</color>
+
+    <color name="shirtSizePColor">#673AB7</color>
+    <color name="shirtSizeMColor">#4CAF50</color>
+    <color name="shirtSizeGColor">#F44336</color>
+    <color name="shirtSizeGGColor">#FF9800</color>
+    <color name="shirtSizeEGColor">#F57C00</color>
+
+    <color name="dividerColor">#80B6B6B6</color>
+
+    <color name="windowBackground">#FFF5F5F5</color>
+    <color name="colorActionModePrimary">#9E9E9E</color>
+    <color name="colorActionModePrimaryDark">#616161</color>
+</resources>

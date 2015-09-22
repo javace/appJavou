@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="br.com.javace.javou">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:fullBackupContent="true"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/Theme.nLiveo" >
+
+        <activity
+            android:name=".ui.activity.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".ui.activity.NewParticipantActivity"
+            android:label="@string/new_participant" >
+        </activity>
+
+        <activity
+            android:name=".ui.activity.ParticipantDetailActivity">
+        </activity>
+
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="20332305468848c4b9a67d0148c3d4c1eeae283c" />
+    </application>
+
+</manifest>
