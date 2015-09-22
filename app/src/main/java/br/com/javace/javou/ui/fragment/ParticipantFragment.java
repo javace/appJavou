@@ -32,12 +32,12 @@ import br.com.javace.javou.interfaces.OnItemClickListener;
 import br.com.javace.javou.interfaces.OnItemLongClickListener;
 import br.com.javace.javou.interfaces.OnScrollListener;
 import br.com.javace.javou.model.participant.Participant;
-import br.com.javace.javou.model.raffle.Raffle;
 import br.com.javace.javou.task.ParticipantDeleteTask;
 import br.com.javace.javou.task.ParticipantPresenceTask;
 import br.com.javace.javou.task.ParticipantTask;
 import br.com.javace.javou.ui.activity.MainActivity;
 import br.com.javace.javou.ui.activity.NewParticipantActivity;
+import br.com.javace.javou.ui.activity.RaffleActivity;
 import br.com.javace.javou.ui.base.BaseActivity;
 import br.com.javace.javou.ui.base.BaseFragment;
 import br.com.javace.javou.util.Constant;
@@ -212,23 +212,26 @@ public class ParticipantFragment extends BaseFragment implements OnSearchListene
     }
 
     private void raffleParticipant() {
-        final ProgressDialog pd = ProgressDialog.show(getActivity(), "", getString(R.string.raffling), true);
-        new Thread(new Runnable() {
-            public void run(){
-                try {
-                    Raffle raffle = new Raffle(mParticipants);
-                    Participant participant =  raffle.getFortunate();
-                    Thread.sleep(2000);
-//                    Intent intent = new Intent(getActivity(), ParticipantFortunateActivity.class);
-//                    intent.putExtra(Constant.PARTICIPANT, participant);
-//                    startActivityForResult(intent, 0, BaseActivity.ActivityAnimation.SLIDE_LEFT);
-                    pd.dismiss();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+        Intent intent = new Intent(getActivity(), RaffleActivity.class);
+        startActivityForResult(intent, 0, BaseActivity.ActivityAnimation.SLIDE_LEFT);
 
-            }
-        }).start();
+//        final ProgressDialog pd = ProgressDialog.show(getActivity(), "", getString(R.string.raffling), true);
+//        new Thread(new Runnable() {
+//            public void run(){
+//                try {
+//                    Raffle raffle = new Raffle(mParticipants);
+//                    Participant participant =  raffle.getFortunate();
+//                    Thread.sleep(2000);
+////                    Intent intent = new Intent(getActivity(), ParticipantFortunateActivity.class);
+////                    intent.putExtra(Constant.PARTICIPANT, participant);
+////                    startActivityForResult(intent, 0, BaseActivity.ActivityAnimation.SLIDE_LEFT);
+//                    pd.dismiss();
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//
+//            }
+//        }).start();
     }
 
     private OnItemClickListener onItemClickListener = new OnItemClickListener() {

@@ -12,6 +12,7 @@ apply plugin: 'io.fabric'
 
 repositories {
     maven { url 'https://maven.fabric.io/public' }
+    maven { url "http://dl.bintray.com/jlmd/maven" }
 }
 
 
@@ -59,6 +60,11 @@ dependencies {
 
     //Library injectView {optional}
     compile 'com.jakewharton:butterknife:7.0.1'
+
+    //Library Animated Load
+    compile 'com.github.jlmd:AnimatedCircleLoadingView:1.1.2@aar'
+
+    //Library Crashlytcs by Fabric
     compile('com.crashlytics.sdk.android:crashlytics:2.5.2@aar') {
         transitive = true;
     }
