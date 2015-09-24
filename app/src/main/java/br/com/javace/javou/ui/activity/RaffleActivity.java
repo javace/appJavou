@@ -1,11 +1,19 @@
 package br.com.javace.javou.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.github.jlmd.animatedcircleloadingview.AnimatedCircleLoadingView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import br.com.javace.javou.R;
+import br.com.javace.javou.dao.ParticipantDao;
+import br.com.javace.javou.model.participant.Participant;
+import br.com.javace.javou.model.raffle.Raffle;
 import br.com.javace.javou.ui.base.BaseActivity;
+import br.com.javace.javou.util.Constant;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
@@ -39,6 +47,17 @@ public class RaffleActivity extends BaseActivity {
                         Thread.sleep(65);
                         changePercent(i);
                     }
+
+                    ParticipantDao participantDao = new ParticipantDao(getApplicationContext());
+                    ArrayList<Participant> participants = participantDao.getAll();
+                    Raffle raffle = new Raffle(participants);
+
+                    Participant participantFortunate =  raffle.getFortunate();
+                    Intent intent = new Intent(getBaseContext(), ParticipantFortunateActivity.class);
+                    intent.putExtra(Constant.PARTICIPANT, participantFortunate);
+
+                    startActivityForResult(intent, 0, BaseActivity.ActivityAnimation.SLIDE_LEFT);
+
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

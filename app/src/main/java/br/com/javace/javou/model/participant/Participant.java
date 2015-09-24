@@ -219,4 +219,9 @@ public class Participant implements Parcelable {
     public void setRaffled(boolean raffled) {
         this.raffled = raffled;
     }
+
+    public boolean getSex() {
+        return sex;
+    }
+
 }
