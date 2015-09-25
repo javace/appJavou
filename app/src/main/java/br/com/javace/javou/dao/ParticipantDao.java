@@ -253,7 +253,7 @@ public class ParticipantDao {
             openConnection();
 
             ContentValues contentValues = new ContentValues();
-            contentValues.put(Constant.PARTICIPANT_raffled, participantFortunate.isRaffled() ? 0 : 1);
+            contentValues.put(Constant.PARTICIPANT_raffled, 1);
 
             String args[] = new String[]{String.valueOf(participantFortunate.getId())};
             return (db.update(Constant.TABLE_PARTICIPANT, contentValues, "id = ?", args) != -1);

@@ -22,7 +22,7 @@ public class Raffle {
     private List<Participant> getParticipantsAttend(){
         List<Participant> attendees = new ArrayList<>();
         for (Participant participant : participants) {
-            if(participant.isAttend())
+            if(participant.isAttend() && !participant.isRaffled())
                 attendees.add(participant);
         }
         return attendees;
@@ -30,8 +30,11 @@ public class Raffle {
 
 
     public Participant getFortunate() {
-        int index = randomGenerator.nextInt(getParticipantsAttend().size());
-        Participant participantFortunate = getParticipantsAttend().get(index);
+        List<Participant> participantsAttend = getParticipantsAttend();
+        if(participantsAttend.isEmpty())
+            return null;
+        int index = randomGenerator.nextInt(participantsAttend.size());
+        Participant participantFortunate = participantsAttend.get(index);
         participantFortunate.setRaffled(true);
         return participantFortunate;
     }

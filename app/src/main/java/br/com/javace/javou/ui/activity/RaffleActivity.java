@@ -66,13 +66,19 @@ public class RaffleActivity extends BaseActivity {
                     ParticipantDao participantDao = new ParticipantDao(getApplicationContext());
                     ArrayList<Participant> participants = participantDao.getAll();
                     Raffle raffle = new Raffle(participants);
-
                     Participant participantFortunate =  raffle.getFortunate();
-                    participantDao.updateAsRaffled(participantFortunate);
-                    Intent intent = new Intent(getBaseContext(), ParticipantFortunateActivity.class);
-                    intent.putExtra(Constant.PARTICIPANT, participantFortunate);
 
-                    startActivityForResult(intent, 0, BaseActivity.ActivityAnimation.SLIDE_LEFT);
+                    if(participantFortunate == null){
+                        Intent intent = new Intent(getBaseContext(), MainActivity.class);
+                        startActivityForResult(intent, 0, BaseActivity.ActivityAnimation.SLIDE_RIGHT);
+                    }else{
+                        participantDao.updateAsRaffled(participantFortunate);
+                        Intent intent = new Intent(getBaseContext(), ParticipantFortunateActivity.class);
+                        intent.putExtra(Constant.PARTICIPANT, participantFortunate);
+
+                        startActivityForResult(intent, 0, BaseActivity.ActivityAnimation.SLIDE_LEFT);
+                    }
+
 
                 } catch (InterruptedException e) {
                     e.printStackTrace();
