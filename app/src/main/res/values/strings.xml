@@ -7,6 +7,7 @@
     <string name="undo">Desfazer</string>
     <string name="app_name">Javou!</string>
     <string name="delete">Excluir</string>
+    <string name="send">Enviar</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="discard_records">Descartar registro</string>
@@ -28,6 +29,7 @@
     <string name="shirt_size_g">G</string>
     <string name="shirt_size_gg">GG</string>
     <string name="shirt_size_eg">EG</string>
+    <string name="shirt_size_x">X</string>
 
     <!-- New participant -->
     <string name="wait">Aguarde</string>
@@ -49,16 +51,20 @@
     <string name="link">Link</string>
     <string name="resumo">Resumo</string>
 
-    <!-- Parse -->
-    <string name="parse_app_id">lWVMxC9FdBVAP7bMK60Vdb3qQjAlPqFiiur9rq7T</string>
-    <string name="parse_client_key">aOC6cHvPqYSvkXztBQZy92l52ksxqUtq8v6knLB2</string>
+    <!-- SynchronizationActivity -->
+    <string name="warning_synchronizing_participants">Sincronizando os participantes</string>
 
     <!-- Warning and error -->
     <string name="warning_no_name">Informe o nome do participante</string>
     <string name="warning_no_email">Informe o e-mail do participante</string>
 
+
     <string name="warning_save_participante">Participante salvo com sucesso.</string>
     <string name="warning_save_wait_participante">Salvando participante</string>
+    <string name="warning_not_participante_attend">Nenhum participante confirmou presença.</string>
+    <string name="warning_send_participante_attend">Gerando o arquivo para envio.</string>
+    <string name="error_send_participante_attend">Erro ao tentar gerar o arquivo para envio.</string>
+
     <string name="error_save_participante">Erro ao tentar salvar participante. Por favor, tente mais tarde.</string>
 
     <string name="warning_wait_confirmed_presence">Confirmando presença.</string>

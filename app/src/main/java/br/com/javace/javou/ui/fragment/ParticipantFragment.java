@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -24,12 +25,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.opencsv.CSVWriter;
-
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.File;
 import java.util.ArrayList;
-import java.util.List;
 
 import br.com.javace.javou.R;
 import br.com.javace.javou.adapter.ParticipantAdapter;
@@ -39,6 +36,7 @@ import br.com.javace.javou.interfaces.OnScrollListener;
 import br.com.javace.javou.model.participant.Participant;
 import br.com.javace.javou.task.ParticipantDeleteTask;
 import br.com.javace.javou.task.ParticipantPresenceTask;
+import br.com.javace.javou.task.ParticipantSendTask;
 import br.com.javace.javou.task.ParticipantTask;
 import br.com.javace.javou.ui.activity.MainActivity;
 import br.com.javace.javou.ui.activity.NewParticipantActivity;
@@ -151,8 +149,8 @@ public class ParticipantFragment extends BaseFragment implements OnSearchListene
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         // TODO Auto-generated method stub
         super.onCreateOptionsMenu(menu, inflater);
-
         inflater.inflate(R.menu.menu, menu);
+
         menu.findItem(R.id.menu_discart).setVisible(false);
         menu.findItem(R.id.menu_delete).setVisible(false);
 
@@ -168,6 +166,9 @@ public class ParticipantFragment extends BaseFragment implements OnSearchListene
                 break;
             case R.id.menu_raffle:
                 raffleParticipant();
+                break;
+            case R.id.menu_send:
+                generateSendingFile();
                 break;
         }
         return true;
@@ -196,7 +197,6 @@ public class ParticipantFragment extends BaseFragment implements OnSearchListene
                     //Implementar warning
                 }
 
-                teste();
                 mSwipeRefreshLayout.setRefreshing(false);
             }
         }.execute();
@@ -220,24 +220,6 @@ public class ParticipantFragment extends BaseFragment implements OnSearchListene
     private void raffleParticipant() {
         Intent intent = new Intent(getActivity(), RaffleActivity.class);
         startActivityForResult(intent, 0, BaseActivity.ActivityAnimation.SLIDE_LEFT);
-
-//        final ProgressDialog pd = ProgressDialog.show(getActivity(), "", getString(R.string.raffling), true);
-//        new Thread(new Runnable() {
-//            public void run(){
-//                try {
-//                    Raffle raffle = new Raffle(mParticipants);
-//                    Participant participant =  raffle.getFortunate();
-//                    Thread.sleep(2000);
-////                    Intent intent = new Intent(getActivity(), ParticipantFortunateActivity.class);
-////                    intent.putExtra(Constant.PARTICIPANT, participant);
-////                    startActivityForResult(intent, 0, BaseActivity.ActivityAnimation.SLIDE_LEFT);
-//                    pd.dismiss();
-//                } catch (Exception e) {
-//                    e.printStackTrace();
-//                }
-//
-//            }
-//        }).start();
     }
 
     private OnItemClickListener onItemClickListener = new OnItemClickListener() {
@@ -327,6 +309,11 @@ public class ParticipantFragment extends BaseFragment implements OnSearchListene
     private void showDialog(boolean attend) {
         mDialog = ProgressDialog.show(getActivity(), getString(R.string.wait),
                 getString(attend ? R.string.warning_wait_confirmed_presence : R.string.warning_wait_undo_confirmed_presence));
+    }
+
+    private void showSendFileDialog() {
+        mDialog = ProgressDialog.show(getActivity(), getString(R.string.wait),
+                getString(R.string.warning_send_participante_attend));
     }
 
     private void showDeleteDialog() {
@@ -487,29 +474,38 @@ public class ParticipantFragment extends BaseFragment implements OnSearchListene
         hideSearch();
     }
 
-    private void teste(){
-        if (mParticipants != null) {
-            String csv = android.os.Environment.getExternalStorageDirectory().getAbsolutePath() + "/javou.csv";
-            CSVWriter writer;
+    private void generateSendingFile(){
 
-            try {
-                writer = new CSVWriter(new FileWriter(csv));
-                List<String[]> data = new ArrayList<>();
+        if (mParticipants != null && mParticipants.size() > 0) {
+            new ParticipantSendTask(getActivity(), mParticipants) {
 
-                data.add(new String[]{"CODIGO", "NOME", "EMAIL", "CELULAR", "SEXO", "EMPRESA"});
-
-                for (Participant participant : mParticipants) {
-                    if (participant.isAttend()) {
-                        String sex = (participant.isSex() ? "F" : "M");
-                        data.add(new String[]{String.valueOf(participant.getCode()), participant.getName(), participant.getEmail(), participant.getPhone(), sex, participant.getCompany()});
-                    }
+                @Override
+                protected void onPreExecute() {
+                    super.onPreExecute();
+                    showSendFileDialog();
                 }
 
-                writer.writeAll(data);
-                writer.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+                @Override
+                protected void onPostExecute(Boolean aBoolean) {
+                    super.onPostExecute(aBoolean);
+
+                    if (aBoolean) {
+                        Intent emailIntent = new Intent(Intent.ACTION_SEND);
+                        emailIntent.setType("message/rfc822");
+                        emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"handersonbf@gmail.com"});
+                        emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "App Javou #05 - Participantes confirmados");
+                        emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, "Arquivo .csv com todos os participantes que tiveram sua presença confirmada no evento.");
+                        emailIntent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(new File(Constant.PATH_FILE_JAVOU)));
+                        startActivity(Intent.createChooser(emailIntent, "Enviando email..."));
+                    } else {
+                        Toast.makeText(getActivity(), R.string.error_send_participante_attend, Toast.LENGTH_SHORT).show();
+                    }
+
+                    hideDialog();
+                }
+            }.execute();
+        }else{
+            Toast.makeText(getActivity(), R.string.warning_not_participante_attend, Toast.LENGTH_SHORT).show();
         }
     }
 }

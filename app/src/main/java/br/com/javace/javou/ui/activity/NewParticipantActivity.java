@@ -68,7 +68,7 @@ public class NewParticipantActivity extends BaseActivity{
 
         setupOnClickListener();
         if (savedInstanceState != null){
-            mShirtSize = savedInstanceState.getInt(Constant.SHIRTSIZE, 0);
+            mShirtSize = savedInstanceState.getInt(Constant.PARTICIPANT_shirtSize, 0);
         }
 
         colorDefaultShirtSize(mShirtSize);
@@ -90,7 +90,7 @@ public class NewParticipantActivity extends BaseActivity{
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putInt(Constant.SHIRTSIZE, mShirtSize);
+        outState.putInt(Constant.PARTICIPANT_shirtSize, mShirtSize);
     }
 
     private CompoundButton.OnCheckedChangeListener onCheckedAttend = new CompoundButton.OnCheckedChangeListener() {

@@ -8,6 +8,12 @@
         android:title="@string/raffle_participant"/>
 
     <item
+        android:id="@+id/menu_send"
+        android:title="@string/send"
+        android:icon="@drawable/ic_mail_white_24dp"
+        app:showAsAction="ifRoom|collapseActionView"/>
+
+    <item
         android:id="@+id/menu_search"
         android:icon="@drawable/ic_search_white_24dp"
         app:showAsAction="ifRoom|collapseActionView"

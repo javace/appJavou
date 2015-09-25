@@ -70,25 +70,34 @@ public class ParticipantDao {
         if (participants != null) {
             try {
                 openConnection();
-                for (String[] item : participants) {
+                for (String[] participant : participants) {
                     try {
-
-                        String[] participant = item[0].split(";");
 
                         if (!participant[0].equals("NOME")) {
 
                             ContentValues campos = new ContentValues();
-                            campos.put(Constant.PARTICIPANT_name, WordUtils.capitalize(URLDecoder.decode(participant[0], "UTF-8")));
+
+                            String name = WordUtils.capitalizeFully(URLDecoder.decode(participant[0].toLowerCase(), "UTF-8"));
+
+                            campos.put(Constant.PARTICIPANT_name, name);
                             campos.put(Constant.PARTICIPANT_email, participant[1]);
                             campos.put(Constant.PARTICIPANT_code, participant[5]);
-                            campos.put(Constant.PARTICIPANT_phone, participant[10]);
+                            campos.put(Constant.PARTICIPANT_phone, Util.replacePhone(participant[10]));
                             campos.put(Constant.PARTICIPANT_photo, "");
                             campos.put(Constant.PARTICIPANT_attend, 0);
                             campos.put(Constant.PARTICIPANT_nameEvent, "Javou #05 - 26/09/2015");
                             campos.put(Constant.PARTICIPANT_birthDate, participant[12]);
-                            campos.put(Constant.PARTICIPANT_company, WordUtils.capitalize(participant[13]));
+
+                            String company = WordUtils.capitalizeFully(participant[13].toLowerCase());
+                            campos.put(Constant.PARTICIPANT_company, company);
+
                             campos.put(Constant.PARTICIPANT_sex, !participant[14].equals("Masculino"));
-                            campos.put(Constant.PARTICIPANT_shirtSize, Util.replaceShirtSize(participant[15]));
+
+                            int shirtSize = 5;
+                            if (participant[3].contains("COM camiseta")) {
+                                shirtSize = Util.replaceShirtSize(participant[15]);
+                            }
+                            campos.put(Constant.PARTICIPANT_shirtSize, shirtSize);
 
                             try {
                                 Long row = db.insertOrThrow(Constant.TABLE_PARTICIPANT, Constant.DATABASE, campos);

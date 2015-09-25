@@ -8,6 +8,7 @@ import android.text.TextWatcher;
 import android.widget.EditText;
 
 import java.nio.channels.NoConnectionPendingException;
+import java.text.Normalizer;
 
 import br.com.javace.javou.R;
 
@@ -16,10 +17,10 @@ import br.com.javace.javou.R;
  */
 public class Util {
     public static int[] shirtSize = new int[] {
-            R.string.shirt_size_p, R.string.shirt_size_m, R.string.shirt_size_g, R.string.shirt_size_gg, R.string.shirt_size_eg};
+            R.string.shirt_size_p, R.string.shirt_size_m, R.string.shirt_size_g, R.string.shirt_size_gg, R.string.shirt_size_eg, R.string.shirt_size_x};
 
     public static int[] shirtSizeColor = new int[] {
-            R.color.shirtSizePColor, R.color.shirtSizeMColor, R.color.shirtSizeGColor, R.color.shirtSizeGGColor, R.color.shirtSizeEGColor};
+            R.color.shirtSizePColor, R.color.shirtSizeMColor, R.color.shirtSizeGColor, R.color.shirtSizeGGColor, R.color.shirtSizeEGColor, R.color.dividerColor};
 
     public static boolean checkConnection(Context context) throws NoConnectionPendingException {
 
@@ -40,6 +41,19 @@ public class Util {
             }
         }
         return false;
+    }
+
+    public static String removeAccent(String text){
+        String result = Normalizer.normalize(text, Normalizer.Form.NFD);
+        return result.replaceAll("[^\\p{ASCII}]", "");
+    }
+
+    public static String replacePhone(String phone) {
+        String result = phone.replace("(", "");
+        result = result.replace(")", "");
+        result = result.replace(".", "");
+        result = result.replace("-", "");
+        return result;
     }
 
     public static int replaceShirtSize(String shirt){

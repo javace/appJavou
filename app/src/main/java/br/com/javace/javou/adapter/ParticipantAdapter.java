@@ -196,13 +196,16 @@ public class ParticipantAdapter extends RecyclerView.Adapter<ParticipantAdapter.
     }
 
     public void searchParticipantes(CharSequence charText) {
-        charText = ((String)charText).toLowerCase(Locale.getDefault());
+
+        charText = Util.removeAccent((String) charText).toLowerCase(Locale.getDefault());
+
         mParticipants.clear();
         if (charText.length() == 0) {
             mParticipants.addAll(mSearchParticipants);
         } else {
             for (Participant participant: mSearchParticipants) {
-                if (participant.getName().toLowerCase(Locale.getDefault()).contains(charText)) {
+                String name = Util.removeAccent(participant.getName());
+                if (name.toLowerCase(Locale.getDefault()).contains(charText)) {
                     mParticipants.add(participant);
                 }
             }
