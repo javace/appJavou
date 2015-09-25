@@ -31,6 +31,8 @@ public class Raffle {
 
     public Participant getFortunate() {
         int index = randomGenerator.nextInt(getParticipantsAttend().size());
-        return getParticipantsAttend().get(index);
+        Participant participantFortunate = getParticipantsAttend().get(index);
+        participantFortunate.setRaffled(true);
+        return participantFortunate;
     }
 }

@@ -2,6 +2,7 @@ package br.com.javace.javou.ui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -40,8 +41,8 @@ public class ParticipantFortunateActivity extends BaseActivity{
             txtName.setText(mParticipant.getName());
             txtEmail.setText(mParticipant.getEmail());
             txtPhone.setText(mParticipant.getPhone());
-            if(!mParticipant.getSex()){
-                //show suricate girl
+            if(mParticipant.getSex()){
+                imgPhoto.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_suricate_girl));
             }
         }
     }

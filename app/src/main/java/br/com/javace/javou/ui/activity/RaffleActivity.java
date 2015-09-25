@@ -63,11 +63,13 @@ public class RaffleActivity extends BaseActivity {
                         changePercent(i);
                     }
 
+                    Thread.sleep(2000);
                     ParticipantDao participantDao = new ParticipantDao(getApplicationContext());
                     ArrayList<Participant> participants = participantDao.getAll();
                     Raffle raffle = new Raffle(participants);
 
                     Participant participantFortunate =  raffle.getFortunate();
+                    participantDao.updateAsRaffled(participantFortunate);
                     Intent intent = new Intent(getBaseContext(), ParticipantFortunateActivity.class);
                     intent.putExtra(Constant.PARTICIPANT, participantFortunate);
 

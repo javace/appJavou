@@ -237,4 +237,27 @@ public class ParticipantDao {
 
         return null;
     }
+
+    public boolean updateAsRaffled(Participant participantFortunate) {
+
+        try {
+            openConnection();
+
+            ContentValues contentValues = new ContentValues();
+            contentValues.put(Constant.PARTICIPANT_raffled, participantFortunate.isRaffled() ? 0 : 1);
+
+            String args[] = new String[]{String.valueOf(participantFortunate.getId())};
+            return (db.update(Constant.TABLE_PARTICIPANT, contentValues, "id = ?", args) != -1);
+
+        } catch (Exception e) {
+            e.getMessage();
+            Log.e(Constant.TAG, "Erro ParticipantDao updateWithRaffled: ", e);
+            Log.e(Constant.TAG, "updateWithRaffled: " + mContext.getString(R.string.app_name));
+        } finally {
+            closeConnection();
+        }
+
+        return false;
+
+    }
 }
