@@ -6,11 +6,16 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import org.apache.commons.lang3.text.WordUtils;
+
+import java.net.URLDecoder;
 import java.util.ArrayList;
+import java.util.List;
 
 import br.com.javace.javou.R;
 import br.com.javace.javou.model.participant.Participant;
 import br.com.javace.javou.util.Constant;
+import br.com.javace.javou.util.Util;
 
 public class ParticipantDao {
 
@@ -60,36 +65,48 @@ public class ParticipantDao {
         }
     }
 
-    public void firstInsert(String[] participant) {
+    public void synchronizeParticipant(List<String[]> participants) {
 
-        if (participant != null) {
-
+        if (participants != null) {
             try {
                 openConnection();
+                for (String[] item : participants) {
+                    try {
 
-                ContentValues campos = new ContentValues();
+                        String[] participant = item[0].split(";");
 
-                campos.put(Constant.PARTICIPANT_name, participant[0]);
-                campos.put(Constant.PARTICIPANT_phone, participant[0]);
-                campos.put(Constant.PARTICIPANT_email, participant[0]);
-                campos.put(Constant.PARTICIPANT_photo, participant[0]);
-                campos.put(Constant.PARTICIPANT_shirtSize, participant[0]);
-                campos.put(Constant.PARTICIPANT_attend, 0);
-                campos.put(Constant.PARTICIPANT_nameEvent, participant[0]);
-                campos.put(Constant.PARTICIPANT_birthDate, participant[0]);
-                campos.put(Constant.PARTICIPANT_sex, participant[0]);
-                campos.put(Constant.PARTICIPANT_company, participant[0]);
+                        if (!participant[0].equals("NOME")) {
 
-                try {
-                    Long row = db.insertOrThrow(Constant.TABLE_PARTICIPANT, Constant.DATABASE, campos);
-                    Log.d("ParticipantDao", row.toString());
-                } catch (Exception e) {
-                    e.getMessage();
-                    Log.e(Constant.TAG, "insert: " + mContext.getString(R.string.app_name));
+                            ContentValues campos = new ContentValues();
+                            campos.put(Constant.PARTICIPANT_name, WordUtils.capitalize(URLDecoder.decode(participant[0], "UTF-8")));
+                            campos.put(Constant.PARTICIPANT_email, participant[1]);
+                            campos.put(Constant.PARTICIPANT_code, participant[5]);
+                            campos.put(Constant.PARTICIPANT_phone, participant[10]);
+                            campos.put(Constant.PARTICIPANT_photo, "");
+                            campos.put(Constant.PARTICIPANT_attend, 0);
+                            campos.put(Constant.PARTICIPANT_nameEvent, "Javou #05 - 26/09/2015");
+                            campos.put(Constant.PARTICIPANT_birthDate, participant[12]);
+                            campos.put(Constant.PARTICIPANT_company, WordUtils.capitalize(participant[13]));
+                            campos.put(Constant.PARTICIPANT_sex, !participant[14].equals("Masculino"));
+                            campos.put(Constant.PARTICIPANT_shirtSize, Util.replaceShirtSize(participant[15]));
+
+                            try {
+                                Long row = db.insertOrThrow(Constant.TABLE_PARTICIPANT, Constant.DATABASE, campos);
+                                Log.d("ParticipantDao", row.toString());
+                            } catch (Exception e) {
+                                e.getMessage();
+                                Log.e(Constant.TAG, "insert: " + mContext.getString(R.string.app_name));
+                            }
+                        }
+
+                    } catch (Exception e) {
+                        e.getStackTrace();
+                    }
                 }
 
-            } finally {
                 closeConnection();
+            }catch (Exception e){
+                e.getStackTrace();
             }
         }
     }
@@ -206,6 +223,7 @@ public class ParticipantDao {
                 participant.setSex(cursor.getInt(9) == 1);
                 participant.setRaffled(cursor.getInt(10) == 1);
                 participant.setCompany(cursor.getString(11));
+                participant.setCode(cursor.getInt(12));
 
                 lParticipant.add(participant);
             }

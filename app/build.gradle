@@ -19,7 +19,8 @@ repositories {
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.1"
-
+    compileOptions.encoding = 'windows-1251'
+    
     defaultConfig {
         applicationId "br.com.javace.javou"
         minSdkVersion 14
@@ -63,6 +64,9 @@ dependencies {
 
     //Library Animated Load
     compile 'com.github.jlmd:AnimatedCircleLoadingView:1.1.2@aar'
+
+    //Library .csv
+    compile 'com.opencsv:opencsv:3.4'
 
     //Library Crashlytcs by Fabric
     compile('com.crashlytics.sdk.android:crashlytics:2.5.2@aar') {

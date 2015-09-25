@@ -26,9 +26,9 @@ public class Preference {
     public String getString(String key) {
         if (mContext != null) {
             SharedPreferences settings = mContext.getSharedPreferences(Constant.PREFERENCES_APP, 0);
-            return settings.getString(key, "");
+            return settings.getString(key, null);
         }
 
-        return "";
+        return null;
     }
 }

@@ -28,6 +28,7 @@ public class Participant implements Parcelable {
     private String company;
 
     private boolean raffled;
+    private int code;
 
     @Override
     public int describeContents() {
@@ -55,6 +56,7 @@ public class Participant implements Parcelable {
         dest.writeString(this.getCompany());
 
         dest.writeByte(this.isRaffled() ? (byte) 1 : (byte) 0);
+        dest.writeInt(this.getCode());
     }
 
     public Participant() {
@@ -80,6 +82,7 @@ public class Participant implements Parcelable {
         this.setCompany(in.readString());
 
         this.setRaffled(in.readByte() != 0);
+        this.setCode(in.readInt());
     }
 
     public static final Parcelable.Creator<Participant> CREATOR = new Parcelable.Creator<Participant>() {
@@ -222,6 +225,14 @@ public class Participant implements Parcelable {
 
     public boolean getSex() {
         return sex;
+    }
+
+    public int getCode() {
+        return code;
+    }
+
+    public void setCode(int code) {
+        this.code = code;
     }
 
 }

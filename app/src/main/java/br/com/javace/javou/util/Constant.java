@@ -16,7 +16,7 @@ public class Constant {
     public static String PREFERENCES_APP = "JAVOU";
     public static String PARTICIPANT = "Participant";
 
-    public static String ID_EVENT = "idEvent";
+    public static String FIRST_RUN = "FIRST_RUN";
 
     public static String POSITION = "POSITION";
     public static String ACTION_MODE = "ACTION_MODE";
@@ -46,6 +46,7 @@ public class Constant {
     public static final String PARTICIPANT_sex = "sex";
     public static final String PARTICIPANT_raffled = "raffled";
     public static final String PARTICIPANT_company = "company";
+    public static final String PARTICIPANT_code = "code";
 
     public static String[] CREATE_TABLE() {
         return new String[] {CREATE_PARTICIPANT};
@@ -63,11 +64,13 @@ public class Constant {
             PARTICIPANT_birthDate,
             PARTICIPANT_sex,
             PARTICIPANT_raffled,
-            PARTICIPANT_company
+            PARTICIPANT_company,
+            PARTICIPANT_code
     };
 
     public static String CREATE_PARTICIPANT = " CREATE TABLE participant ( "
             + " id INTEGER CONSTRAINT 'PK_PARTICIPANT' PRIMARY KEY AUTOINCREMENT, "
+            + " code INT NULL DEFAULT 0, "
             + " name VARCHAR(100) NOT NULL, "
             + " phone VARCHAR(100) NOT NULL, "
             + " email VARCHAR(250) NULL, "

@@ -24,7 +24,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.opencsv.CSVWriter;
+
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import br.com.javace.javou.R;
 import br.com.javace.javou.adapter.ParticipantAdapter;
@@ -188,9 +193,10 @@ public class ParticipantFragment extends BaseFragment implements OnSearchListene
 
                     resultAdapter(mParticipants);
                 }else{
-
+                    //Implementar warning
                 }
 
+                teste();
                 mSwipeRefreshLayout.setRefreshing(false);
             }
         }.execute();
@@ -479,5 +485,31 @@ public class ParticipantFragment extends BaseFragment implements OnSearchListene
     public void onDetach() {
         super.onDetach();
         hideSearch();
+    }
+
+    private void teste(){
+        if (mParticipants != null) {
+            String csv = android.os.Environment.getExternalStorageDirectory().getAbsolutePath() + "/javou.csv";
+            CSVWriter writer;
+
+            try {
+                writer = new CSVWriter(new FileWriter(csv));
+                List<String[]> data = new ArrayList<>();
+
+                data.add(new String[]{"CODIGO", "NOME", "EMAIL", "CELULAR", "SEXO", "EMPRESA"});
+
+                for (Participant participant : mParticipants) {
+                    if (participant.isAttend()) {
+                        String sex = (participant.isSex() ? "F" : "M");
+                        data.add(new String[]{String.valueOf(participant.getCode()), participant.getName(), participant.getEmail(), participant.getPhone(), sex, participant.getCompany()});
+                    }
+                }
+
+                writer.writeAll(data);
+                writer.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

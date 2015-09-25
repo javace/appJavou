@@ -1,0 +1,6 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+
+    <!-- activity_raffle_main.xml -->
+    <dimen name="animatedLoad_layout_height">350dp</dimen>
+</resources>

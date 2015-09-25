@@ -14,8 +14,8 @@
 
         <com.github.jlmd.animatedcircleloadingview.AnimatedCircleLoadingView
             android:id="@+id/animatedLoad"
-            android:layout_width="250dp"
-            android:layout_height="250dp"
+            android:layout_width="@dimen/animatedLoad_layout_height"
+            android:layout_height="@dimen/animatedLoad_layout_height"
             android:background="@color/colorPrimary"
             android:layout_centerInParent="true"
             app:mainColor="@android:color/holo_orange_light"

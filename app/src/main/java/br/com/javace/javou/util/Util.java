@@ -42,6 +42,36 @@ public class Util {
         return false;
     }
 
+    public static int replaceShirtSize(String shirt){
+        String result = shirt.replace("Masculino ", "");
+        result = result.replace("Feminino ", "");
+
+        int shirtSize;
+        switch (result){
+            case "P":
+                shirtSize = 0;
+                break;
+
+            case "M":
+                shirtSize = 1;
+                break;
+
+            case "G":
+                shirtSize = 2;
+            break;
+
+            case "GG":
+                shirtSize = 3;
+                break;
+
+            default:
+                shirtSize = 4;
+                break;
+        }
+
+        return shirtSize;
+    }
+
     public abstract static class Mask {
         public static String unmask(String s) {
             return s.replaceAll("[.]", "").replaceAll("[-]", "")

@@ -2,6 +2,8 @@ package br.com.javace.javou.ui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
 
 import com.github.jlmd.animatedcircleloadingview.AnimatedCircleLoadingView;
 
@@ -22,6 +24,7 @@ import butterknife.ButterKnife;
  */
 public class RaffleActivity extends BaseActivity {
 
+    private boolean isFinishOk = false;
     @Bind(R.id.animatedLoad) AnimatedCircleLoadingView mAnimatedLoad;
 
     @Override
@@ -29,8 +32,20 @@ public class RaffleActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_raffle_main);
         ButterKnife.bind(this);
+
+        mAnimatedLoad.setOnClickListener(onClickAnimLoad);
         startPercentMockThread();
     }
+
+    private View.OnClickListener onClickAnimLoad = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if (isFinishOk) {
+                isFinishOk = false;
+                Toast.makeText(getApplicationContext(), "Terminou", Toast.LENGTH_SHORT).show();
+            }
+        }
+    };
 
     private void startLoading() {
         mAnimatedLoad.startDeterminate();
@@ -73,8 +88,17 @@ public class RaffleActivity extends BaseActivity {
             public void run() {
                 if (mAnimatedLoad != null) {
                     mAnimatedLoad.setPercent(percent);
+
+                    if (percent == 100){
+                        isFinishOk = true;
+                    }
                 }
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 }
