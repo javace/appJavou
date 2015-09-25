@@ -260,8 +260,8 @@ public class ParticipantDao {
 
         } catch (Exception e) {
             e.getMessage();
-            Log.e(Constant.TAG, "Erro ParticipantDao updateWithRaffled: ", e);
-            Log.e(Constant.TAG, "updateWithRaffled: " + mContext.getString(R.string.app_name));
+            Log.e(Constant.TAG, "Erro ParticipantDao updateAsRaffled: ", e);
+            Log.e(Constant.TAG, "updateAsRaffled: " + mContext.getString(R.string.app_name));
         } finally {
             closeConnection();
         }

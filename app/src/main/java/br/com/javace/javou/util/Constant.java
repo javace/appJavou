@@ -54,6 +54,10 @@ public class Constant {
             PARTICIPANT_code
     };
 
+    public static final String FILE_COLS[] = {
+            "CODIGO", "NOME", "EMAIL", "CELULAR", "SEXO", "EMPRESA"
+    };
+
     public static String CREATE_PARTICIPANT = " CREATE TABLE participant ( "
             + " id INTEGER CONSTRAINT 'PK_PARTICIPANT' PRIMARY KEY AUTOINCREMENT, "
             + " code INT NULL DEFAULT 0, "

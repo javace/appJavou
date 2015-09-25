@@ -8,7 +8,6 @@ import android.widget.Toast;
 import com.github.jlmd.animatedcircleloadingview.AnimatedCircleLoadingView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import br.com.javace.javou.R;
 import br.com.javace.javou.dao.ParticipantDao;

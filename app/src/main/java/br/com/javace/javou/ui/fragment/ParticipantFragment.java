@@ -477,7 +477,7 @@ public class ParticipantFragment extends BaseFragment implements OnSearchListene
     private void generateSendingFile(){
 
         if (mParticipants != null && mParticipants.size() > 0) {
-            new ParticipantSendTask(getActivity(), mParticipants) {
+            new ParticipantSendTask(mParticipants) {
 
                 @Override
                 protected void onPreExecute() {
@@ -493,12 +493,12 @@ public class ParticipantFragment extends BaseFragment implements OnSearchListene
                         Intent emailIntent = new Intent(Intent.ACTION_SEND);
                         emailIntent.setType("message/rfc822");
                         emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"handersonbf@gmail.com"});
-                        emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "App Javou #05 - Participantes confirmados");
+                        emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Javou #05 - Participantes confirmados");
                         emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, "Arquivo .csv com todos os participantes que tiveram sua presença confirmada no evento.");
                         emailIntent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(new File(Constant.PATH_FILE_JAVOU)));
                         startActivity(Intent.createChooser(emailIntent, "Enviando email..."));
                     } else {
-                        Toast.makeText(getActivity(), R.string.error_send_participante_attend, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), R.string.warning_not_participante_attend, Toast.LENGTH_SHORT).show();
                     }
 
                     hideDialog();

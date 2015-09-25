@@ -1,6 +1,5 @@
 package br.com.javace.javou.task;
 
-import android.content.Context;
 import android.os.AsyncTask;
 
 import com.opencsv.CSVWriter;
@@ -18,11 +17,9 @@ import br.com.javace.javou.util.Constant;
  */
 public class ParticipantSendTask extends AsyncTask<Void, Void, Boolean> {
 
-    private Context mContext;
     private ArrayList<Participant> mParticipant;
 
-    public ParticipantSendTask(Context context, ArrayList<Participant> participant){
-        this.mContext = context;
+    public ParticipantSendTask(ArrayList<Participant> participant){
         this.mParticipant = participant;
     }
 
@@ -30,15 +27,17 @@ public class ParticipantSendTask extends AsyncTask<Void, Void, Boolean> {
     protected Boolean doInBackground(Void... params) {
 
         CSVWriter writer;
+        boolean isAttend = false;
 
         try {
             writer = new CSVWriter(new FileWriter(Constant.PATH_FILE_JAVOU));
             List<String[]> data = new ArrayList<>();
 
-            data.add(new String[]{"CODIGO", "NOME", "EMAIL", "CELULAR", "SEXO", "EMPRESA"});
+            data.add(Constant.FILE_COLS);
 
             for (Participant participant : mParticipant) {
                 if (participant.isAttend()) {
+                    isAttend = true;
                     String sex = (participant.isSex() ? "F" : "M");
                     data.add(new String[]{String.valueOf(participant.getCode()), participant.getName(), participant.getEmail(), participant.getPhone(), sex, participant.getCompany()});
                 }
@@ -46,11 +45,10 @@ public class ParticipantSendTask extends AsyncTask<Void, Void, Boolean> {
 
             writer.writeAll(data);
             writer.close();
-            return true;
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        return false;
+        return isAttend;
     }
 }

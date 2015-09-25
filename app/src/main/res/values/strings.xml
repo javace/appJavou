@@ -61,7 +61,7 @@
 
     <string name="warning_save_participante">Participante salvo com sucesso.</string>
     <string name="warning_save_wait_participante">Salvando participante</string>
-    <string name="warning_not_participante_attend">Nenhum participante confirmou presença.</string>
+    <string name="warning_not_participante_attend">Nenhum participante confirmou presença ainda.</string>
     <string name="warning_send_participante_attend">Gerando o arquivo para envio.</string>
     <string name="error_send_participante_attend">Erro ao tentar gerar o arquivo para envio.</string>
 
