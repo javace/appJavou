@@ -151,7 +151,6 @@ public class ParticipantFragment extends BaseFragment implements OnSearchListene
 
         menu.findItem(R.id.menu_discart).setVisible(false);
         menu.findItem(R.id.menu_delete).setVisible(false);
-
         isSearchView = false;
     }
 
@@ -160,6 +159,7 @@ public class ParticipantFragment extends BaseFragment implements OnSearchListene
         // TODO Auto-generated method stub
         switch (item.getItemId()) {
             case R.id.menu_search:
+                isSearchView = true;
                 mSearchLiveo.show();
                 break;
             case R.id.menu_raffle:

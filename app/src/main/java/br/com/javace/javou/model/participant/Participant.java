@@ -8,8 +8,6 @@ import android.os.Parcelable;
  */
 public class Participant implements Parcelable {
 
-    private String objectId;
-
     private int id;
     private String name;
     private String phone;
@@ -18,15 +16,10 @@ public class Participant implements Parcelable {
     private int shirtSize;
     private boolean group;
     private boolean attend;
-
-    private String idEvent;
     private String nameEvent;
-    private String dataEvent;
-
     private String birthDate;
     private boolean sex;
     private String company;
-
     private boolean raffled;
     private int code;
 
@@ -37,7 +30,6 @@ public class Participant implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(this.getObjectId());
         dest.writeString(String.valueOf(this.getId()));
         dest.writeString(this.getName());
         dest.writeString(this.getPhone());
@@ -47,9 +39,7 @@ public class Participant implements Parcelable {
         dest.writeByte(this.isGroup() ? (byte) 1 : (byte) 0);
         dest.writeByte(this.isAttend() ? (byte) 1 : (byte) 0);
 
-        dest.writeString(this.getIdEvent());
         dest.writeString(this.getNameEvent());
-        dest.writeString(this.getDataEvent());
 
         dest.writeString(this.getBirthDate());
         dest.writeByte(this.isSex() ? (byte) 1 : (byte) 0);
@@ -63,7 +53,6 @@ public class Participant implements Parcelable {
     }
 
     protected Participant(Parcel in) {
-        this.setObjectId(in.readString());
         this.setId(in.readInt());
         this.setName(in.readString());
         this.setPhone(in.readString());
@@ -73,9 +62,7 @@ public class Participant implements Parcelable {
         this.setGroup(in.readByte() != 0);
         this.setAttend(in.readByte() != 0);
 
-        this.setIdEvent(in.readString());
         this.setNameEvent(in.readString());
-        this.setDataEvent(in.readString());
 
         this.setBirthDate(in.readString());
         this.setSex(in.readByte() != 0);
@@ -94,14 +81,6 @@ public class Participant implements Parcelable {
             return new Participant[size];
         }
     };
-
-    public String getObjectId() {
-        return objectId;
-    }
-
-    public void setObjectId(String objectId) {
-        this.objectId = objectId;
-    }
 
     public String getName() {
         return name;
@@ -159,28 +138,12 @@ public class Participant implements Parcelable {
         this.photo = photo;
     }
 
-    public String getIdEvent() {
-        return idEvent;
-    }
-
-    public void setIdEvent(String idEvent) {
-        this.idEvent = idEvent;
-    }
-
     public String getNameEvent() {
         return nameEvent;
     }
 
     public void setNameEvent(String nameEvent) {
         this.nameEvent = nameEvent;
-    }
-
-    public String getDataEvent() {
-        return dataEvent;
-    }
-
-    public void setDataEvent(String dataEvent) {
-        this.dataEvent = dataEvent;
     }
 
     public String getBirthDate() {
