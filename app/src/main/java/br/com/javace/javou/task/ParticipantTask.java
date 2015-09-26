@@ -20,7 +20,7 @@ public class ParticipantTask extends AsyncTask<Void, Void, ArrayList<Participant
 
     @Override
     protected ArrayList<Participant> doInBackground(Void... params) {
-        ParticipantDao participantDao = new ParticipantDao(mContext);
+        ParticipantDao participantDao = ParticipantDao.getInstance(mContext);
         return participantDao.getAll();
     }
 }

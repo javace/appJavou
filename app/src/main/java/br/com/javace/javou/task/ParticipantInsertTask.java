@@ -21,7 +21,7 @@ public class ParticipantInsertTask extends AsyncTask<Void, Void, Boolean> {
 
     @Override
     protected Boolean doInBackground(Void... params) {
-        ParticipantDao participantDao = new ParticipantDao(mContext);
+        ParticipantDao participantDao = ParticipantDao.getInstance(mContext);
         return participantDao.insert(mParticipant);
     }
 }

@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -20,52 +21,56 @@ import br.com.javace.javou.model.participant.Participant;
 import br.com.javace.javou.ui.base.BaseActivity;
 import br.com.javace.javou.util.Constant;
 import br.com.javace.javou.util.Util;
+import butterknife.Bind;
+import butterknife.ButterKnife;
 
 
 public class ParticipantDetailActivity extends BaseActivity {
 
     private ProgressDialog mDialog;
     private Participant mParticipant;
+
+    @Bind(R.id.toolbar) Toolbar mToolbar;
+    @Bind(R.id.txtEmail) TextView mTxtEmail;
+    @Bind(R.id.txtPhone) TextView mTxtPhone;
+    @Bind(R.id.txtAttend) TextView mTxtAttend;
+    @Bind(R.id.imgPhoto) ImageView mImgPhoto;
+    @Bind(R.id.txtShirtSize) TextView mTxtShirtSize;
+    @Bind(R.id.collapsing_toolbar) CollapsingToolbarLayout mCollapsingToolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_participant_detail);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        this.setSupportActionBar(toolbar);
+        ButterKnife.bind(this);
+        this.setSupportActionBar(mToolbar);
 
         final ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
-        final TextView txtEmail = (TextView) findViewById(R.id.txtEmail);
-        final TextView txtPhone = (TextView) findViewById(R.id.txtPhone);
-        final TextView txtAttend = (TextView) findViewById(R.id.txtAttend);
-        final ImageView imageView = (ImageView) findViewById(R.id.imgPhoto);
-        final TextView txtShirtSize = (TextView) findViewById(R.id.txtShirtSize);
-
         mParticipant = getIntent().getExtras().getParcelable(Constant.PARTICIPANT);
-        CollapsingToolbarLayout collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
-        collapsingToolbar.setTitle(mParticipant != null ? mParticipant.getName() : getString(R.string.app_name));
+        mCollapsingToolbar.setTitle(mParticipant != null ? mParticipant.getName() : getString(R.string.app_name));
 
         if (mParticipant != null){
-            txtEmail.setText(mParticipant.getEmail());
-            txtPhone.setText(mParticipant.getPhone());
+            mTxtEmail.setText(mParticipant.getEmail());
+            mTxtPhone.setText(mParticipant.getPhone());
 
-            GradientDrawable gradientDrawable = (GradientDrawable) txtShirtSize.getBackground();
+            GradientDrawable gradientDrawable = (GradientDrawable) mTxtShirtSize.getBackground();
             gradientDrawable.setColor(getResources().getColor(Util.shirtSizeColor[mParticipant.getShirtSize()]));
-            txtShirtSize.setText(getString(Util.shirtSize[mParticipant.getShirtSize()]));
+            mTxtShirtSize.setText(getString(Util.shirtSize[mParticipant.getShirtSize()]));
 
             if (mParticipant.isAttend()) {
-                txtAttend.setText(getString(R.string.attended_event));
-                txtAttend.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_check_green_18dp, 0, 0, 0);
+                mTxtAttend.setText(getString(R.string.attended_event));
+                mTxtAttend.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_check_green_18dp, 0, 0, 0);
             }
 
             if (mParticipant.getPhoto() != null && !mParticipant.getPhoto().equals("")) {
-                Glide.with(this).load(mParticipant.getPhoto()).centerCrop().into(imageView);
+                Glide.with(this).load(mParticipant.getPhoto()).centerCrop().into(mImgPhoto);
             }else{
-                Glide.with(this).load(R.drawable.ic_suricate).centerCrop().into(imageView);
+                Glide.with(this).load(R.drawable.ic_suricate).centerCrop().into(mImgPhoto);
             }
         }
 
@@ -78,10 +83,10 @@ public class ParticipantDetailActivity extends BaseActivity {
         final ImageView imgAttend = (ImageView) findViewById(R.id.imgAttend);
         final ImageView imgShirtSize = (ImageView) findViewById(R.id.imgShirtSize);
 
-        imgEmail.setColorFilter(getResources().getColor(R.color.colorPrimary));
-        imgPhone.setColorFilter(getResources().getColor(R.color.colorPrimary));
-        imgAttend.setColorFilter(getResources().getColor(R.color.colorPrimary));
-        imgShirtSize.setColorFilter(getResources().getColor(R.color.colorPrimary));
+        imgEmail.setColorFilter(ContextCompat.getColor(this, R.color.colorPrimary));
+        imgPhone.setColorFilter(ContextCompat.getColor(this, R.color.colorPrimary));
+        imgAttend.setColorFilter(ContextCompat.getColor(this, R.color.colorPrimary));
+        imgShirtSize.setColorFilter(ContextCompat.getColor(this, R.color.colorPrimary));
     }
 
     @Override
