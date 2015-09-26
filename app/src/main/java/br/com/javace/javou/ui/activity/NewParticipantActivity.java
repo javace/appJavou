@@ -84,6 +84,7 @@ public class NewParticipantActivity extends BaseActivity{
         menu.findItem(R.id.menu_raffle).setVisible(false);
         menu.findItem(R.id.menu_delete).setVisible(false);
         menu.findItem(R.id.menu_search).setVisible(false);
+        menu.findItem(R.id.menu_send).setVisible(false);
         return true;
     }
 

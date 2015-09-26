@@ -8,7 +8,6 @@ import android.util.Log;
 
 import org.apache.commons.lang3.text.WordUtils;
 
-import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -77,25 +76,26 @@ public class ParticipantDao {
 
                             ContentValues campos = new ContentValues();
 
-                            String name = WordUtils.capitalizeFully(URLDecoder.decode(participant[0].toLowerCase(), "UTF-8"));
-
+                            String name = participant[0];
                             campos.put(Constant.PARTICIPANT_name, name);
-                            campos.put(Constant.PARTICIPANT_email, participant[1]);
+                            campos.put(Constant.PARTICIPANT_email, participant[12].toLowerCase());
                             campos.put(Constant.PARTICIPANT_code, participant[5]);
-                            campos.put(Constant.PARTICIPANT_phone, Util.replacePhone(participant[10]));
+                            campos.put(Constant.PARTICIPANT_phone, Util.replacePhone(participant[11]));
                             campos.put(Constant.PARTICIPANT_photo, "");
                             campos.put(Constant.PARTICIPANT_attend, 0);
                             campos.put(Constant.PARTICIPANT_nameEvent, "Javou #05 - 26/09/2015");
-                            campos.put(Constant.PARTICIPANT_birthDate, participant[12]);
 
-                            String company = WordUtils.capitalizeFully(participant[13].toLowerCase());
+                            String birthDate = participant[13];
+                            campos.put(Constant.PARTICIPANT_birthDate, birthDate);
+
+                            String company = WordUtils.capitalizeFully(participant[14].toLowerCase());
                             campos.put(Constant.PARTICIPANT_company, company);
 
-                            campos.put(Constant.PARTICIPANT_sex, !participant[14].equals("Masculino"));
+                            campos.put(Constant.PARTICIPANT_sex, !participant[15].equals("Masculino"));
 
                             int shirtSize = 5;
                             if (participant[3].contains("COM camiseta")) {
-                                shirtSize = Util.replaceShirtSize(participant[15]);
+                                shirtSize = Util.replaceShirtSize(participant[16]);
                             }
                             campos.put(Constant.PARTICIPANT_shirtSize, shirtSize);
 

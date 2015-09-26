@@ -45,7 +45,7 @@ public class SynchronizationActivity extends BaseActivity {
         protected String doInBackground(Void... params) {
             CSVReader reader;
             try {
-                reader = new CSVReader(new InputStreamReader(getResources().getAssets().open("javou.csv"), "UTF-8"));
+                reader = new CSVReader(new InputStreamReader(getResources().getAssets().open("javou.csv"), "iso-8859-1"));
                 List<String[]> participant = reader.readAll();
 
                 ParticipantDao participantDao = new ParticipantDao(SynchronizationActivity.this);

@@ -10,8 +10,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.view.ActionMode;
 import android.support.v7.widget.LinearLayoutManager;
@@ -265,15 +263,6 @@ public class ParticipantFragment extends BaseFragment implements OnSearchListene
                     } else {
                         getParticipantAdapter().readAttendParticipant(position, !participant.isAttend());
                     }
-
-                    Snackbar.make(mMainContent, !participant.isAttend() ? R.string.warning_undo_confirmed_presence : R.string.warning_confirmed_presence, Snackbar.LENGTH_LONG)
-                            .setActionTextColor(ContextCompat.getColor(getActivity(), R.color.shirtSizeGGColor))
-                            .setAction(R.string.undo, new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    confirmUndoPresence(participant, position);
-                                }
-                            }).show();
                 }else{
                     Toast.makeText(getActivity(), R.string.error_confirmed_presence, Toast.LENGTH_LONG).show();
                 }
@@ -493,8 +482,8 @@ public class ParticipantFragment extends BaseFragment implements OnSearchListene
                         Intent emailIntent = new Intent(Intent.ACTION_SEND);
                         emailIntent.setType("message/rfc822");
                         emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"handersonbf@gmail.com"});
-                        emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Javou #05 - Participantes confirmados");
-                        emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, "Arquivo .csv com todos os participantes que tiveram sua presença confirmada no evento.");
+                        emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, getString(R.string.subject));
+                        emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, getString(R.string.text));
                         emailIntent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(new File(Constant.PATH_FILE_JAVOU)));
                         startActivity(Intent.createChooser(emailIntent, "Enviando email..."));
                     } else {

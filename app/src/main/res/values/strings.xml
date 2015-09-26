@@ -99,4 +99,7 @@
     <string name="dialog_enviroment_title">Ambiente Administrativo</string>
     <string name="wrong_pass_adm">Senha admistrativa incorreta</string>
 
+    <!-- Send file-->
+    <string name="subject">Javou #05 - Participantes confirmados</string>
+    <string name="text">Arquivo .csv com todos os participantes que tiveram sua presença confirmada no evento.</string>
 </resources>
