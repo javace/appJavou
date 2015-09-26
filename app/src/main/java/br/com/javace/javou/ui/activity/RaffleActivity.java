@@ -74,7 +74,11 @@ public class RaffleActivity extends BaseActivity {
                     }else{
                         participantDao.updateAsRaffled(participantFortunate);
                         Intent intent = new Intent(getBaseContext(), ParticipantFortunateActivity.class);
-                        intent.putExtra(Constant.PARTICIPANT, participantFortunate);
+                        
+                        intent.putExtra(Constant.PARTICIPANT_name, participantFortunate.getName());
+                        intent.putExtra(Constant.PARTICIPANT_email, participantFortunate.getEmail());
+                        intent.putExtra(Constant.PARTICIPANT_phone, participantFortunate.getPhone());
+                        intent.putExtra(Constant.PARTICIPANT_sex, participantFortunate.getSex());
 
                         startActivityForResult(intent, 0, BaseActivity.ActivityAnimation.SLIDE_LEFT);
                     }

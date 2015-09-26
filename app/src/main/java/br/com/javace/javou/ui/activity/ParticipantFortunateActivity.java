@@ -11,11 +11,19 @@ import br.com.javace.javou.R;
 import br.com.javace.javou.model.participant.Participant;
 import br.com.javace.javou.ui.base.BaseActivity;
 import br.com.javace.javou.util.Constant;
+import butterknife.Bind;
+import butterknife.ButterKnife;
 
 /**
  * Created by danielbaccin on 24/09/15.
  */
 public class ParticipantFortunateActivity extends BaseActivity{
+
+    @Bind(R.id.txtName) TextView txtName;
+    @Bind(R.id.txtEmail) TextView txtEmail;
+    @Bind(R.id.txtPhone) TextView txtPhone;
+    @Bind(R.id.imgPhoto) ImageView imgPhoto;
+    @Bind(R.id.toolbar) Toolbar mToolbar;
 
     private Participant mParticipant;
 
@@ -23,27 +31,22 @@ public class ParticipantFortunateActivity extends BaseActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_participant_fortunate);
+        ButterKnife.bind(this);
 
-        Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
         mToolbar.setTitle(getString(R.string.participant_fortunate));
         mToolbar.setNavigationIcon(R.drawable.ic_stars_white_24dp);
         this.setSupportActionBar(mToolbar);
 
-        mParticipant = getIntent().getExtras().getParcelable(Constant.PARTICIPANT);
+        String name = getIntent().getExtras().getString(Constant.PARTICIPANT_name);
+        String phone = getIntent().getExtras().getString(Constant.PARTICIPANT_phone);
+        String email  = getIntent().getExtras().getString(Constant.PARTICIPANT_email);
+        boolean sex  = getIntent().getExtras().getBoolean(Constant.PARTICIPANT_sex);
 
-
-        final TextView txtName = (TextView) findViewById(R.id.txtName);
-        final TextView txtEmail = (TextView) findViewById(R.id.txtEmail);
-        final TextView txtPhone = (TextView) findViewById(R.id.txtPhone);
-        final ImageView imgPhoto = (ImageView) findViewById(R.id.imgPhoto);
-
-        if (mParticipant != null) {
-            txtName.setText(mParticipant.getName());
-            txtEmail.setText(mParticipant.getEmail());
-            txtPhone.setText(mParticipant.getPhone());
-            if(mParticipant.getSex()){
-                imgPhoto.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_suricate_girl));
-            }
+        txtName.setText(name);
+        txtEmail.setText(phone);
+        txtPhone.setText(email);
+        if(sex){
+            imgPhoto.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_suricate_girl));
         }
     }
 
