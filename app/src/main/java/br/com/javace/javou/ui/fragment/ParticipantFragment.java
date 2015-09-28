@@ -8,7 +8,6 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.view.ActionMode;
@@ -42,7 +41,6 @@ import br.com.javace.javou.ui.activity.RaffleActivity;
 import br.com.javace.javou.ui.base.BaseActivity;
 import br.com.javace.javou.ui.base.BaseFragment;
 import br.com.javace.javou.util.Constant;
-import br.com.javace.javou.util.Util;
 import br.liveo.searchliveo.SearchLiveo;
 import br.liveo.searchliveo.interfaces.OnSearchListener;
 import butterknife.Bind;
@@ -65,7 +63,6 @@ public class ParticipantFragment extends BaseFragment implements OnSearchListene
     @Bind(R.id.toolbar) Toolbar mToolbar;
     @Bind(R.id.searchLiveo) SearchLiveo mSearchLiveo;
     @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
-    @Bind(R.id.mainContent) CoordinatorLayout mMainContent;
     @Bind(R.id.floatAdd) FloatingActionButton mBtnFloatAdd;
     @Bind(R.id.swipeContainer) SwipeRefreshLayout mSwipeRefreshLayout;
 
@@ -370,13 +367,7 @@ public class ParticipantFragment extends BaseFragment implements OnSearchListene
             switch (item.getItemId()) {
 
                 case R.id.menu_delete:
-                    boolean redeOK = Util.checkConnection(getActivity());
-
-                    if (redeOK) {
-                        confirmDelete(mPositionActionMode);
-                    }else{
-                        Toast.makeText(getActivity(), R.string.warning_no_connection, Toast.LENGTH_SHORT).show();
-                    }
+                    confirmDelete(mPositionActionMode);
                     break;
             }
 
@@ -485,7 +476,7 @@ public class ParticipantFragment extends BaseFragment implements OnSearchListene
                         emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, getString(R.string.subject));
                         emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, getString(R.string.text));
                         emailIntent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(new File(Constant.PATH_FILE_JAVOU)));
-                        startActivity(Intent.createChooser(emailIntent, "Enviando email..."));
+                        startActivity(Intent.createChooser(emailIntent, getString(R.string.send_email)));
                     } else {
                         Toast.makeText(getActivity(), R.string.warning_not_participante_attend, Toast.LENGTH_SHORT).show();
                     }

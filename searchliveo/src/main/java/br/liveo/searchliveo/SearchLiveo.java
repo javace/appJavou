@@ -58,10 +58,12 @@ public class SearchLiveo extends FrameLayout {
 
     private Activity mContext;
 
+    private boolean isVoice;
     private EditText mEdtSearch;
     private ImageView mImgBackSearch;
     private ImageView mImgVoiceSearch;
     private RecyclerView mRecyclerView;
+
     private RelativeLayout mViewSearch;
 
     private int mColorPrimaryDark;
@@ -285,6 +287,14 @@ public class SearchLiveo extends FrameLayout {
 
     private void setActive(boolean active) {
         this.active = active;
+    }
+
+    public boolean isVoice() {
+        return isVoice;
+    }
+
+    public void setIsVoice(boolean isVoice) {
+        this.isVoice = isVoice;
     }
 
     private class OnTextWatcherEdtSearch implements TextWatcher {
@@ -518,6 +528,7 @@ public class SearchLiveo extends FrameLayout {
     }
 
     private void startVoice(EditText editText) {
+        setIsVoice(true);
         ((InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE)).
                 hideSoftInputFromWindow(editText.getWindowToken(), 0);
 
@@ -537,6 +548,7 @@ public class SearchLiveo extends FrameLayout {
             if (resultCode == Activity.RESULT_OK && null != data) {
                 ArrayList<String> result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
                 mEdtSearch.setText(result.get(0));
+                setIsVoice(false);
             }
         }
     }

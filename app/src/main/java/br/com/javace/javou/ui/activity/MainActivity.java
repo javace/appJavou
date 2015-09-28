@@ -25,8 +25,8 @@ public class MainActivity extends BaseActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Fabric.with(this, new Crashlytics());
-        setContentView(R.layout.activity_main);
 
+        setContentView(R.layout.activity_main);
         setupInit(savedInstanceState);
     }
 
@@ -78,15 +78,22 @@ public class MainActivity extends BaseActivity{
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (data != null){
-            if (requestCode == SearchLiveo.REQUEST_CODE_SPEECH_INPUT) {
-                if (mParticipantFragment != null) {
-                    mParticipantFragment.onActivityResult(requestCode, resultCode, data);
+
+        switch (requestCode){
+            case 0:
+                mParticipantFragment = ParticipantFragment.newInstance();
+                getFragmentManager().beginTransaction().add(R.id.container, mParticipantFragment).commit();
+                break;
+
+            default:
+                if (data != null) {
+                    if (requestCode == SearchLiveo.REQUEST_CODE_SPEECH_INPUT) {
+                        if (mParticipantFragment != null) {
+                            mParticipantFragment.onActivityResult(requestCode, resultCode, data);
+                        }
+                    }
                 }
-            }
-        }else{
-            mParticipantFragment = ParticipantFragment.newInstance();
-            getFragmentManager().beginTransaction().add(R.id.container, mParticipantFragment).commit();
+                break;
         }
     }
 }

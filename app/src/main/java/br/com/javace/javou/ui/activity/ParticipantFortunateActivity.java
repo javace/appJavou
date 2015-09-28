@@ -8,7 +8,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import br.com.javace.javou.R;
-import br.com.javace.javou.model.participant.Participant;
 import br.com.javace.javou.ui.base.BaseActivity;
 import br.com.javace.javou.util.Constant;
 import butterknife.Bind;
@@ -24,8 +23,6 @@ public class ParticipantFortunateActivity extends BaseActivity{
     @Bind(R.id.txtPhone) TextView txtPhone;
     @Bind(R.id.imgPhoto) ImageView imgPhoto;
     @Bind(R.id.toolbar) Toolbar mToolbar;
-
-    private Participant mParticipant;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
