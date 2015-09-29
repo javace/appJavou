@@ -78,7 +78,7 @@ public class RaffleActivity extends BaseActivity {
                         intent.putExtra(Constant.PARTICIPANT_name, participantFortunate.getName());
                         intent.putExtra(Constant.PARTICIPANT_email, participantFortunate.getEmail());
                         intent.putExtra(Constant.PARTICIPANT_phone, participantFortunate.getPhone());
-                        intent.putExtra(Constant.PARTICIPANT_sex, participantFortunate.getSex());
+                        intent.putExtra(Constant.PARTICIPANT_sex, participantFortunate.isSex());
 
                         startActivityForResult(intent, 0, BaseActivity.ActivityAnimation.SLIDE_LEFT);
                     }

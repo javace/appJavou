@@ -43,7 +43,9 @@
     <string name="confirm_participation_event">Confirmar participação no evento?</string>
     <string name="raffling">Sorteando…</string>
 
+    <string name="infor_participant">Informações do participante</string>
     <string name="participant_fortunate">Participante Sorteado</string>
+
     <!-- New participant -->
     <string name="attended_event">Já confirmou sua presença no evento</string>
     <string name="not_attended_event">Não confirmou sua presença no evento</string>

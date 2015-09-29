@@ -37,6 +37,7 @@ import br.com.javace.javou.task.ParticipantSendTask;
 import br.com.javace.javou.task.ParticipantTask;
 import br.com.javace.javou.ui.activity.MainActivity;
 import br.com.javace.javou.ui.activity.NewParticipantActivity;
+import br.com.javace.javou.ui.activity.ParticipantDetailActivity;
 import br.com.javace.javou.ui.activity.RaffleActivity;
 import br.com.javace.javou.ui.base.BaseActivity;
 import br.com.javace.javou.ui.base.BaseFragment;
@@ -207,6 +208,7 @@ public class ParticipantFragment extends BaseFragment implements OnSearchListene
 
     private void resultAdapter(ArrayList<Participant> participants){
         mParticipantAdapter = new ParticipantAdapter(getActivity(), participants);
+        getParticipantAdapter().setOnClickListener(onClickListener);
         getParticipantAdapter().setOnItemClickListener(onItemClickListener);
         getParticipantAdapter().setOnItemLongClickListener(onItemLongClickListener);
         mRecyclerView.setAdapter(getParticipantAdapter());
@@ -216,6 +218,16 @@ public class ParticipantFragment extends BaseFragment implements OnSearchListene
         Intent intent = new Intent(getActivity(), RaffleActivity.class);
         startActivityForResult(intent, 0, BaseActivity.ActivityAnimation.SLIDE_LEFT);
     }
+
+    private OnItemClickListener onClickListener = new OnItemClickListener() {
+        @Override
+        public void onItemClick(View v, int position) {
+
+            Intent intent = new Intent(getActivity(), ParticipantDetailActivity.class);
+            intent.putExtra(Constant.PARTICIPANT, mParticipants.get(position));
+            startActivityForResult(intent, 1, BaseActivity.ActivityAnimation.SLIDE_LEFT);
+        }
+    };
 
     private OnItemClickListener onItemClickListener = new OnItemClickListener() {
         @Override

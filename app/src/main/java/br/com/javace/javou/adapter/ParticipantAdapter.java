@@ -34,6 +34,7 @@ public class ParticipantAdapter extends RecyclerView.Adapter<ParticipantAdapter.
     private static final int ITEM_VIEW_TYPE_ITEM = 1;
     private static final int ITEM_VIEW_TYPE_HEADER = 0;
 
+    private static OnItemClickListener mOnClickListener;
     private static OnItemClickListener mOnItemClickListener;
     private static OnItemLongClickListener mOnItemLongClickListener;
 
@@ -69,6 +70,19 @@ public class ParticipantAdapter extends RecyclerView.Adapter<ParticipantAdapter.
             mName = (TextView) view.findViewById(R.id.txtName);
             mEmail = (TextView) view.findViewById(R.id.txtEmail);
             mShirtSize = (TextView) view.findViewById(R.id.txtShirtSize);
+
+            if (mShirtSize != null) {
+                mShirtSize.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        // -1 Refers to the header
+                        int position = getAdapterPosition() - 1;
+                        if (mOnClickListener != null && position >= 0) {
+                            mOnClickListener.onItemClick(v, position);
+                        }
+                    }
+                });
+            }
 
             mContainer.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -168,6 +182,10 @@ public class ParticipantAdapter extends RecyclerView.Adapter<ParticipantAdapter.
     public int getItemCount() {
         // +1 Refers to the header
         return (mParticipants == null ? 0 : mParticipants.size()+1);
+    }
+
+    public void setOnClickListener(OnItemClickListener onClickListener) {
+        mOnClickListener = onClickListener;
     }
 
     public void setOnItemClickListener(OnItemClickListener onItemClickListener) {

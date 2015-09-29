@@ -9,6 +9,8 @@ import android.os.Parcelable;
 public class Participant implements Parcelable {
 
     private int id;
+    private int code;
+    private boolean sex;
     private String name;
     private String phone;
     private String email;
@@ -16,12 +18,10 @@ public class Participant implements Parcelable {
     private int shirtSize;
     private boolean group;
     private boolean attend;
+    private String company;
     private String nameEvent;
     private String birthDate;
-    private boolean sex;
-    private String company;
     private boolean raffled;
-    private int code;
 
     @Override
     public int describeContents() {
@@ -30,23 +30,20 @@ public class Participant implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(String.valueOf(this.getId()));
+        dest.writeInt(this.getId());
+        dest.writeInt(this.getCode());
+        dest.writeByte(isSex() ? (byte) 1 : (byte) 0);
         dest.writeString(this.getName());
         dest.writeString(this.getPhone());
         dest.writeString(this.getEmail());
         dest.writeString(this.getPhoto());
         dest.writeInt(this.getShirtSize());
-        dest.writeByte(this.isGroup() ? (byte) 1 : (byte) 0);
-        dest.writeByte(this.isAttend() ? (byte) 1 : (byte) 0);
-
-        dest.writeString(this.getNameEvent());
-
-        dest.writeString(this.getBirthDate());
-        dest.writeByte(this.isSex() ? (byte) 1 : (byte) 0);
+        dest.writeByte(isGroup() ? (byte) 1 : (byte) 0);
+        dest.writeByte(isAttend() ? (byte) 1 : (byte) 0);
         dest.writeString(this.getCompany());
-
-        dest.writeByte(this.isRaffled() ? (byte) 1 : (byte) 0);
-        dest.writeInt(this.getCode());
+        dest.writeString(this.getNameEvent());
+        dest.writeString(this.getBirthDate());
+        dest.writeByte(isRaffled() ? (byte) 1 : (byte) 0);
     }
 
     public Participant() {
@@ -54,6 +51,8 @@ public class Participant implements Parcelable {
 
     protected Participant(Parcel in) {
         this.setId(in.readInt());
+        this.setCode(in.readInt());
+        this.setSex(in.readByte() != 0);
         this.setName(in.readString());
         this.setPhone(in.readString());
         this.setEmail(in.readString());
@@ -61,15 +60,10 @@ public class Participant implements Parcelable {
         this.setShirtSize(in.readInt());
         this.setGroup(in.readByte() != 0);
         this.setAttend(in.readByte() != 0);
-
-        this.setNameEvent(in.readString());
-
-        this.setBirthDate(in.readString());
-        this.setSex(in.readByte() != 0);
         this.setCompany(in.readString());
-
+        this.setNameEvent(in.readString());
+        this.setBirthDate(in.readString());
         this.setRaffled(in.readByte() != 0);
-        this.setCode(in.readInt());
     }
 
     public static final Parcelable.Creator<Participant> CREATOR = new Parcelable.Creator<Participant>() {
@@ -81,6 +75,30 @@ public class Participant implements Parcelable {
             return new Participant[size];
         }
     };
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getCode() {
+        return code;
+    }
+
+    public void setCode(int code) {
+        this.code = code;
+    }
+
+    public boolean isSex() {
+        return sex;
+    }
+
+    public void setSex(boolean sex) {
+        this.sex = sex;
+    }
 
     public String getName() {
         return name;
@@ -104,6 +122,14 @@ public class Participant implements Parcelable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 
     public int getShirtSize() {
@@ -130,12 +156,12 @@ public class Participant implements Parcelable {
         this.attend = attend;
     }
 
-    public String getPhoto() {
-        return photo;
+    public String getCompany() {
+        return company;
     }
 
-    public void setPhoto(String photo) {
-        this.photo = photo;
+    public void setCompany(String company) {
+        this.company = company;
     }
 
     public String getNameEvent() {
@@ -152,30 +178,6 @@ public class Participant implements Parcelable {
 
     public void setBirthDate(String birthDate) {
         this.birthDate = birthDate;
-    }
-
-    public boolean isSex() {
-        return sex;
-    }
-
-    public void setSex(boolean sex) {
-        this.sex = sex;
-    }
-
-    public String getCompany() {
-        return company;
-    }
-
-    public void setCompany(String company) {
-        this.company = company;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public boolean isRaffled() {
@@ -197,5 +199,4 @@ public class Participant implements Parcelable {
     public void setCode(int code) {
         this.code = code;
     }
-
 }

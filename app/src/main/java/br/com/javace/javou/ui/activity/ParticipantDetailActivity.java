@@ -59,7 +59,7 @@ public class ParticipantDetailActivity extends BaseActivity {
             mTxtPhone.setText(mParticipant.getPhone());
 
             GradientDrawable gradientDrawable = (GradientDrawable) mTxtShirtSize.getBackground();
-            gradientDrawable.setColor(getResources().getColor(Util.shirtSizeColor[mParticipant.getShirtSize()]));
+            gradientDrawable.setColor(ContextCompat.getColor(this, Util.shirtSizeColor[mParticipant.getShirtSize()]));
             mTxtShirtSize.setText(getString(Util.shirtSize[mParticipant.getShirtSize()]));
 
             if (mParticipant.isAttend()) {
@@ -74,10 +74,10 @@ public class ParticipantDetailActivity extends BaseActivity {
             }
         }
 
-        colorPrimaryIcon();
+        setupColorPrimaryIcon();
     }
 
-    private void colorPrimaryIcon(){
+    private void setupColorPrimaryIcon(){
         final ImageView imgEmail = (ImageView) findViewById(R.id.imgEmail);
         final ImageView imgPhone = (ImageView) findViewById(R.id.imgPhone);
         final ImageView imgAttend = (ImageView) findViewById(R.id.imgAttend);
@@ -92,6 +92,7 @@ public class ParticipantDetailActivity extends BaseActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);
+        menu.findItem(R.id.menu_send).setVisible(false);
         menu.findItem(R.id.menu_search).setVisible(false);
         menu.findItem(R.id.menu_raffle).setVisible(false);
         menu.findItem(R.id.menu_discart).setVisible(false);
