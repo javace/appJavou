@@ -40,6 +40,8 @@ public class NewParticipantActivity extends BaseActivity{
     @Bind(R.id.swSex) SwitchCompat mSwSex;
 
     @Bind(R.id.toolbar) Toolbar mToolbar;
+
+    @Bind(R.id.edtCode) EditText mEdtCode;
     @Bind(R.id.edtName) EditText mEdtName;
     @Bind(R.id.edtEmail) EditText mEdtEmail;
     @Bind(R.id.edtPhone) EditText mEdtPhone;
@@ -52,6 +54,7 @@ public class NewParticipantActivity extends BaseActivity{
     @Bind(R.id.txtShirtSizeGG) TextView mTxtShirtSizeGG;
     @Bind(R.id.txtShirtSizeEG) TextView mTxtShirtSizeEG;
 
+    @Bind(R.id.layoutCode) LinearLayout mLayoutCode;
     @Bind(R.id.layoutName) LinearLayout mLayoutName;
     @Bind(R.id.layoutEmail) LinearLayout mLayoutEmail;
 
@@ -148,7 +151,13 @@ public class NewParticipantActivity extends BaseActivity{
 
     private boolean validation(){
 		boolean result = true;
-        if (mEdtName.getText().toString().trim().equals("")){
+
+        if (mEdtCode.getText().toString().trim().equals("")){
+            result = false;
+            mEdtCode.requestFocus();
+            YoYo.with(Techniques.Shake).playOn(mLayoutCode);
+            Toast.makeText(getApplicationContext(), R.string.warning_no_code, Toast.LENGTH_SHORT).show();
+        }else if (mEdtName.getText().toString().trim().equals("")){
             result = false;
             mEdtName.requestFocus();
             YoYo.with(Techniques.Shake).playOn(mLayoutName);
@@ -167,6 +176,7 @@ public class NewParticipantActivity extends BaseActivity{
         showDialog();
 
         Participant participant = new Participant();
+        participant.setCode(Integer.valueOf(mEdtCode.getText().toString()));
         participant.setName(mEdtName.getText().toString());
         participant.setPhone(mEdtPhone.getText().toString());
         participant.setEmail(mEdtEmail.getText().toString());

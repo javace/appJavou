@@ -33,6 +33,7 @@
 
     <!-- New participant -->
     <string name="wait">Aguarde</string>
+    <string name="code">Código</string>
     <string name="name">Nome</string>
     <string name="email">Email</string>
     <string name="phone">Telefone</string>
@@ -55,6 +56,7 @@
     <string name="warning_synchronizing_participants">Sincronizando os participantes</string>
 
     <!-- Warning and error -->
+    <string name="warning_no_code">Informe o código do participante</string>
     <string name="warning_no_name">Informe o nome do participante</string>
     <string name="warning_no_email">Informe o e-mail do participante</string>
 
