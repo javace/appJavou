@@ -45,4 +45,10 @@ public class ParticipantFortunateActivity extends BaseActivity{
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish(ActivityAnimation.SLIDE_RIGHT);
+    }
+
 }
