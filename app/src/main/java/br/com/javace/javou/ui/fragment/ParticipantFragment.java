@@ -31,6 +31,7 @@ import br.com.javace.javou.interfaces.OnItemClickListener;
 import br.com.javace.javou.interfaces.OnItemLongClickListener;
 import br.com.javace.javou.interfaces.OnScrollListener;
 import br.com.javace.javou.model.participant.Participant;
+import br.com.javace.javou.model.raffle.Raffle;
 import br.com.javace.javou.task.ParticipantDeleteTask;
 import br.com.javace.javou.task.ParticipantPresenceTask;
 import br.com.javace.javou.task.ParticipantSendTask;
@@ -215,8 +216,20 @@ public class ParticipantFragment extends BaseFragment implements OnSearchListene
     }
 
     private void raffleParticipant() {
-        Intent intent = new Intent(getActivity(), RaffleActivity.class);
-        startActivityForResult(intent, 0, BaseActivity.ActivityAnimation.SLIDE_LEFT);
+        if (mParticipants != null && mParticipants.size() > 0) {
+            Raffle raffle = new Raffle(mParticipants);
+            if(raffle.isValid()){
+                Intent intent = new Intent(getActivity(), RaffleActivity.class);
+                intent.putExtra(Constant.PARTICIPANT, raffle.getFortunate());
+                startActivityForResult(intent, 0, BaseActivity.ActivityAnimation.SLIDE_LEFT);
+            }else{
+                Toast.makeText(getActivity(), R.string.warning_not_participante_fortunate, Toast.LENGTH_SHORT).show();
+            }
+        }else{
+            Toast.makeText(getActivity(), R.string.warning_not_participante_fortunate, Toast.LENGTH_SHORT).show();
+        }
+
+
     }
 
     private OnItemClickListener onClickListener = new OnItemClickListener() {

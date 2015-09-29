@@ -25,6 +25,7 @@ public class RaffleActivity extends BaseActivity {
 
     private boolean isFinishOk = false;
     @Bind(R.id.animatedLoad) AnimatedCircleLoadingView mAnimatedLoad;
+    private Participant mParticipantFortunate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +33,7 @@ public class RaffleActivity extends BaseActivity {
         setContentView(R.layout.activity_raffle_main);
         ButterKnife.bind(this);
 
+        mParticipantFortunate =  getIntent().getExtras().getParcelable(Constant.PARTICIPANT);
         mAnimatedLoad.setOnClickListener(onClickAnimLoad);
         startPercentMockThread();
     }
@@ -61,28 +63,13 @@ public class RaffleActivity extends BaseActivity {
                         Thread.sleep(65);
                         changePercent(i);
                     }
-
                     Thread.sleep(2000);
                     ParticipantDao participantDao = new ParticipantDao(getApplicationContext());
-                    ArrayList<Participant> participants = participantDao.getAll();
-                    Raffle raffle = new Raffle(participants);
-                    Participant participantFortunate =  raffle.getFortunate();
-
-                    if(participantFortunate == null){
-                        Intent intent = new Intent(getBaseContext(), MainActivity.class);
-                        startActivityForResult(intent, 0, BaseActivity.ActivityAnimation.SLIDE_RIGHT);
-                    }else{
-                        participantDao.updateAsRaffled(participantFortunate);
-                        Intent intent = new Intent(getBaseContext(), ParticipantFortunateActivity.class);
-                        
-                        intent.putExtra(Constant.PARTICIPANT_name, participantFortunate.getName());
-                        intent.putExtra(Constant.PARTICIPANT_email, participantFortunate.getEmail());
-                        intent.putExtra(Constant.PARTICIPANT_phone, participantFortunate.getPhone());
-                        intent.putExtra(Constant.PARTICIPANT_sex, participantFortunate.isSex());
-
-                        startActivityForResult(intent, 0, BaseActivity.ActivityAnimation.SLIDE_LEFT);
-                    }
-
+                    participantDao.updateAsRaffled(mParticipantFortunate);
+                    Intent intent = new Intent(getBaseContext(), ParticipantFortunateActivity.class);
+                    intent.putExtra(Constant.PARTICIPANT, mParticipantFortunate);
+                    startActivityForResult(intent, 0, BaseActivity.ActivityAnimation.SLIDE_LEFT);
+                    finish();
 
                 } catch (InterruptedException e) {
                     e.printStackTrace();

@@ -61,6 +61,7 @@
     <string name="warning_no_code">Informe o código do participante</string>
     <string name="warning_no_name">Informe o nome do participante</string>
     <string name="warning_no_email">Informe o e-mail do participante</string>
+    <string name="warning_not_participante_fortunate">Nenhum participante disponível para ser sorteado</string>
 
 
     <string name="warning_save_participante">Participante salvo com sucesso.</string>
@@ -107,4 +108,5 @@
     <string name="send_email">Enviando email…</string>
     <string name="subject">Javou #05 - Participantes confirmados</string>
     <string name="text">Arquivo .csv com todos os participantes que tiveram sua presença confirmada no evento.</string>
+
 </resources>

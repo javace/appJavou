@@ -9,7 +9,7 @@ import br.com.javace.javou.model.participant.Participant;
 /**
  * Created by danielbaccin on 21/07/15.
  */
-public class Raffle {
+public class Raffle{
 
     private ArrayList<Participant> participants;
     private Random randomGenerator;
@@ -22,10 +22,18 @@ public class Raffle {
     private List<Participant> getParticipantsAttend(){
         List<Participant> attendees = new ArrayList<>();
         for (Participant participant : participants) {
-            if(participant.isAttend() && !participant.isRaffled())
+            if(participant.isAttend() && !participant.isRaffled()) //It can be drawn
                 attendees.add(participant);
         }
         return attendees;
+    }
+
+    public boolean isValid(){
+        for (Participant participant : participants) {
+            if(participant.isAttend() && !participant.isRaffled())
+                return true;
+        }
+        return false;
     }
 
 

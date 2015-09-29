@@ -199,4 +199,5 @@ public class Participant implements Parcelable {
     public void setCode(int code) {
         this.code = code;
     }
+
 }

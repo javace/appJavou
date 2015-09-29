@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import br.com.javace.javou.R;
+import br.com.javace.javou.model.participant.Participant;
 import br.com.javace.javou.ui.base.BaseActivity;
 import br.com.javace.javou.util.Constant;
 import butterknife.Bind;
@@ -34,23 +35,14 @@ public class ParticipantFortunateActivity extends BaseActivity{
         mToolbar.setNavigationIcon(R.drawable.ic_stars_white_24dp);
         this.setSupportActionBar(mToolbar);
 
-        String name = getIntent().getExtras().getString(Constant.PARTICIPANT_name);
-        String phone = getIntent().getExtras().getString(Constant.PARTICIPANT_phone);
-        String email  = getIntent().getExtras().getString(Constant.PARTICIPANT_email);
-        boolean sex  = getIntent().getExtras().getBoolean(Constant.PARTICIPANT_sex);
+        Participant mParticipantFortunate = getIntent().getExtras().getParcelable(Constant.PARTICIPANT);
 
-        txtName.setText(name);
-        txtEmail.setText(phone);
-        txtPhone.setText(email);
-        if(sex){
+        txtName.setText(mParticipantFortunate.getName());
+        txtEmail.setText(mParticipantFortunate.getEmail());
+        txtPhone.setText(mParticipantFortunate.getPhone());
+        if(mParticipantFortunate.getSex()){
             imgPhoto.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_suricate_girl));
         }
     }
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivityForResult(intent, 0, BaseActivity.ActivityAnimation.SLIDE_RIGHT);
-    }
 }
