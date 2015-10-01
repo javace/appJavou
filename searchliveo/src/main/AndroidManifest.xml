@@ -17,6 +17,7 @@
     package="br.liveo.searchliveo">
 
     <application
+        android:fullBackupContent="true"
         android:allowBackup="true">
     </application>
 

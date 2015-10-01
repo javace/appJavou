@@ -1,0 +1,10 @@
+<resources>
+
+    <style name="Theme.nLiveo" parent="AppTheme">
+    </style>
+
+    <!--Customize here the subject of your application-->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+    </style>
+</resources>
