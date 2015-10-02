@@ -20,7 +20,12 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
+import com.nineoldandroids.animation.Animator;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -234,11 +239,33 @@ public class ParticipantFragment extends BaseFragment implements OnSearchListene
 
     private OnItemClickListener onClickListener = new OnItemClickListener() {
         @Override
-        public void onItemClick(View v, int position) {
+        public void onItemClick(View v, final int position) {
 
-            Intent intent = new Intent(getActivity(), ParticipantDetailActivity.class);
-            intent.putExtra(Constant.PARTICIPANT, mParticipants.get(position));
-            startActivityForResult(intent, 1, BaseActivity.ActivityAnimation.SLIDE_LEFT);
+            TextView txtShirtSize = (TextView) v.findViewById(R.id.txtShirtSize);
+            YoYo.with(Techniques.Bounce).withListener(new Animator.AnimatorListener() {
+                @Override
+                public void onAnimationStart(Animator animation) {
+
+                }
+
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    Intent intent = new Intent(getActivity(), ParticipantDetailActivity.class);
+                    intent.putExtra(Constant.INSERT, false);
+                    intent.putExtra(Constant.PARTICIPANT, mParticipants.get(position));
+                    startActivityForResult(intent, 1, BaseActivity.ActivityAnimation.SLIDE_LEFT);
+                }
+
+                @Override
+                public void onAnimationCancel(Animator animation) {
+
+                }
+
+                @Override
+                public void onAnimationRepeat(Animator animation) {
+
+                }
+            }).playOn(txtShirtSize);
         }
     };
 
@@ -298,7 +325,9 @@ public class ParticipantFragment extends BaseFragment implements OnSearchListene
         @Override
         public void onClick(View v) {
             hideSearch();
-            startActivityForResult(new Intent(getActivity(), NewParticipantActivity.class), 0, BaseActivity.ActivityAnimation.SLIDE_LEFT);
+            Intent intent = new Intent(getActivity(), NewParticipantActivity.class);
+            intent.putExtra(Constant.INSERT, true);
+            startActivityForResult(intent, 0, BaseActivity.ActivityAnimation.SLIDE_LEFT);
         }
     };
 

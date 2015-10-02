@@ -155,6 +155,38 @@ public class ParticipantDao {
         return false;
     }
 
+    public boolean update(Participant participant) {
+
+        try {
+            openConnection();
+
+            ContentValues campos = new ContentValues();
+
+            campos.put(Constant.PARTICIPANT_name, participant.getName());
+            campos.put(Constant.PARTICIPANT_phone, participant.getPhone());
+            campos.put(Constant.PARTICIPANT_email, participant.getEmail());
+            campos.put(Constant.PARTICIPANT_photo, participant.getPhoto());
+            campos.put(Constant.PARTICIPANT_shirtSize, participant.getShirtSize());
+            campos.put(Constant.PARTICIPANT_attend, participant.isAttend() ? 1 : 0);
+            campos.put(Constant.PARTICIPANT_nameEvent, participant.getNameEvent());
+            campos.put(Constant.PARTICIPANT_birthDate, participant.getBirthDate());
+            campos.put(Constant.PARTICIPANT_sex, participant.isSex() ? 1 : 0);
+            campos.put(Constant.PARTICIPANT_company, participant.getCompany());
+
+            String args[] = new String[]{String.valueOf(participant.getId())};
+            return (db.update(Constant.TABLE_PARTICIPANT, campos, "id = ?", args) != -1);
+
+        } catch (Exception e) {
+            e.getMessage();
+            Log.e(Constant.TAG, "Erro ParticipantDao update: ", e);
+            Log.e(Constant.TAG, "update: " + mContext.getString(R.string.app_name));
+        } finally {
+            closeConnection();
+        }
+
+        return false;
+    }
+
     public boolean updatePresence(Participant participant) {
 
         try {

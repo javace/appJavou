@@ -3,14 +3,17 @@ package br.com.javace.javou.ui.activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -36,6 +39,7 @@ public class ParticipantDetailActivity extends BaseActivity {
     @Bind(R.id.txtAttend) TextView mTxtAttend;
     @Bind(R.id.imgPhoto) ImageView mImgPhoto;
     @Bind(R.id.txtShirtSize) TextView mTxtShirtSize;
+    @Bind(R.id.floatEdit) FloatingActionButton mFloatEdit;
     @Bind(R.id.collapsing_toolbar) CollapsingToolbarLayout mCollapsingToolbar;
 
     @Override
@@ -51,6 +55,7 @@ public class ParticipantDetailActivity extends BaseActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
+        mFloatEdit.setOnClickListener(onClickEdit);
         mParticipant = getIntent().getExtras().getParcelable(Constant.PARTICIPANT);
         mCollapsingToolbar.setTitle(mParticipant != null ? mParticipant.getName() : getString(R.string.app_name));
 
@@ -112,6 +117,16 @@ public class ParticipantDetailActivity extends BaseActivity {
         }
         return true;
     }
+
+    private View.OnClickListener onClickEdit  = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(getApplicationContext(), NewParticipantActivity.class);
+            intent.putExtra(Constant.PARTICIPANT, mParticipant);
+            startActivityForResult(intent, 1, BaseActivity.ActivityAnimation.SLIDE_LEFT);
+        }
+    };
+
 
 //    private void deleteParticipant(){
 //        showDialog();

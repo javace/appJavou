@@ -16,6 +16,8 @@ public class Constant {
     public static String ACTION_MODE = "ACTION_MODE";
     public static String PARTICIPANT = "Participant";
 
+    public static String INSERT = "INSERT";
+
     //Tablet participant
     public static final String TABLE_PARTICIPANT = "participant";
     public static final String PARTICIPANT_id = "id";

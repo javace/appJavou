@@ -25,6 +25,7 @@ import com.nineoldandroids.animation.Animator;
 import br.com.javace.javou.R;
 import br.com.javace.javou.model.participant.Participant;
 import br.com.javace.javou.task.ParticipantInsertTask;
+import br.com.javace.javou.task.ParticipantUpdateTask;
 import br.com.javace.javou.ui.base.BaseActivity;
 import br.com.javace.javou.util.Constant;
 import br.com.javace.javou.util.Util;
@@ -35,11 +36,11 @@ public class NewParticipantActivity extends BaseActivity{
 
     private int mShirtSize = 0;
     private ProgressDialog mDialog;
+    private Participant mParticipant;
 
     @Bind(R.id.imgSex) ImageView mImgSex;
-    @Bind(R.id.swSex) SwitchCompat mSwSex;
-
     @Bind(R.id.toolbar) Toolbar mToolbar;
+    @Bind(R.id.swSex) SwitchCompat mSwSex;
 
     @Bind(R.id.edtCode) EditText mEdtCode;
     @Bind(R.id.edtName) EditText mEdtName;
@@ -60,8 +61,8 @@ public class NewParticipantActivity extends BaseActivity{
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
-		super.onCreate(savedInstanceState);
+        // TODO Auto-generated method stub
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_participant);
         ButterKnife.bind(this);
 
@@ -74,12 +75,30 @@ public class NewParticipantActivity extends BaseActivity{
             mShirtSize = savedInstanceState.getInt(Constant.PARTICIPANT_shirtSize, 0);
         }
 
+        boolean isInsert = getIntent().getExtras().getBoolean(Constant.INSERT, false);
+        if (!isInsert){
+            mParticipant = getIntent().getExtras().getParcelable(Constant.PARTICIPANT);
+            setupUpdate(mParticipant);
+        }
+
         colorDefaultShirtSize(mShirtSize);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 	}
+
+    private void setupUpdate(Participant participant){
+        mEdtCode.setEnabled(false);
+        mEdtCode.setText(String.valueOf(participant.getCode()));
+        mEdtName.setText(participant.getName());
+        mEdtPhone.setText(participant.getPhone());
+        mEdtEmail.setText(participant.getEmail());
+        mShirtSize = participant.getShirtSize();
+        mSwAttend.setChecked(participant.isAttend());
+        mSwSex.setChecked(participant.isSex());
+        mEdtCompany.setText(participant.getCompany());
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -123,7 +142,11 @@ public class NewParticipantActivity extends BaseActivity{
         switch (item.getItemId()){
             case android.R.id.home:
                     if (validation()){
-                        saveParticipant();
+                        if (mParticipant == null) {
+                            saveParticipant();
+                        }else{
+                            updateParticipant();
+                        }
                     }
                 break;
 
@@ -189,6 +212,49 @@ public class NewParticipantActivity extends BaseActivity{
         participant.setCompany(mEdtCompany.getText().toString());
 
         new ParticipantInsertTask(this, participant){
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+                showDialog();
+            }
+
+            @Override
+            protected void onPostExecute(Boolean result) {
+                super.onPostExecute(result);
+
+                if (result){
+                    Intent intent = new Intent();
+                    intent.putExtra(Constant.PARTICIPANT, true);
+                    setResult(0, intent);
+                    finish(ActivityAnimation.SLIDE_RIGHT);
+                    Toast.makeText(getApplicationContext(), R.string.warning_save_participante, Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(getApplicationContext(), R.string.error_save_participante, Toast.LENGTH_SHORT).show();
+                }
+
+                hideDialog();
+            }
+        }.execute();
+    }
+
+    private void updateParticipant(){
+        showDialog();
+
+        Participant participant = new Participant();
+        participant.setId(mParticipant.getId());
+        participant.setCode(Integer.valueOf(mEdtCode.getText().toString()));
+        participant.setName(mEdtName.getText().toString());
+        participant.setPhone(mEdtPhone.getText().toString());
+        participant.setEmail(mEdtEmail.getText().toString());
+        participant.setShirtSize(mShirtSize);
+        participant.setAttend(mSwAttend.isChecked());
+        participant.setNameEvent(mParticipant.getNameEvent());
+        participant.setBirthDate(mParticipant.getBirthDate());
+        participant.setRaffled(mParticipant.isRaffled());
+        participant.setSex(mSwSex.isChecked());
+        participant.setCompany(mEdtCompany.getText().toString());
+
+        new ParticipantUpdateTask(this, participant){
             @Override
             protected void onPreExecute() {
                 super.onPreExecute();
