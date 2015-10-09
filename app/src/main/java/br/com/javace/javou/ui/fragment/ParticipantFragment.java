@@ -105,11 +105,10 @@ public class ParticipantFragment extends BaseFragment implements OnSearchListene
             }
         };
 
-        mRecyclerView.addOnScrollListener(mEndlessListener);
-
         mSearchLiveo.with(getActivity(), this).build();
         mBtnFloatAdd.setOnClickListener(onClickFloatAdd);
 
+        mRecyclerView.addOnScrollListener(mEndlessListener);
         mSwipeRefreshLayout.setOnRefreshListener(onRefresh);
         mSwipeRefreshLayout.setColorSchemeResources(R.color.shirtSizePColor, R.color.shirtSizeMColor, R.color.shirtSizeGColor, R.color.shirtSizeGGColor);
 
@@ -164,7 +163,8 @@ public class ParticipantFragment extends BaseFragment implements OnSearchListene
         switch (item.getItemId()) {
             case R.id.menu_search:
                 isSearchView = true;
-                mSearchLiveo.show();
+                mSearchLiveo.
+                        show();
                 break;
             case R.id.menu_raffle:
                 raffleParticipant();

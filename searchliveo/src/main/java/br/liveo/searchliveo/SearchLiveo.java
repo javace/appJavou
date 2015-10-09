@@ -68,6 +68,12 @@ public class SearchLiveo extends FrameLayout {
 
     private int mColorPrimaryDark;
     private boolean active = false;
+
+    private int mColorIcon = -1;
+    private int mColorIconBack = -1;
+    private int mColorIconVoice = -1;
+    private int mColorIconClose = -1;
+
     private int mColorStatusBarHide = -1;
     private int mColorStatusBarShow = -1;
     private OnSearchListener mSearchListener;
@@ -109,7 +115,7 @@ public class SearchLiveo extends FrameLayout {
         return this;
     }
 
-    public SearchLiveo build(){
+    public void build(){
 
         if (this.mSearchListener == null){
             throw new ClassCastException(mContext.getString(R.string.warning_listener));
@@ -125,8 +131,6 @@ public class SearchLiveo extends FrameLayout {
         }catch (Exception e){
             e.getStackTrace();
         }
-
-        return this;
     }
 
     public SearchLiveo(Context context, AttributeSet attrs) {
@@ -162,9 +166,17 @@ public class SearchLiveo extends FrameLayout {
         mEdtSearch.addTextChangedListener(new OnTextWatcherEdtSearch());
     }
 
+    public SearchLiveo background(int color){
+        mViewSearch.setBackgroundColor(ContextCompat.getColor(mContext, color));
+        return this;
+    }
+
     public SearchLiveo colorIcon(int color){
-        mImgBackSearch.setColorFilter(ContextCompat.getColor(mContext, color));
-        mImgVoiceSearch.setColorFilter(ContextCompat.getColor(mContext, color));
+        if (color != -1) {
+            this.mColorIcon = color;
+            mImgBackSearch.setColorFilter(ContextCompat.getColor(mContext, this.mColorIcon));
+            mImgVoiceSearch.setColorFilter(ContextCompat.getColor(mContext, this.mColorIcon));
+        }
         return this;
     };
 
@@ -179,21 +191,41 @@ public class SearchLiveo extends FrameLayout {
     };
 
     public SearchLiveo colorIconBack(int color){
-        mImgBackSearch.setColorFilter(ContextCompat.getColor(mContext, color));
+        if (color != -1) {
+            this.mColorIconBack = color;
+            mImgBackSearch.setColorFilter(ContextCompat.getColor(mContext, this.mColorIconBack));
+        }else{
+            mImgBackSearch.clearColorFilter();
+        }
         return this;
     };
 
     public SearchLiveo colorIconVoice(int color){
-        mImgVoiceSearch.setColorFilter(ContextCompat.getColor(mContext, color));
+        if (color != -1) {
+            this.mColorIconVoice = color;
+            mImgVoiceSearch.setColorFilter(ContextCompat.getColor(mContext, this.mColorIconVoice));
+        }else{
+            mImgVoiceSearch.clearColorFilter();
+        }
         return this;
     };
 
-    public SearchLiveo setText(String text){
+    public SearchLiveo colorIconClose(int color){
+        if (color != -1) {
+            this.mColorIconClose = color;
+            mImgVoiceSearch.setColorFilter(ContextCompat.getColor(mContext, this.mColorIconClose));
+        }else{
+            mImgVoiceSearch.clearColorFilter();
+        }
+        return this;
+    };
+
+    public SearchLiveo text(String text){
         mEdtSearch.setText(text);
         return this;
     };
 
-    public SearchLiveo setHint(String text){
+    public SearchLiveo hint(String text){
         mEdtSearch.setHint(text);
         return this;
     };
@@ -307,11 +339,15 @@ public class SearchLiveo extends FrameLayout {
         public void onTextChanged(CharSequence s, int start, int before, int count) {
             try {
                 if (mEdtSearch.getText().toString().length() == 0) {
-                    mImgVoiceSearch.setImageResource(R.drawable.ic_keyboard_voice_white_24dp);
+                    mImgVoiceSearch.setImageResource(R.drawable.ic_keyboard_voice_color_24dp);
+                    colorIconVoice(mColorIconVoice);
                 } else {
-                    mImgVoiceSearch.setImageResource(R.drawable.ic_close_grey600_24dp);
+                    mImgVoiceSearch.setImageResource(R.drawable.ic_close_color_24dp);
+                    colorIconClose(mColorIconClose);
                 }
 
+                colorIcon(mColorIcon);
+                colorIconBack(mColorIconBack);
                 mSearchListener.changedSearch(mEdtSearch.getText().toString());
             } catch (Exception e) {
                 e.getStackTrace();
