@@ -506,6 +506,9 @@ public class SearchLiveo extends FrameLayout {
         }
     };
 
+    /**
+     * If SearchView is active(show), this method returns the value true
+     */
     public boolean isActive() {
         return active;
     }
@@ -609,6 +612,9 @@ public class SearchLiveo extends FrameLayout {
         }
     }
 
+    /**
+     * Hide SearchLiveo
+     */
     public void hide() {
         try {
             hideAnimation();
@@ -618,6 +624,9 @@ public class SearchLiveo extends FrameLayout {
         }
     }
 
+    /**
+     * Show SearchLiveo
+     */
     public SearchLiveo show() {
         setActive(true);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -813,7 +822,6 @@ public class SearchLiveo extends FrameLayout {
     }
 
     private void startVoice(EditText editText) {
-        //setIsVoice(true);
         ((InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE)).
                 hideSoftInputFromWindow(editText.getWindowToken(), 0);
 
@@ -833,7 +841,6 @@ public class SearchLiveo extends FrameLayout {
             if (resultCode == Activity.RESULT_OK && null != data) {
                 ArrayList<String> result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
                 mEdtSearch.setText(result.get(0));
-                //setIsVoice(false);
             }
         }
     }
