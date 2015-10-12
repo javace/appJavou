@@ -25,12 +25,9 @@ public class MainActivity extends BaseActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Fabric.with(this, new Crashlytics());
-
         setContentView(R.layout.activity_main);
-        if (savedInstanceState == null) {
-            mParticipantFragment = ParticipantFragment.newInstance();
-            getFragmentManager().beginTransaction().add(R.id.container, mParticipantFragment, Constant.PARTICIPANT).commit();
-        }
+
+        setupFragment(savedInstanceState);
         //setupInit(savedInstanceState);
     }
 
@@ -40,9 +37,17 @@ public class MainActivity extends BaseActivity{
             startActivityForResult(new Intent(this, SynchronizationActivity.class), 0);
             preference.setString(Constant.FIRST_RUN, "javou");
         }else{
-            if (savedInstanceState == null) {
-                mParticipantFragment = ParticipantFragment.newInstance();
-                getFragmentManager().beginTransaction().add(R.id.container, mParticipantFragment).commit();
+            setupFragment(savedInstanceState);
+        }
+    }
+
+    private void setupFragment(Bundle savedInstanceState){
+        if (savedInstanceState == null) {
+            mParticipantFragment = ParticipantFragment.newInstance();
+            getFragmentManager().beginTransaction().add(R.id.container, mParticipantFragment, Constant.PARTICIPANT).commit();
+        }else{
+            if (mParticipantFragment == null) {
+                mParticipantFragment = (ParticipantFragment) getFragmentManager().findFragmentByTag(Constant.PARTICIPANT);
             }
         }
     }
@@ -86,16 +91,12 @@ public class MainActivity extends BaseActivity{
         switch (requestCode){
             case 0:
                 mParticipantFragment = ParticipantFragment.newInstance();
-                getFragmentManager().beginTransaction().add(R.id.container, mParticipantFragment).commit();
+                getFragmentManager().beginTransaction().add(R.id.container, mParticipantFragment, Constant.PARTICIPANT).commit();
                 break;
 
             default:
                 if (data != null) {
                     if (requestCode == SearchLiveo.REQUEST_CODE_SPEECH_INPUT) {
-                        if (mParticipantFragment == null) {
-                            mParticipantFragment = (ParticipantFragment) getFragmentManager().findFragmentByTag(Constant.PARTICIPANT);
-                        }
-
                         mParticipantFragment.onActivityResult(requestCode, resultCode, data);
                     }
                 }
