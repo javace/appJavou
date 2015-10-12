@@ -106,6 +106,7 @@ public class ParticipantFragment extends BaseFragment implements OnSearchListene
         };
 
         mSearchLiveo.with(getActivity(), this).build();
+
         mBtnFloatAdd.setOnClickListener(onClickFloatAdd);
 
         mRecyclerView.addOnScrollListener(mEndlessListener);

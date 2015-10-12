@@ -30,6 +30,7 @@ public class SynchronizationActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_synchronization);
         ButterKnife.bind(this);
+
         new SynchronizeParticipant().execute();
     }
 

@@ -27,7 +27,11 @@ public class MainActivity extends BaseActivity{
         Fabric.with(this, new Crashlytics());
 
         setContentView(R.layout.activity_main);
-        setupInit(savedInstanceState);
+        if (savedInstanceState == null) {
+            mParticipantFragment = ParticipantFragment.newInstance();
+            getFragmentManager().beginTransaction().add(R.id.container, mParticipantFragment, Constant.PARTICIPANT).commit();
+        }
+        //setupInit(savedInstanceState);
     }
 
     private void setupInit(Bundle savedInstanceState){
@@ -88,9 +92,11 @@ public class MainActivity extends BaseActivity{
             default:
                 if (data != null) {
                     if (requestCode == SearchLiveo.REQUEST_CODE_SPEECH_INPUT) {
-                        if (mParticipantFragment != null) {
-                            mParticipantFragment.onActivityResult(requestCode, resultCode, data);
+                        if (mParticipantFragment == null) {
+                            mParticipantFragment = (ParticipantFragment) getFragmentManager().findFragmentByTag(Constant.PARTICIPANT);
                         }
+
+                        mParticipantFragment.onActivityResult(requestCode, resultCode, data);
                     }
                 }
                 break;

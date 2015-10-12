@@ -58,37 +58,45 @@ public class SearchLiveo extends FrameLayout {
 
     private Activity mContext;
 
-    private boolean isVoice;
     private EditText mEdtSearch;
-    private ImageView mImgBackSearch;
-    private ImageView mImgVoiceSearch;
-    private RecyclerView mRecyclerView;
 
+    private ImageView mImgArrowSearch;
+    private ImageView mImgVoiceSearch;
+    private ImageView mImgCloseSearch;
+
+    private RecyclerView mRecyclerView;
     private RelativeLayout mViewSearch;
 
     private int mColorPrimaryDark;
     private boolean active = false;
+    private boolean isVoice = true;
 
     private int mColorIcon = -1;
-    private int mColorIconBack = -1;
+    private int mColorIconArrow = -1;
     private int mColorIconVoice = -1;
     private int mColorIconClose = -1;
 
-    private int mColorStatusBarHide = -1;
-    private int mColorStatusBarShow = -1;
+    private int mStatusBarHideColor = -1;
+    private int mStatusBarShowColor = -1;
     private OnSearchListener mSearchListener;
 
-    public static int REQUEST_CODE_SPEECH_INPUT = 7777;
     private static String SEARCH_TEXT = "SEARCH_TEXT";
-    private static String STATE_TO_SAVE = "stateToSave";
-    private static String INSTANCE_STATE = "instanceState";
+    public static int REQUEST_CODE_SPEECH_INPUT = 7777;
+    private static String STATE_TO_SAVE = "STATE_TO_SAVE";
+    private static String INSTANCE_STATE = "INSTANCE_STATE";
 
-    public SearchLiveo with(Context activity) {
+    /**
+     * Start context and the listener Search Live library.
+     * Use this method when you are using an Activity
+     *
+     * @param context - Context Activity
+     */
+    public SearchLiveo with(Context context) {
 
         if (this.mContext == null) {
             try {
-                this.mContext = (Activity) activity;
-                this.mSearchListener = (OnSearchListener) activity;
+                this.mContext = (Activity) context;
+                this.mSearchListener = (OnSearchListener) context;
             } catch (ClassCastException e) {
                 throw new ClassCastException(mContext.getString(R.string.warning_listener));
             }
@@ -99,6 +107,13 @@ public class SearchLiveo extends FrameLayout {
         return this;
     }
 
+    /**
+     * Start context and the listener Search Live library.
+     * Use this method when you are using an Fragment
+     *
+     * @param getActivity - Context Fragment
+     * @param context - Listener
+     */
     public SearchLiveo with(Activity getActivity, OnSearchListener context) {
 
         if (this.mContext == null) {
@@ -133,10 +148,19 @@ public class SearchLiveo extends FrameLayout {
         }
     }
 
+    public SearchLiveo(Context context) {
+        this(context, null);
+    }
+
     public SearchLiveo(Context context, AttributeSet attrs) {
-        super(context, attrs);
+        this(context, attrs, 0);
+    }
+
+    public SearchLiveo(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
         if(!isInEditMode()) {
             init(context);
+            initAttribute(context, attrs, defStyleAttr);
         }
     }
 
@@ -145,10 +169,14 @@ public class SearchLiveo extends FrameLayout {
 
         mEdtSearch = (EditText) view.findViewById(R.id.edtSearch);
         mViewSearch = (RelativeLayout) view.findViewById(R.id.viewSearch);
-        mImgVoiceSearch = (ImageView) view.findViewById(R.id.imgVoiceSearch);
-        mRecyclerView = (RecyclerView) view.findViewById(R.id.recyclerSearchView);
 
-        mImgBackSearch = (ImageView) view.findViewById(R.id.imgBackSearch);
+        mImgArrowSearch = (ImageView) view.findViewById(R.id.imgArrowSearch);
+        mImgVoiceSearch = (ImageView) view.findViewById(R.id.imgVoiceSearch);
+
+        mImgCloseSearch = (ImageView) view.findViewById(R.id.imgCloseSearch);
+        mImgCloseSearch.setVisibility(isVoice() ? View.GONE : View.VISIBLE);
+
+        mRecyclerView = (RecyclerView) view.findViewById(R.id.recyclerSearchView);
 
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
             View toolbarShadow = view.findViewById(R.id.toolbarShadow);
@@ -158,97 +186,257 @@ public class SearchLiveo extends FrameLayout {
         mViewSearch.setVisibility(View.INVISIBLE);
         mEdtSearch.setOnKeyListener(onKeyListener);
 
-        mImgBackSearch.setOnClickListener(onClickSearchBack);
+        mImgArrowSearch.setOnClickListener(onClickSearchArrow);
         mRecyclerView.setOnClickListener(onClickRecyclerView);
         mImgVoiceSearch.setOnClickListener(onClickVoiceSearch);
+        mImgCloseSearch.setOnClickListener(onClickCloseSearch);
 
         mEdtSearch.setOnEditorActionListener(onEditorActionListener);
         mEdtSearch.addTextChangedListener(new OnTextWatcherEdtSearch());
     }
 
-    public SearchLiveo background(int color){
+    private void initAttribute(Context context, AttributeSet attributeSet, int defStyleAttr) {
+        TypedArray attr = context.obtainStyledAttributes(attributeSet, R.styleable.SearchLiveo, defStyleAttr, 0);
+        if (attr != null) {
+            try {
+
+                if (attr.hasValue(R.styleable.SearchLiveo_searchLiveoHint)) {
+                    hint(attr.getString(R.styleable.SearchLiveo_searchLiveoHint));
+                }
+
+                if (attr.hasValue(R.styleable.SearchLiveo_searchLiveoTextColor)) {
+                    mEdtSearch.setTextColor(attr.getColor(R.styleable.SearchLiveo_searchLiveoTextColor, -1));
+                }
+
+                if (attr.hasValue(R.styleable.SearchLiveo_searchLiveoHintColor)) {
+                    mEdtSearch.setHintTextColor(attr.getColor(R.styleable.SearchLiveo_searchLiveoHintColor, -1));
+                }
+
+                if (attr.hasValue(R.styleable.SearchLiveo_searchLiveoColorIcon)) {
+                    setColorIcon(attr.getColor(R.styleable.SearchLiveo_searchLiveoColorIcon, -1));
+                }
+
+                if (attr.hasValue(R.styleable.SearchLiveo_searchLiveoColorArrow)) {
+                    setColorIconArrow(attr.getColor(R.styleable.SearchLiveo_searchLiveoColorArrow, -1));
+                }
+
+                if (attr.hasValue(R.styleable.SearchLiveo_searchLiveoColorVoice)) {
+                    setColorIconVoice(attr.getColor(R.styleable.SearchLiveo_searchLiveoColorVoice, -1));
+                }
+
+                if (attr.hasValue(R.styleable.SearchLiveo_searchLiveoColorClose)) {
+                    setColorIconClose(attr.getColor(R.styleable.SearchLiveo_searchLiveoColorClose, -1));
+                }
+
+                if (attr.hasValue(R.styleable.SearchLiveo_searchLiveoBackground)) {
+                    mViewSearch.setBackgroundColor(attr.getColor(R.styleable.SearchLiveo_searchLiveoBackground, -1));
+                }
+
+                if (attr.hasValue(R.styleable.SearchLiveo_searchLiveoStatusBarShowColor)) {
+                    setStatusBarShowColor(attr.getColor(R.styleable.SearchLiveo_searchLiveoStatusBarShowColor, -1));
+                }
+
+                if (attr.hasValue(R.styleable.SearchLiveo_searchLiveoStatusBarHideColor)) {
+                    setStatusBarHideColor(attr.getColor(R.styleable.SearchLiveo_searchLiveoStatusBarHideColor, -1));
+                }
+            } finally {
+                attr.recycle();
+            }
+        }
+    }
+
+    /**
+     * Set a new background color. If you do not use this method and standard color is white SearchLiveo.
+     * In his layout.xml you can use the "app:searchLiveoBackground="@color/..."" attribute
+     *
+     * @param resId color attribute - colors.xml file
+     */
+    public SearchLiveo backgroundResource(int resId){
+        mViewSearch.setBackgroundResource(resId);
+        return this;
+    }
+
+    /**
+     * Set a new background color. If you do not use this method and standard color is white SearchLiveo.
+     * In his layout.xml you can use the "app:searchLiveoBackground="@color/..."" attribute
+     * @param color color attribute - colors.xml file
+     */
+    public SearchLiveo backgroundColor(int color){
         mViewSearch.setBackgroundColor(ContextCompat.getColor(mContext, color));
         return this;
     }
 
-    public SearchLiveo colorIcon(int color){
-        if (color != -1) {
-            this.mColorIcon = color;
-            mImgBackSearch.setColorFilter(ContextCompat.getColor(mContext, this.mColorIcon));
-            mImgVoiceSearch.setColorFilter(ContextCompat.getColor(mContext, this.mColorIcon));
-        }
-        return this;
-    };
-
+    /**
+     * Set a new text color.
+     * In his layout.xml you can use the "app:searchLiveoTextColor="@color/..."" attribute
+     * @param color color attribute - colors.xml file
+     */
     public SearchLiveo textColor(int color){
         mEdtSearch.setTextColor(ContextCompat.getColor(mContext, color));
         return this;
     };
 
+    /**
+     * Set a new hint color.
+     * In his layout.xml you can use the "app:searchLiveoHintColor="@color/..."" attribute
+     * @param color color attribute - colors.xml file
+     */
     public SearchLiveo hintColor(int color){
         mEdtSearch.setHintTextColor(ContextCompat.getColor(mContext, color));
         return this;
     };
 
-    public SearchLiveo colorIconBack(int color){
-        if (color != -1) {
-            this.mColorIconBack = color;
-            mImgBackSearch.setColorFilter(ContextCompat.getColor(mContext, this.mColorIconBack));
-        }else{
-            mImgBackSearch.clearColorFilter();
-        }
-        return this;
-    };
-
-    public SearchLiveo colorIconVoice(int color){
-        if (color != -1) {
-            this.mColorIconVoice = color;
-            mImgVoiceSearch.setColorFilter(ContextCompat.getColor(mContext, this.mColorIconVoice));
-        }else{
-            mImgVoiceSearch.clearColorFilter();
-        }
-        return this;
-    };
-
-    public SearchLiveo colorIconClose(int color){
-        if (color != -1) {
-            this.mColorIconClose = color;
-            mImgVoiceSearch.setColorFilter(ContextCompat.getColor(mContext, this.mColorIconClose));
-        }else{
-            mImgVoiceSearch.clearColorFilter();
-        }
-        return this;
-    };
-
+    /**
+     * Set a new text.
+     * @param text "valeu"
+     */
     public SearchLiveo text(String text){
         mEdtSearch.setText(text);
         return this;
     };
 
+    /**
+     * Set a new hint.
+     * In his layout.xml you can use the "app:searchLiveoHint="value"" attribute
+     * @param text "valeu"
+     */
     public SearchLiveo hint(String text){
         mEdtSearch.setHint(text);
         return this;
     };
 
-    public SearchLiveo colorStatusBarHide(int color){
-        mColorStatusBarHide = color;
+    /**
+     * Set a new text.
+     * @param text string attribute - string.xml file
+     */
+    public SearchLiveo text(int text){
+        mEdtSearch.setText(mContext.getString(text));
+        return this;
+    };
+
+    /**
+     * Set a new hint.
+     * In his layout.xml you can use the "app:searchLiveoHint="@string/..."" attribute
+     * @param text string attribute - string.xml file
+     */
+    public SearchLiveo hint(int text){
+        mEdtSearch.setHint(mContext.getString(text));
+        return this;
+    };
+
+    /**
+     * Set a new color for all icons (arrow, voice and close).
+     * In his layout.xml you can use the "app:searchLiveoColorIcon="@color/..."" attribute
+     * @param color color attribute - colors.xml file
+     */
+    public SearchLiveo colorIcon(int color){
+        this.setColorIcon(ContextCompat.getColor(mContext, color));
+        return this;
+    };
+
+    /**
+     * Set a new color for back arrow
+     * In his layout.xml you can use the "app:searchLiveoColorArrow="@color/..."" attribute
+     * @param color color attribute - colors.xml file
+     */
+    public SearchLiveo colorIconArrow(int color){
+        this.setColorIconArrow(ContextCompat.getColor(mContext, color));
+        return this;
+    };
+
+    /**
+     * Set a new color for voice
+     * In his layout.xml you can use the "app:searchLiveoColorVoice="@color/..."" attribute
+     * @param color color attribute - colors.xml file
+     */
+    public SearchLiveo colorIconVoice(int color){
+        this.setColorIconVoice(ContextCompat.getColor(mContext, color));
+        return this;
+    };
+
+    /**
+     * Set a new color for close
+     * In his layout.xml you can use the "app:searchLiveoColorClose="@color/..."" attribute
+     * @param color color attribute - colors.xml file
+     */
+    public SearchLiveo colorIconClose(int color){
+        this.setColorIconClose(ContextCompat.getColor(mContext, color));
+        return this;
+    };
+
+    /**
+     * Set a new color for statusBar when the SearchLiveo is closed
+     * In his layout.xml you can use the "app:searchLiveoStatusBarHideColor="@color/..."" attribute
+     * @param color color attribute - colors.xml file
+     */
+    public SearchLiveo statusBarHideColor(int color){
+        setStatusBarHideColor(ContextCompat.getColor(mContext, color));
         return this;
     }
 
-    public SearchLiveo colorStatusBarShow(int color){
-        mColorStatusBarShow = color;
+    /**
+     * Set a new color for statusBar when the SearchLiveo for visible
+     * In his layout.xml you can use the "app:searchLiveoStatusBarShowColor="@color/..."" attribute
+     * @param color color attribute - colors.xml file
+     */
+    public SearchLiveo statusBarShowColor(int color){
+        setStatusBarShowColor(ContextCompat.getColor(mContext, color));
         return this;
     }
 
+    /**
+     * Hide voice icon
+     */
     public SearchLiveo hideVoice(){
-        mImgVoiceSearch.setVisibility(View.INVISIBLE);
+        setIsVoice(false);
+        mImgVoiceSearch.setVisibility(View.GONE);
         return this;
     }
 
+    /**
+     * Show voice icon
+     */
     public SearchLiveo showVoice(){
+        setIsVoice(true);
         mImgVoiceSearch.setVisibility(View.VISIBLE);
         return this;
     }
+
+    private void colorIcon(){
+        if (getColorIcon() != -1 && getColorIconArrow() == -1)  {
+            mImgArrowSearch.setColorFilter(this.getColorIcon());
+        }
+
+        if (getColorIcon() != -1 && getColorIconVoice() == -1)  {
+            mImgVoiceSearch.setColorFilter(this.getColorIcon());
+        }
+
+        if (getColorIcon() != -1 && getColorIconClose() == -1)  {
+            mImgCloseSearch.setColorFilter(this.getColorIcon());
+        }
+    };
+
+    private void colorIconArrow(){
+        if (getColorIconArrow() != -1) {
+            mImgArrowSearch.setColorFilter(this.getColorIconArrow());
+        }
+    };
+
+    private void colorIconVoice(){
+        if (this.getColorIconVoice() != -1) {
+            mImgVoiceSearch.setColorFilter(this.getColorIconVoice());
+        }else{
+            mImgVoiceSearch.clearColorFilter();
+        }
+    };
+
+    private void colorIconClose(){
+        if (this.getColorIconClose() != -1) {
+            mImgCloseSearch.setColorFilter(this.getColorIconClose());
+        }else{
+            mImgCloseSearch.clearColorFilter();
+        }
+    };
 
     private OnKeyListener onKeyListener = new OnKeyListener() {
         @Override
@@ -284,6 +472,13 @@ public class SearchLiveo extends FrameLayout {
     private OnClickListener onClickVoiceSearch = new OnClickListener() {
         @Override
         public void onClick(View v) {
+            startVoice(mEdtSearch);
+        }
+    };
+
+    private OnClickListener onClickCloseSearch = new OnClickListener() {
+        @Override
+        public void onClick(View v) {
             if (mEdtSearch.getText().toString().length() != 0) {
                 mEdtSearch.setText("");
                 mContext.runOnUiThread(new Runnable() {
@@ -293,13 +488,11 @@ public class SearchLiveo extends FrameLayout {
                                 toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
                     }
                 });
-            } else {
-                startVoice(mEdtSearch);
             }
         }
     };
 
-    private OnClickListener onClickSearchBack = new OnClickListener() {
+    private OnClickListener onClickSearchArrow = new OnClickListener() {
         @Override
         public void onClick(View v) {
             hide();
@@ -329,6 +522,58 @@ public class SearchLiveo extends FrameLayout {
         this.isVoice = isVoice;
     }
 
+    public int getStatusBarHideColor() {
+        return mStatusBarHideColor;
+    }
+
+    public void setStatusBarHideColor(int mStatusBarHideColor) {
+        this.mStatusBarHideColor = mStatusBarHideColor;
+    }
+
+    public int getStatusBarShowColor() {
+        return mStatusBarShowColor;
+    }
+
+    public void setStatusBarShowColor(int mStatusBarShowColor) {
+        this.mStatusBarShowColor = mStatusBarShowColor;
+    }
+
+    private int getColorIcon() {
+        return mColorIcon;
+    }
+
+    private void setColorIcon(int colorIcon) {
+        this.mColorIcon = colorIcon;
+        this.colorIcon();
+    }
+
+    public int getColorIconArrow() {
+        return mColorIconArrow;
+    }
+
+    public void setColorIconArrow(int color) {
+        this.mColorIconArrow = color;
+        this.colorIconArrow();
+    }
+
+    public int getColorIconVoice() {
+        return mColorIconVoice;
+    }
+
+    public void setColorIconVoice(int color) {
+        this.mColorIconVoice = color;
+        this.colorIconVoice();
+    }
+
+    public int getColorIconClose() {
+        return mColorIconClose;
+    }
+
+    public void setColorIconClose(int color) {
+        this.mColorIconClose = color;
+        this.colorIconClose();
+    }
+
     private class OnTextWatcherEdtSearch implements TextWatcher {
 
         @Override
@@ -339,15 +584,19 @@ public class SearchLiveo extends FrameLayout {
         public void onTextChanged(CharSequence s, int start, int before, int count) {
             try {
                 if (mEdtSearch.getText().toString().length() == 0) {
+                    mImgCloseSearch.setVisibility(isVoice() ? View.GONE : View.VISIBLE);
+                    mImgVoiceSearch.setVisibility(isVoice() ? View.VISIBLE : View.GONE);
                     mImgVoiceSearch.setImageResource(R.drawable.ic_keyboard_voice_color_24dp);
-                    colorIconVoice(mColorIconVoice);
+                    colorIconVoice();
                 } else {
-                    mImgVoiceSearch.setImageResource(R.drawable.ic_close_color_24dp);
-                    colorIconClose(mColorIconClose);
+                    mImgVoiceSearch.setVisibility(View.GONE);
+                    mImgCloseSearch.setVisibility(View.VISIBLE);
+                    mImgCloseSearch.setImageResource(R.drawable.ic_close_color_24dp);
+                    colorIconClose();
                 }
 
-                colorIcon(mColorIcon);
-                colorIconBack(mColorIconBack);
+                colorIcon();
+                colorIconArrow();
                 mSearchListener.changedSearch(mEdtSearch.getText().toString());
             } catch (Exception e) {
                 e.getStackTrace();
@@ -399,13 +648,12 @@ public class SearchLiveo extends FrameLayout {
         return this;
     }
 
-
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     private void showAnimation(){
         try {
 
-            mContext.getWindow().setStatusBarColor(ContextCompat.getColor(mContext, mColorStatusBarShow != -1 ?
-                    mColorStatusBarShow : R.color.colorSearchLiveoPrimaryDark));
+            mContext.getWindow().setStatusBarColor(getStatusBarShowColor() != -1 ?
+                    getStatusBarShowColor() : ContextCompat.getColor(mContext, R.color.colorSearchLiveoPrimaryDark));
 
             final Animator animator = ViewAnimationUtils.createCircularReveal(mViewSearch,
                     mViewSearch.getWidth() - (int) dpToPixel(24, this.mContext),
@@ -457,7 +705,8 @@ public class SearchLiveo extends FrameLayout {
     private SearchLiveo hideAnimation() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
 
-            mContext.getWindow().setStatusBarColor(ContextCompat.getColor(mContext, mColorStatusBarHide != -1 ? mColorStatusBarHide : getColorPrimaryDark()));
+            mContext.getWindow().setStatusBarColor(getStatusBarHideColor() != -1 ? getStatusBarHideColor() :
+                    getColorPrimaryDark());
 
             final Animator animatorHide = ViewAnimationUtils.createCircularReveal(mViewSearch,
                     mViewSearch.getWidth() - (int) dpToPixel(24, mContext),
@@ -519,7 +768,7 @@ public class SearchLiveo extends FrameLayout {
     }
 
     private void setColorPrimaryDark(int mColorPrimaryDark) {
-        this.mColorPrimaryDark = mColorPrimaryDark;
+        this.mColorPrimaryDark = ContextCompat.getColor(mContext, mColorPrimaryDark);
     }
 
     private float dpToPixel(float dp, Context context) {
@@ -564,7 +813,7 @@ public class SearchLiveo extends FrameLayout {
     }
 
     private void startVoice(EditText editText) {
-        setIsVoice(true);
+        //setIsVoice(true);
         ((InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE)).
                 hideSoftInputFromWindow(editText.getWindowToken(), 0);
 
@@ -584,7 +833,7 @@ public class SearchLiveo extends FrameLayout {
             if (resultCode == Activity.RESULT_OK && null != data) {
                 ArrayList<String> result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
                 mEdtSearch.setText(result.get(0));
-                setIsVoice(false);
+                //setIsVoice(false);
             }
         }
     }
