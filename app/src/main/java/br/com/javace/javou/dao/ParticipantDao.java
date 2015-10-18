@@ -43,7 +43,7 @@ public class ParticipantDao {
     private void openConnection() {
 
         try {
-            this.classeDB = new ClasseDB(this.mContext);
+            this.classeDB = ClasseDB.getInstance(this.mContext);
             db = classeDB.getWritableDatabase();
         } catch (Exception e) {
 

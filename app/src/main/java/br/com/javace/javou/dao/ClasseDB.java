@@ -9,12 +9,10 @@ import br.com.javace.javou.util.Constant;
 
 public class ClasseDB extends SQLiteOpenHelper {
 
-	private Context mContext;
 	private static ClasseDB mInstance = null;
 
 	public ClasseDB(Context context) {
 		super(context, Constant.DATABASE, null, Constant.DATABASE_VERSION);
-        mContext = context;
 	}
 	
 	public static synchronized ClasseDB getInstance(Context context) {

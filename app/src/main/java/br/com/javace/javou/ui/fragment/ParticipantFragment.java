@@ -164,8 +164,7 @@ public class ParticipantFragment extends BaseFragment implements OnSearchListene
         switch (item.getItemId()) {
             case R.id.menu_search:
                 isSearchView = true;
-                mSearchLiveo.
-                        show();
+                mSearchLiveo.show();
                 break;
             case R.id.menu_raffle:
                 raffleParticipant();

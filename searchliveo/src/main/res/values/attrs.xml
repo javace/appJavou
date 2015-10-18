@@ -1,6 +1,5 @@
 <resources>
     <declare-styleable name="SearchLiveo">
-
         <attr name="searchLiveoTextColor" format="color" />
         <attr name="searchLiveoHintColor" format="color" />
 
@@ -14,5 +13,21 @@
         <attr name="searchLiveoBackground" format="color" />
         <attr name="searchLiveoStatusBarShowColor" format="color" />
         <attr name="searchLiveoStatusBarHideColor" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="SearchCardLiveo">
+        <attr name="searchCardLiveoTextColor" format="color" />
+        <attr name="searchCardLiveoHintColor" format="color" />
+
+        <attr name="searchCardLiveoHint" format="string" />
+
+        <attr name="searchCardLiveoColorIcon" format="color" />
+        <attr name="searchCardLiveoColorArrow" format="color" />
+        <attr name="searchCardLiveoColorVoice" format="color" />
+        <attr name="searchCardLiveoColorClose" format="color" />
+
+        <attr name="searchCardLiveoBackground" format="color" />
+        <attr name="searchCardLiveoStatusBarShowColor" format="color" />
+        <attr name="searchCardLiveoStatusBarHideColor" format="color" />
     </declare-styleable>
 </resources>
