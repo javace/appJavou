@@ -7,3 +7,11 @@ Desenvolvido com Android Studio (manter sempre atualizado)<br>
 Material design<br>
 Support library<br>
 Search Liveo (em desenvolvimento...)
+
+#Biblioteca SearchLiveo
+
+A SearchLiveo é uma biblioteca que ainda está em sua forma "Beta" portando, não é recomendado você utilizar em seus projetos.
+Estamos a cada dia tentando deixar lá o mais estavél possível para que em breve a mesma possa ser dispobinilizada para toda a comunidade.<br>
+
+Em breve a SearchLiveo será disponibilizada aqui <a href="https://github.com/rudsonlive/SearchView-MaterialDesign" target="_blank">SearchView MaterialDesign</a>
+
