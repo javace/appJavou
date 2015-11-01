@@ -6,15 +6,12 @@ import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.view.ActionMode;
 
-import com.crashlytics.android.Crashlytics;
-
 import br.com.javace.javou.R;
 import br.com.javace.javou.ui.base.BaseActivity;
 import br.com.javace.javou.ui.fragment.ParticipantFragment;
 import br.com.javace.javou.util.Constant;
 import br.com.javace.javou.util.Preference;
 import br.liveo.searchliveo.SearchLiveo;
-import io.fabric.sdk.android.Fabric;
 
 public class MainActivity extends BaseActivity{
 
@@ -24,18 +21,16 @@ public class MainActivity extends BaseActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_main);
 
-        setupFragment(savedInstanceState);
-        //setupInit(savedInstanceState);
+        setupInit(savedInstanceState);
     }
 
     private void setupInit(Bundle savedInstanceState){
         Preference preference = new Preference(this);
         if (preference.getString(Constant.FIRST_RUN) == null){
             startActivityForResult(new Intent(this, SynchronizationActivity.class), 0);
-            preference.setString(Constant.FIRST_RUN, "javou");
+            preference.setString(Constant.FIRST_RUN, Constant.TAG);
         }else{
             setupFragment(savedInstanceState);
         }

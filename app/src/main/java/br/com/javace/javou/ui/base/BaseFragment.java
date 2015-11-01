@@ -6,9 +6,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.WindowManager;
 
+import com.crashlytics.android.Crashlytics;
+
 import java.lang.reflect.Method;
 
 import br.com.javace.javou.R;
+import io.fabric.sdk.android.Fabric;
 
 /**
  * Created by Rudson Lima on 16/07/15.
@@ -18,6 +21,7 @@ public class BaseFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Fabric.with(getActivity(), new Crashlytics());
         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
     }
 
