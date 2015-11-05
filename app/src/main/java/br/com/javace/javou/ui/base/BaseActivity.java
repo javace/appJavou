@@ -6,12 +6,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.WindowManager;
 
-import com.crashlytics.android.Crashlytics;
-
 import java.lang.reflect.Method;
 
 import br.com.javace.javou.R;
-import io.fabric.sdk.android.Fabric;
 
 /**
  * Created by Rudson Lima on 16/07/15.
@@ -21,7 +18,6 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Fabric.with(this, new Crashlytics());
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
     }
 

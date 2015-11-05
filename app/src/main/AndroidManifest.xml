@@ -42,9 +42,6 @@
         </activity>
 
         <activity android:name=".ui.activity.ParticipantFortunateActivity"/>
-        <meta-data
-            android:name="io.fabric.ApiKey"
-            android:value="20332305468848c4b9a67d0148c3d4c1eeae283c" />
     </application>
 
 </manifest>
