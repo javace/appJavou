@@ -16,3 +16,4 @@ Estamos a cada dia tentando deixar lá o mais estavél possível para que em bre
 
 Em breve a SearchLiveo será disponibilizada aqui <a href="https://github.com/rudsonlive/SearchView-MaterialDesign" target="_blank">SearchView MaterialDesign</a>
 
+<img src="https://raw.githubusercontent.com/javace/appJavou/master/screenshot/screenshot.png">
