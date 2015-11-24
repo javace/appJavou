@@ -1,6 +1,5 @@
 package br.com.javace.javou.ui.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
@@ -35,13 +34,15 @@ public class ParticipantFortunateActivity extends BaseActivity{
         mToolbar.setNavigationIcon(R.drawable.ic_stars_white_24dp);
         this.setSupportActionBar(mToolbar);
 
-        Participant mParticipantFortunate = getIntent().getExtras().getParcelable(Constant.PARTICIPANT);
+        Participant participant = getIntent().getExtras().getParcelable(Constant.PARTICIPANT);
 
-        txtName.setText(mParticipantFortunate.getName());
-        txtEmail.setText(mParticipantFortunate.getEmail());
-        txtPhone.setText(mParticipantFortunate.getPhone());
-        if(mParticipantFortunate.getSex()){
-            imgPhoto.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_suricate_girl));
+        if (participant != null) {
+            txtName.setText(participant.getName());
+            txtEmail.setText(participant.getEmail());
+            txtPhone.setText(participant.getPhone());
+            if (participant.getSex()) {
+                imgPhoto.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_suricate_girl));
+            }
         }
     }
 
@@ -50,5 +51,4 @@ public class ParticipantFortunateActivity extends BaseActivity{
         super.onBackPressed();
         finish(ActivityAnimation.SLIDE_RIGHT);
     }
-
 }

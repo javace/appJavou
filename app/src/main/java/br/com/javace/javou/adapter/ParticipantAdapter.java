@@ -2,6 +2,7 @@ package br.com.javace.javou.adapter;
 
 import android.content.Context;
 import android.graphics.drawable.GradientDrawable;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -155,13 +156,13 @@ public class ParticipantAdapter extends RecyclerView.Adapter<ParticipantAdapter.
             int shirtSize = participant.getShirtSize();
             holder.mShirtSize.setVisibility(View.VISIBLE);
             GradientDrawable gradientDrawable = (GradientDrawable) holder.mShirtSize.getBackground();
-            gradientDrawable.setColor(mContext.getResources().getColor(Util.shirtSizeColor[shirtSize]));
+            gradientDrawable.setColor(ContextCompat.getColor(mContext, Util.shirtSizeColor[shirtSize]));
             holder.mShirtSize.setText(this.mContext.getString(Util.shirtSize[shirtSize]));
         }else{
             holder.mShirtSize.setVisibility(View.INVISIBLE);
         }
 
-        if (checkedItems.contains(Integer.valueOf(position))) {
+        if (checkedItems.contains(position)) {
             holder.mContainer.setBackgroundResource(R.drawable.seletor_long_click_item);
         } else {
             holder.mContainer.setBackgroundResource(this.mBackground);
