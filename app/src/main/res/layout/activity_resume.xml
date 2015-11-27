@@ -1,60 +1,78 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="br.com.javace.javou.ui.activity.ResumeActivity">
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Resumo do evento"
-        android:id="@+id/textView"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:textSize="35dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Total de inscritos:"
-        android:id="@+id/totalRegistrations"
-        android:layout_below="@+id/textView"
-        android:layout_alignLeft="@+id/textView"
-        android:layout_alignStart="@+id/textView"
-        android:layout_marginTop="31dp"
-        android:textSize="20dp"
-        android:textColor="@color/black" />
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        tools:context="br.com.javace.javou.ui.activity.ResumeActivity"
+        android:background="@color/cardview_light_background">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Total de presentes"
-        android:id="@+id/totalAttendance"
-        android:textSize="20dp"
-        android:layout_below="@+id/totalRegistrations"
-        android:layout_alignLeft="@+id/totalRegistrations"
-        android:layout_alignStart="@+id/totalRegistrations"
-        android:textColor="@color/black" />
+        <include layout="@layout/toolbar" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Total de sorteados"
-        android:id="@+id/totalRaffled"
-        android:textSize="20dp"
-        android:layout_below="@+id/totalAttendance"
-        android:layout_alignLeft="@+id/totalAttendance"
-        android:layout_alignStart="@+id/totalAttendance"
-        android:textColor="@color/black" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total de inscritos"
+            android:id="@+id/totalRegistrations"
+            android:textSize="20sp"
+            android:layout_marginTop="20dp" />
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageView"
-        android:layout_below="@+id/totalRaffled"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="39dp"
-        android:src="@drawable/java_ce" />
-</RelativeLayout>
+        <TextView
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="100"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="23sp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/shape_circle"
+            android:id="@+id/shapeTotalRegistrations" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total de presentes"
+            android:id="@+id/totalAttendance"
+            android:textSize="20sp"
+            android:layout_marginTop="20dp" />
+
+        <TextView
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="100"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="23sp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/shape_circle"
+            android:id="@+id/shapeTotalAttendence" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total de sorteados"
+            android:id="@+id/totalRaffled"
+            android:layout_marginTop="20dp"
+            android:textSize="20sp"/>
+
+
+        <TextView
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="100"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="23sp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/shape_circle"
+            android:id="@+id/shapeTotalRaffled" />
+
+
+    </LinearLayout>
+</android.support.design.widget.CoordinatorLayout>
