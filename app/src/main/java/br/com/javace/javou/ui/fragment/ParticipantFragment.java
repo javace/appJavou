@@ -45,6 +45,7 @@ import br.com.javace.javou.ui.activity.MainActivity;
 import br.com.javace.javou.ui.activity.NewParticipantActivity;
 import br.com.javace.javou.ui.activity.ParticipantDetailActivity;
 import br.com.javace.javou.ui.activity.RaffleActivity;
+import br.com.javace.javou.ui.activity.ResumeActivity;
 import br.com.javace.javou.ui.base.BaseActivity;
 import br.com.javace.javou.ui.base.BaseFragment;
 import br.com.javace.javou.util.Constant;
@@ -172,8 +173,16 @@ public class ParticipantFragment extends BaseFragment implements OnSearchListene
             case R.id.menu_send:
                 generateSendingFile();
                 break;
+            case R.id.menu_resume:
+                generateResume();
+                break;
         }
         return true;
+    }
+
+    private void generateResume() {
+        Intent intent = new Intent(getActivity(), ResumeActivity.class);
+        startActivityForResult(intent, 0, BaseActivity.ActivityAnimation.SLIDE_LEFT);
     }
 
     private void loadParticipant(){

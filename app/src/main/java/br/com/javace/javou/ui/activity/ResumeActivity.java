@@ -33,9 +33,9 @@ public class ResumeActivity extends BaseActivity {
     private void generateResume() {
         ParticipantDao dao = new ParticipantDao(this);
         Resume resume = dao.generateResume();
-        totalRegistrations.setText("Total de Inscritos:" + resume.getTotalRegistrations());
-        totalAttendance.setText("Total de Presen?as:" + resume.getTotalAttendance());
-        totalRaffled.setText("Total de Sorteados:" + resume.getTotalRaffled());
+        totalRegistrations.setText(getString(R.string.totalRegistrations) + resume.getTotalRegistrations());
+        totalAttendance.setText(getString(R.string.totalAttendence) + resume.getTotalAttendance());
+        totalRaffled.setText(getString(R.string.totalRaffled) + resume.getTotalRaffled());
     }
 
     @Override

@@ -6,6 +6,11 @@
         android:icon="@drawable/ic_stars_white_24dp"
         app:showAsAction="ifRoom|collapseActionView"
         android:title="@string/raffle_participant"/>
+    <item
+        android:id="@+id/menu_resume"
+        android:icon="@drawable/ic_list_white_24dp"
+        app:showAsAction="ifRoom|collapseActionView"
+        android:title="@string/resume_event"/>
 
     <item
         android:id="@+id/menu_send"

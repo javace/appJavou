@@ -109,5 +109,9 @@
     <string name="subject">Javou #05 - Participantes confirmados</string>
     <string name="text">Arquivo .csv com todos os participantes que tiveram sua presença confirmada no evento.</string>
     <string name="title_activity_resume">ResumeActivity</string>
+    <string name="totalRegistrations">Total de Inscritos:</string>
+    <string name="totalAttendence">Total de Presenças:</string>
+    <string name="totalRaffled">Total de Sorteados:</string>
+    <string name="resume_event">Resumo do evento</string>
 
 </resources>
