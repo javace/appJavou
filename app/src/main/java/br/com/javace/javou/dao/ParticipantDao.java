@@ -303,16 +303,42 @@ public class ParticipantDao {
 
     }
 
+    public int getTotalRegistrations(){
+        openConnection();
+        Cursor mCount= db.rawQuery("select count(*) from " + Constant.TABLE_PARTICIPANT, null);
+        mCount.moveToFirst();
+        int totalRegistrations= mCount.getInt(0);
+        mCount.close();
+        closeConnection();
+        return totalRegistrations;
+    }
+
+    public int getTotalAttendance(){
+        openConnection();
+        Cursor mCount= db.rawQuery("select count(*) from " + Constant.TABLE_PARTICIPANT + " WHERE attend=1", null);
+        mCount.moveToFirst();
+        int totalAttendance= mCount.getInt(0);
+        mCount.close();
+        closeConnection();
+        return totalAttendance;
+    }
+
+    public int getTotalRaffled(){
+        openConnection();
+        Cursor mCount= db.rawQuery("select count(*) from " + Constant.TABLE_PARTICIPANT + " WHERE attend=1 and raffled=1", null);
+        mCount.moveToFirst();
+        int totalRaffled= mCount.getInt(0);
+        mCount.close();
+        closeConnection();
+        return totalRaffled;
+    }
 
     public Resume generateResume() {
-        return dadoUmResumoFake();
+        Resume resume = new Resume();
+        resume.setTotalRegistrations(getTotalRegistrations());
+        resume.setTotalAttendance(getTotalAttendance());
+        resume.setTotalRaffled(getTotalRaffled());
+        return resume;
     }
 
-    private Resume dadoUmResumoFake() {
-        Resume resume = new Resume();
-        resume.setTotalAttendance(10);
-        resume.setTotalRaffled(3);
-        resume.setTotalRegistrations(20);
-        return  resume;
-    }
 }
