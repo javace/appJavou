@@ -83,7 +83,7 @@ public class ParticipantDao {
                             campos.put(Constant.PARTICIPANT_phone, Util.replacePhone(participant[13]));
                             campos.put(Constant.PARTICIPANT_photo, "");
                             campos.put(Constant.PARTICIPANT_attend, 0);
-                            campos.put(Constant.PARTICIPANT_nameEvent, "Javou #06 - 28/11/2015");
+                            campos.put(Constant.PARTICIPANT_nameEvent, Constant.NAME_EVENT);
 
                             String birthDate = participant[13];
                             campos.put(Constant.PARTICIPANT_birthDate, birthDate);
@@ -94,7 +94,7 @@ public class ParticipantDao {
                             campos.put(Constant.PARTICIPANT_sex, !participant[17].equals("Masculino"));
 
                             int shirtSize = 5;
-                            if (participant[3].contains("COM camiseta")) {
+                            if (participant[3].contains("COM CAMISA")) {
                                 shirtSize = Util.replaceShirtSize(participant[20]);
                             }
                             campos.put(Constant.PARTICIPANT_shirtSize, shirtSize);

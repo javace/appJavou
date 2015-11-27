@@ -4,6 +4,7 @@ package br.com.javace.javou.util;
  * Created by Rudsonlive on 10/07/15.
  */
 public class Constant {
+    public static final String NAME_EVENT = "Javou #06 - 28/11/2015";
     public static String TAG = "Javou";
 
     public static final int DATABASE_VERSION = 1;
