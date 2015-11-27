@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.javace.javou.R;
+import br.com.javace.javou.model.Resume;
 import br.com.javace.javou.model.participant.Participant;
 import br.com.javace.javou.util.Constant;
 import br.com.javace.javou.util.Util;
@@ -300,5 +301,18 @@ public class ParticipantDao {
 
         return false;
 
+    }
+
+
+    public Resume generateResume() {
+        return dadoUmResumoFake();
+    }
+
+    private Resume dadoUmResumoFake() {
+        Resume resume = new Resume();
+        resume.setTotalAttendance(10);
+        resume.setTotalRaffled(3);
+        resume.setTotalRegistrations(20);
+        return  resume;
     }
 }

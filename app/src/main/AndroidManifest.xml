@@ -1,47 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="br.com.javace.javou">
+    package="br.com.javace.javou" >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
-        android:fullBackupContent="true"
         android:allowBackup="true"
+        android:fullBackupContent="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/Theme.nLiveo" >
-
-        <activity
-            android:name=".ui.activity.MainActivity">
+        <activity android:name=".ui.activity.MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity
-            android:name=".ui.activity.SynchronizationActivity">
+        <activity android:name=".ui.activity.SynchronizationActivity" >
         </activity>
-
         <activity
             android:name=".ui.activity.RaffleActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
         </activity>
-
         <activity
             android:name=".ui.activity.NewParticipantActivity"
             android:label="@string/new_participant" >
         </activity>
-
-        <activity
-            android:name=".ui.activity.ParticipantDetailActivity">
+        <activity android:name=".ui.activity.ParticipantDetailActivity" >
         </activity>
-
-        <activity android:name=".ui.activity.ParticipantFortunateActivity"/>
+        <activity android:name=".ui.activity.ParticipantFortunateActivity" />
+        <activity
+            android:name=".ui.activity.ResumeActivity"
+            android:label="@string/title_activity_resume" >
+        </activity>
     </application>
 
 </manifest>
