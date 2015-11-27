@@ -6,6 +6,13 @@
         android:icon="@drawable/ic_stars_white_24dp"
         app:showAsAction="ifRoom|collapseActionView"
         android:title="@string/raffle_participant"/>
+
+    <item
+        android:id="@+id/menu_search"
+        android:icon="@drawable/ic_search_white_24dp"
+        app:showAsAction="ifRoom|collapseActionView"
+        android:title="@string/abc_searchview_description_search"/>
+
     <item
         android:id="@+id/menu_resume"
         android:icon="@drawable/ic_list_white_24dp"
@@ -18,11 +25,6 @@
         android:icon="@drawable/ic_mail_white_24dp"
         app:showAsAction="ifRoom|collapseActionView"/>
 
-    <item
-        android:id="@+id/menu_search"
-        android:icon="@drawable/ic_search_white_24dp"
-        app:showAsAction="ifRoom|collapseActionView"
-        android:title="@string/abc_searchview_description_search"/>
 
     <item
         android:id="@+id/menu_discart"
