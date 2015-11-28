@@ -99,19 +99,18 @@
     <string name="btn_login">Acesso Administrativo</string>
     <string name="version_app">Versão</string>
     <string name="warning_user_pass_blank">Usuario e senha são obrigatórios</string>
-    <string name="NextEvent">Proximo Evento: </string>
+    <string name="next_event">Proximo Evento: </string>
     <string name="dialog_enviroment_text">Informe a senha para ambiente admistrativo</string>
     <string name="dialog_enviroment_title">Ambiente Administrativo</string>
     <string name="wrong_pass_adm">Senha admistrativa incorreta</string>
 
     <!-- Send file-->
     <string name="send_email">Enviando email…</string>
-    <string name="subject">Javou #05 - Participantes confirmados</string>
+    <string name="subject">Javou #06 - Participantes confirmados</string>
     <string name="text">Arquivo .csv com todos os participantes que tiveram sua presença confirmada no evento.</string>
     <string name="title_activity_resume">ResumeActivity</string>
-    <string name="totalRegistrations">Total de Inscritos:</string>
-    <string name="totalAttendence">Total de Presenças:</string>
-    <string name="totalRaffled">Total de Sorteados:</string>
+    <string name="total_registrations">Total de Inscritos</string>
+    <string name="total_attendence">Total de Presenças</string>
+    <string name="total_raffled">Total de Sorteados</string>
     <string name="resume_event">Resumo do evento</string>
-
 </resources>

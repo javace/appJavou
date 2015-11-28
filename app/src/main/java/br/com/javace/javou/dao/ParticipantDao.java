@@ -232,7 +232,6 @@ public class ParticipantDao {
     public ArrayList<Participant> getAll() {
 
         Participant participant;
-        int currentShirtSize = -1;
         ArrayList<Participant> lParticipant = new ArrayList<>();
 
         Cursor cursor;
@@ -253,10 +252,8 @@ public class ParticipantDao {
 
                 //identifying who will be the type of group
                 int shirtSize = cursor.getInt(5);
-                //currentShirtSize != shirtSize
                 participant.setGroup(true);
                 participant.setShirtSize(shirtSize);
-                currentShirtSize = shirtSize;
 
                 participant.setAttend(cursor.getInt(6) == 1);
                 participant.setNameEvent(cursor.getString(7));

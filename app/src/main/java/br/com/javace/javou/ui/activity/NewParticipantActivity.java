@@ -206,7 +206,7 @@ public class NewParticipantActivity extends BaseActivity{
         participant.setEmail(mEdtEmail.getText().toString());
         participant.setShirtSize(mShirtSize);
         participant.setAttend(mSwAttend.isChecked());
-        participant.setNameEvent("Javou #05 - 26/09/2015");
+        participant.setNameEvent(Constant.NAME_EVENT);
         participant.setBirthDate("");
         participant.setRaffled(false);
         participant.setSex(mSwSex.isChecked());
