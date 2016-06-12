@@ -3,8 +3,8 @@ Este é um projeto open source da comunidade JAVACE. O aplicativo é utilizado n
 
 #Especificações
 
-Desenvolvido com Android Studio 1.5 Preview 2 (manter sempre atualizado)<br>
-Android SDK 23 - Build tool version 23.0.2 (manter sempre atualizado)<br>
+Desenvolvido com Android Studio 2.1.2 (manter sempre atualizado)<br>
+Android SDK 23 - Build tool version 23.0.3 (manter sempre atualizado)<br>
 Material design<br>
 Support library<br>
 Search Liveo (em desenvolvimento...)
