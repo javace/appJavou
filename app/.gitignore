@@ -38,7 +38,6 @@ local.properties
 
 # Gradle
 .gradle/
-gradle.properties
 
 # Eclipse project files
 .classpath

@@ -21,6 +21,10 @@ public class BaseFragment extends Fragment {
         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
     }
 
+    public enum ActivityAnimation {
+        SLIDE_LEFT, SLIDE_RIGHT
+    }
+
     public void startActivity(Intent intent, final BaseActivity.ActivityAnimation animation) {
         startActivity(intent);
         putAnimation(getActivity(), animation);

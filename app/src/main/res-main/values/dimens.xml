@@ -4,7 +4,7 @@
     <!--fragment_participant.xml -->
     <dimen name="floating_layout_margin">16dp</dimen>
 
-    <!-- toolbar.xml -->
+    <!-- layout_toolbar.xmlbar.xml -->
     <dimen name="toolbar_titleMarginStart">16dp</dimen>
 
     <!-- fragment_participant_item.xml -->

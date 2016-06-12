@@ -7,12 +7,9 @@ import android.widget.Toast;
 
 import com.github.jlmd.animatedcircleloadingview.AnimatedCircleLoadingView;
 
-import java.util.ArrayList;
-
 import br.com.javace.javou.R;
 import br.com.javace.javou.dao.ParticipantDao;
 import br.com.javace.javou.model.participant.Participant;
-import br.com.javace.javou.model.raffle.Raffle;
 import br.com.javace.javou.ui.base.BaseActivity;
 import br.com.javace.javou.util.Constant;
 import butterknife.Bind;
