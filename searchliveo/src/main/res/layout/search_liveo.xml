@@ -20,13 +20,15 @@
     <RelativeLayout
         android:id="@+id/view_search"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
+        android:minHeight="?attr/actionBarSize"
+        android:layout_height="@dimen/search_liveo_default_height_material"
         android:background="@android:color/white">
 
         <LinearLayout
             android:id="@+id/linear_layout_search"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
+            android:minHeight="?attr/actionBarSize"
+            android:layout_height="@dimen/search_liveo_default_height_material"
             android:background="@android:color/transparent">
 
             <ImageView
@@ -98,5 +100,5 @@
         android:background="@android:color/white"
         android:clipToPadding="false"
         android:paddingTop="8dp"
-        android:visibility="visible" />
+        android:visibility="gone" />
 </LinearLayout>
