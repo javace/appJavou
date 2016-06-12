@@ -69,10 +69,10 @@ public class ParticipantFragment extends BaseFragment implements OnSearchListene
     private ParticipantAdapter mParticipantAdapter;
 
     @Bind(R.id.toolbar) Toolbar mToolbar;
-    @Bind(R.id.searchLiveo) SearchLiveo mSearchLiveo;
-    @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
-    @Bind(R.id.floatAdd) FloatingActionButton mBtnFloatAdd;
-    @Bind(R.id.swipeContainer) SwipeRefreshLayout mSwipeRefreshLayout;
+    @Bind(R.id.search_liveo) SearchLiveo mSearchLiveo;
+    @Bind(R.id.recycler_view) RecyclerView mRecyclerView;
+    @Bind(R.id.float_add) FloatingActionButton mBtnFloatAdd;
+    @Bind(R.id.swipe_container) SwipeRefreshLayout mSwipeRefreshLayout;
 
     public static ParticipantFragment newInstance(){
         return new ParticipantFragment();
@@ -112,7 +112,7 @@ public class ParticipantFragment extends BaseFragment implements OnSearchListene
 
         mRecyclerView.addOnScrollListener(mEndlessListener);
         mSwipeRefreshLayout.setOnRefreshListener(onRefresh);
-        mSwipeRefreshLayout.setColorSchemeResources(R.color.shirtSizePColor, R.color.shirtSizeMColor, R.color.shirtSizeGColor, R.color.shirtSizeGGColor);
+        mSwipeRefreshLayout.setColorSchemeResources(R.color.shirt_size_p, R.color.shirt_size_m, R.color.shirt_size_g, R.color.shirt_size_gg);
 
         view.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         return view;
@@ -250,7 +250,7 @@ public class ParticipantFragment extends BaseFragment implements OnSearchListene
         @Override
         public void onItemClick(View v, final int position) {
 
-            TextView txtShirtSize = (TextView) v.findViewById(R.id.txtShirtSize);
+            TextView txtShirtSize = (TextView) v.findViewById(R.id.txt_shirt_size);
             YoYo.with(Techniques.Bounce).withListener(new Animator.AnimatorListener() {
                 @Override
                 public void onAnimationStart(Animator animation) {

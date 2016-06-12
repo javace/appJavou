@@ -57,7 +57,6 @@ public class ParticipantAdapter extends RecyclerView.Adapter<ParticipantAdapter.
         public View mContainer;
 
         public TextView mTitle;
-
         public TextView mName;
         public TextView mEmail;
         public TextView mShirtSize;
@@ -67,10 +66,10 @@ public class ParticipantAdapter extends RecyclerView.Adapter<ParticipantAdapter.
 
             mContainer = view;
 
-            mTitle = (TextView) view.findViewById(R.id.txtTitle);
-            mName = (TextView) view.findViewById(R.id.txtName);
-            mEmail = (TextView) view.findViewById(R.id.txtEmail);
-            mShirtSize = (TextView) view.findViewById(R.id.txtShirtSize);
+            mTitle = (TextView) view.findViewById(R.id.txt_title);
+            mName = (TextView) view.findViewById(R.id.txt_name);
+            mEmail = (TextView) view.findViewById(R.id.txt_email);
+            mShirtSize = (TextView) view.findViewById(R.id.txt_shirt_size);
 
             if (mShirtSize != null) {
                 mShirtSize.setOnClickListener(new View.OnClickListener() {

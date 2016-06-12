@@ -1,24 +1,38 @@
 <resources>
 
-    <style name="Theme.nLiveo" parent="AppTheme">
-    </style>
-
-    <!--Customize here the subject of your application-->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primary_dark</item>
+        <item name="colorAccent">@color/accent</item>
 
-        <item name="android:textColorPrimary">@color/primaryText</item>
-        <item name="android:textColorSecondary">@color/secundaryText</item>
-
-        <item name="searchViewStyle">@style/MySearchViewStyle</item>
+        <item name="android:textColorPrimary">@color/primary_text</item>
+        <item name="android:textColorSecondary">@color/secundary_text</item>
 
         <item name="windowActionModeOverlay">true</item>
-        <item name="android:windowBackground">@color/windowBackground</item>
-        <item name="actionModeBackground">@color/colorActionModePrimary</item>
+        <item name="android:windowBackground">@color/window_background</item>
+        <item name="actionModeBackground">@color/action_mode_primary</item>
     </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.AppCompat.Light.NoActionBar.FullScreen" parent="@style/Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay"
+        parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay"
+        parent="ThemeOverlay.AppCompat.Light" />
+    <!-- Base application theme. -->
 
     <style name="Widget.CardContent" parent="android:Widget">
         <item name="android:paddingLeft">16dp</item>
@@ -26,22 +40,5 @@
         <item name="android:paddingTop">24dp</item>
         <item name="android:paddingBottom">24dp</item>
         <item name="android:orientation">vertical</item>
-    </style>
-
-    <style name="MySearchViewStyle" parent="Widget.AppCompat.SearchView">
-        <!-- Background for the search query section (e.g. EditText) -->
-        <item name="queryBackground">@color/white</item>
-        <!-- Background for the actions section (e.g. voice, submit) -->
-        <item name="submitBackground">@color/dividerColor</item>
-        <!-- Close button icon -->
-        <item name="closeIcon">@drawable/ic_delete_white_24dp</item>
-        <!-- Search button icon -->
-        <item name="searchIcon">@drawable/ic_search_white_24dp</item>
-        <!-- Go/commit button icon -->
-        <item name="goIcon">@drawable/abc_ic_go_search_api_mtrl_alpha</item>
-        <!-- Voice search button icon -->
-        <item name="voiceIcon">@drawable/abc_ic_voice_search_api_mtrl_alpha</item>
-        <!-- Commit icon shown in the query suggestion row -->
-        <item name="commitIcon">@drawable/abc_ic_commit_search_api_mtrl_alpha</item>
     </style>
 </resources>

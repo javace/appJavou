@@ -34,12 +34,12 @@ public class ParticipantDetailActivity extends BaseActivity {
     private Participant mParticipant;
 
     @Bind(R.id.toolbar) Toolbar mToolbar;
-    @Bind(R.id.txtEmail) TextView mTxtEmail;
-    @Bind(R.id.txtPhone) TextView mTxtPhone;
-    @Bind(R.id.txtAttend) TextView mTxtAttend;
-    @Bind(R.id.imgPhoto) ImageView mImgPhoto;
-    @Bind(R.id.txtShirtSize) TextView mTxtShirtSize;
-    @Bind(R.id.floatEdit) FloatingActionButton mFloatEdit;
+    @Bind(R.id.txt_email) TextView mTxtEmail;
+    @Bind(R.id.txt_phone) TextView mTxtPhone;
+    @Bind(R.id.txt_attend) TextView mTxtAttend;
+    @Bind(R.id.img_photo) ImageView mImgPhoto;
+    @Bind(R.id.txt_shirt_size) TextView mTxtShirtSize;
+    @Bind(R.id.float_edit) FloatingActionButton mFloatEdit;
     @Bind(R.id.collapsing_toolbar) CollapsingToolbarLayout mCollapsingToolbar;
 
     @Override
@@ -78,20 +78,6 @@ public class ParticipantDetailActivity extends BaseActivity {
                 Glide.with(this).load(R.drawable.ic_suricate).centerCrop().into(mImgPhoto);
             }
         }
-
-        setupColorPrimaryIcon();
-    }
-
-    private void setupColorPrimaryIcon(){
-        final ImageView imgEmail = (ImageView) findViewById(R.id.imgEmail);
-        final ImageView imgPhone = (ImageView) findViewById(R.id.imgPhone);
-        final ImageView imgAttend = (ImageView) findViewById(R.id.imgAttend);
-        final ImageView imgShirtSize = (ImageView) findViewById(R.id.imgShirtSize);
-
-        imgEmail.setColorFilter(ContextCompat.getColor(this, R.color.colorPrimary));
-        imgPhone.setColorFilter(ContextCompat.getColor(this, R.color.colorPrimary));
-        imgAttend.setColorFilter(ContextCompat.getColor(this, R.color.colorPrimary));
-        imgShirtSize.setColorFilter(ContextCompat.getColor(this, R.color.colorPrimary));
     }
 
     @Override

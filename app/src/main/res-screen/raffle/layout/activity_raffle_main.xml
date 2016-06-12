@@ -3,22 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="@color/primary"
     android:fitsSystemWindows="true">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorPrimary"
+        android:background="@color/primary"
         android:fitsSystemWindows="true">
 
         <com.github.jlmd.animatedcircleloadingview.AnimatedCircleLoadingView
-            android:id="@+id/animatedLoad"
+            android:id="@+id/animated_load"
             android:layout_width="@dimen/animatedLoad_layout_height"
             android:layout_height="@dimen/animatedLoad_layout_height"
-            android:background="@color/colorPrimary"
+            android:background="@color/primary"
             android:layout_centerInParent="true"
             app:mainColor="@android:color/holo_orange_light"
-            app:secondaryColor="@color/colorPrimaryDark" />
+            app:secondaryColor="@color/primary_dark" />
     </RelativeLayout>
 </android.support.design.widget.CoordinatorLayout>

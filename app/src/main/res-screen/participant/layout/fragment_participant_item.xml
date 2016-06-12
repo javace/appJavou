@@ -15,14 +15,14 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/txtShirtSize"
-            android:layout_width="@dimen/txtShirtSize_layout_width"
-            android:layout_height="@dimen/txtShirtSize_layout_height"
+            android:id="@+id/txt_shirt_size"
+            android:layout_width="@dimen/txt_shirt_size_layout_width"
+            android:layout_height="@dimen/txt_shirt_size_layout_height"
             android:background="@drawable/shape_shirt_size"
             android:gravity="center|center_vertical"
             android:textAllCaps="true"
             android:textColor="@color/white"
-            android:textSize="@dimen/txtShirtSize_textSize" />
+            android:textSize="@dimen/txt_shirt_size_textSize" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -32,33 +32,33 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/txtName"
+                android:id="@+id/txt_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:singleLine="true"
                 android:gravity="start|center_vertical"
                 android:text="@string/app_name"
-                android:textColor="@color/primaryText"
-                android:textSize="@dimen/txtName_textSize"/>
+                android:textColor="@color/primary_text"
+                android:textSize="@dimen/txt_name_textSize"/>
 
             <TextView
-                android:id="@+id/txtEmail"
+                android:id="@+id/txt_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:singleLine="true"
                 android:text="@string/app_name"
-                android:textSize="@dimen/txtEmail_textSize"
-                android:textColor="@color/secundaryText" />
+                android:textSize="@dimen/txt_email_textSize"
+                android:textColor="@color/secundary_text" />
         </LinearLayout>
     </LinearLayout>
 
     <View
-        android:id="@+id/viewSeparator"
+        android:id="@+id/view_separator"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_gravity="bottom"
-        android:layout_marginLeft="@dimen/viewSeparator_layout_marginLeft"
-        android:layout_marginStart="@dimen/viewSeparator_layout_marginStart"
-        android:layout_marginTop="@dimen/viewSeparator_layout_marginTop"
-        android:background="@color/dividerColor"/>
+        android:layout_marginLeft="@dimen/view_separator_layout_marginLeft"
+        android:layout_marginStart="@dimen/view_separator_layout_marginStart"
+        android:layout_marginTop="@dimen/view_separator_layout_marginTop"
+        android:background="@color/divider"/>
 </FrameLayout>

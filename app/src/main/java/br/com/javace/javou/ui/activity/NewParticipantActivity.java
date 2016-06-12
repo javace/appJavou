@@ -38,26 +38,26 @@ public class NewParticipantActivity extends BaseActivity{
     private ProgressDialog mDialog;
     private Participant mParticipant;
 
-    @Bind(R.id.imgSex) ImageView mImgSex;
+    @Bind(R.id.img_sex) ImageView mImgSex;
     @Bind(R.id.toolbar) Toolbar mToolbar;
-    @Bind(R.id.swSex) SwitchCompat mSwSex;
+    @Bind(R.id.sw_sex) SwitchCompat mSwSex;
 
-    @Bind(R.id.edtCode) EditText mEdtCode;
-    @Bind(R.id.edtName) EditText mEdtName;
-    @Bind(R.id.edtEmail) EditText mEdtEmail;
-    @Bind(R.id.edtPhone) EditText mEdtPhone;
-    @Bind(R.id.edtCompany) EditText mEdtCompany;
-    @Bind(R.id.swAttend) SwitchCompat mSwAttend;
+    @Bind(R.id.edt_code) EditText mEdtCode;
+    @Bind(R.id.edt_name) EditText mEdtName;
+    @Bind(R.id.edt_email) EditText mEdtEmail;
+    @Bind(R.id.edt_phone) EditText mEdtPhone;
+    @Bind(R.id.edt_company) EditText mEdtCompany;
+    @Bind(R.id.sw_attend) SwitchCompat mSwAttend;
 
-    @Bind(R.id.txtShirtSizeP) TextView mTxtShirtSizeP;
-    @Bind(R.id.txtShirtSizeM) TextView mTxtShirtSizeM;
-    @Bind(R.id.txtShirtSizeG) TextView mTxtShirtSizeG;
-    @Bind(R.id.txtShirtSizeGG) TextView mTxtShirtSizeGG;
-    @Bind(R.id.txtShirtSizeEG) TextView mTxtShirtSizeEG;
+    @Bind(R.id.txt_shirt_size_p) TextView mTxtShirtSizeP;
+    @Bind(R.id.txt_shirt_size_m) TextView mTxtShirtSizeM;
+    @Bind(R.id.txt_shirt_size_g) TextView mTxtShirtSizeG;
+    @Bind(R.id.txt_shirt_size_gg) TextView mTxtShirtSizeGG;
+    @Bind(R.id.txt_shirt_size_eg) TextView mTxtShirtSizeEG;
 
-    @Bind(R.id.layoutCode) LinearLayout mLayoutCode;
-    @Bind(R.id.layoutName) LinearLayout mLayoutName;
-    @Bind(R.id.layoutEmail) LinearLayout mLayoutEmail;
+    @Bind(R.id.layout_code) LinearLayout mLayoutCode;
+    @Bind(R.id.layout_name) LinearLayout mLayoutName;
+    @Bind(R.id.layout_email) LinearLayout mLayoutEmail;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -128,7 +128,7 @@ public class NewParticipantActivity extends BaseActivity{
         @Override
         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
             mSwSex.setText(isChecked ? R.string.female : R.string.male);
-            mImgSex.setColorFilter(ContextCompat.getColor(NewParticipantActivity.this, isChecked ? R.color.shirtSizeGColor : R.color.shirtSizeMColor));
+            mImgSex.setColorFilter(ContextCompat.getColor(NewParticipantActivity.this, isChecked ? R.color.shirt_size_g : R.color.shirt_size_m));
             mImgSex.setImageDrawable(ContextCompat.getDrawable(NewParticipantActivity.this, isChecked ? R.drawable.ic_favorite_grey600_24dp : R.drawable.ic_android_grey600_24dp));
 
             if (isChecked){
@@ -288,23 +288,23 @@ public class NewParticipantActivity extends BaseActivity{
 
             switch (v.getId()){
 
-                case R.id.txtShirtSizeP:
+                case R.id.txt_shirt_size_p:
                     mShirtSize = 0;
                     break;
 
-                case R.id.txtShirtSizeM:
+                case R.id.txt_shirt_size_m:
                     mShirtSize = 1;
                     break;
 
-                case R.id.txtShirtSizeG:
+                case R.id.txt_shirt_size_g:
                     mShirtSize = 2;
                     break;
 
-                case R.id.txtShirtSizeGG:
+                case R.id.txt_shirt_size_gg:
                     mShirtSize = 3;
                     break;
 
-                case R.id.txtShirtSizeEG:
+                case R.id.txt_shirt_size_eg:
                     mShirtSize = 4;
                     break;
 
@@ -316,19 +316,19 @@ public class NewParticipantActivity extends BaseActivity{
 
     private void resetColorShirtSize(){
         GradientDrawable gradientDrawable = (GradientDrawable) mTxtShirtSizeP.getBackground();
-        gradientDrawable.setColor(ContextCompat.getColor(this, R.color.dividerColor));
+        gradientDrawable.setColor(ContextCompat.getColor(this, R.color.divider));
 
         gradientDrawable = (GradientDrawable) mTxtShirtSizeM.getBackground();
-        gradientDrawable.setColor(ContextCompat.getColor(this, R.color.dividerColor));
+        gradientDrawable.setColor(ContextCompat.getColor(this, R.color.divider));
 
         gradientDrawable = (GradientDrawable) mTxtShirtSizeG.getBackground();
-        gradientDrawable.setColor(ContextCompat.getColor(this, R.color.dividerColor));
+        gradientDrawable.setColor(ContextCompat.getColor(this, R.color.divider));
 
         gradientDrawable = (GradientDrawable) mTxtShirtSizeGG.getBackground();
-        gradientDrawable.setColor(ContextCompat.getColor(this, R.color.dividerColor));
+        gradientDrawable.setColor(ContextCompat.getColor(this, R.color.divider));
 
         gradientDrawable = (GradientDrawable) mTxtShirtSizeEG.getBackground();
-        gradientDrawable.setColor(ContextCompat.getColor(this, R.color.dividerColor));
+        gradientDrawable.setColor(ContextCompat.getColor(this, R.color.divider));
     }
 
     private void colorDefaultShirtSize(int shirtSize){

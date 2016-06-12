@@ -18,10 +18,10 @@ import butterknife.ButterKnife;
  */
 public class ParticipantFortunateActivity extends BaseActivity{
 
-    @Bind(R.id.txtName) TextView txtName;
-    @Bind(R.id.txtEmail) TextView txtEmail;
-    @Bind(R.id.txtPhone) TextView txtPhone;
-    @Bind(R.id.imgPhoto) ImageView imgPhoto;
+    @Bind(R.id.txt_name) TextView txtName;
+    @Bind(R.id.txt_email) TextView txtEmail;
+    @Bind(R.id.txt_phone) TextView txtPhone;
+    @Bind(R.id.img_photo) ImageView imgPhoto;
     @Bind(R.id.toolbar) Toolbar mToolbar;
 
     @Override

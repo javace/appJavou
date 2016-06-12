@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.javace.javou.R;
-import br.com.javace.javou.model.Resume;
+import br.com.javace.javou.model.Resume.Resume;
 import br.com.javace.javou.model.participant.Participant;
 import br.com.javace.javou.util.Constant;
 import br.com.javace.javou.util.Util;

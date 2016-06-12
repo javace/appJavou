@@ -20,7 +20,7 @@ public class Util {
             R.string.shirt_size_p, R.string.shirt_size_m, R.string.shirt_size_g, R.string.shirt_size_gg, R.string.shirt_size_eg, R.string.shirt_size_x};
 
     public static int[] shirtSizeColor = new int[] {
-            R.color.shirtSizePColor, R.color.shirtSizeMColor, R.color.shirtSizeGColor, R.color.shirtSizeGGColor, R.color.shirtSizeEGColor, R.color.dividerColor};
+            R.color.shirt_size_p, R.color.shirt_size_m, R.color.shirt_size_g, R.color.shirt_size_gg, R.color.shirt_size_eg, R.color.divider};
 
     public static boolean checkConnection(Context context) throws NoConnectionPendingException {
 

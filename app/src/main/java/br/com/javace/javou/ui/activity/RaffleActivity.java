@@ -21,8 +21,8 @@ import butterknife.ButterKnife;
 public class RaffleActivity extends BaseActivity {
 
     private boolean isFinishOk = false;
-    @Bind(R.id.animatedLoad) AnimatedCircleLoadingView mAnimatedLoad;
     private Participant mParticipantFortunate;
+    @Bind(R.id.animated_load) AnimatedCircleLoadingView mAnimatedLoad;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -29,9 +29,9 @@
             android:gravity="center|center_vertical">
 
             <TextView
-                android:id="@+id/txtShirtSizeP"
-                android:layout_width="@dimen/txtShirtSize_layout_width"
-                android:layout_height="@dimen/txtShirtSize_layout_height"
+                android:id="@+id/txt_shirt_size_p"
+                android:layout_width="@dimen/txt_shirt_size_layout_width"
+                android:layout_height="@dimen/txt_shirt_size_layout_height"
                 android:layout_marginEnd="5dp"
                 android:layout_marginRight="5dp"
                 android:background="@drawable/shape_shirt_size"
@@ -39,7 +39,7 @@
                 android:text="@string/shirt_size_p"
                 android:textAllCaps="true"
                 android:textColor="@color/white"
-                android:textSize="@dimen/txtShirtSize_textSize" />
+                android:textSize="@dimen/txt_shirt_size_textSize" />
         </LinearLayout>
 
         <LinearLayout
@@ -49,9 +49,9 @@
             android:gravity="center|center_vertical">
 
             <TextView
-                android:id="@+id/txtShirtSizeM"
-                android:layout_width="@dimen/txtShirtSize_layout_width"
-                android:layout_height="@dimen/txtShirtSize_layout_height"
+                android:id="@+id/txt_shirt_size_m"
+                android:layout_width="@dimen/txt_shirt_size_layout_width"
+                android:layout_height="@dimen/txt_shirt_size_layout_height"
                 android:layout_marginEnd="5dp"
                 android:layout_marginRight="5dp"
                 android:background="@drawable/shape_shirt_size"
@@ -59,7 +59,7 @@
                 android:text="@string/shirt_size_m"
                 android:textAllCaps="true"
                 android:textColor="@color/white"
-                android:textSize="@dimen/txtShirtSize_textSize" />
+                android:textSize="@dimen/txt_shirt_size_textSize" />
         </LinearLayout>
 
         <LinearLayout
@@ -69,9 +69,9 @@
             android:gravity="center|center_vertical">
 
             <TextView
-                android:id="@+id/txtShirtSizeG"
-                android:layout_width="@dimen/txtShirtSize_layout_width"
-                android:layout_height="@dimen/txtShirtSize_layout_height"
+                android:id="@+id/txt_shirt_size_g"
+                android:layout_width="@dimen/txt_shirt_size_layout_width"
+                android:layout_height="@dimen/txt_shirt_size_layout_height"
                 android:layout_marginEnd="5dp"
                 android:layout_marginRight="5dp"
                 android:background="@drawable/shape_shirt_size"
@@ -79,7 +79,7 @@
                 android:text="@string/shirt_size_g"
                 android:textAllCaps="true"
                 android:textColor="@color/white"
-                android:textSize="@dimen/txtShirtSize_textSize" />
+                android:textSize="@dimen/txt_shirt_size_textSize" />
         </LinearLayout>
 
         <LinearLayout
@@ -89,15 +89,15 @@
             android:gravity="center|center_vertical">
 
             <TextView
-                android:id="@+id/txtShirtSizeGG"
-                android:layout_width="@dimen/txtShirtSize_layout_width"
-                android:layout_height="@dimen/txtShirtSize_layout_height"
+                android:id="@+id/txt_shirt_size_gg"
+                android:layout_width="@dimen/txt_shirt_size_layout_width"
+                android:layout_height="@dimen/txt_shirt_size_layout_height"
                 android:background="@drawable/shape_shirt_size"
                 android:gravity="center|center_vertical"
                 android:text="@string/shirt_size_gg"
                 android:textAllCaps="true"
                 android:textColor="@color/white"
-                android:textSize="@dimen/txtShirtSize_textSize" />
+                android:textSize="@dimen/txt_shirt_size_textSize" />
         </LinearLayout>
 
         <LinearLayout
@@ -107,15 +107,15 @@
             android:gravity="center|center_vertical">
 
             <TextView
-                android:id="@+id/txtShirtSizeEG"
-                android:layout_width="@dimen/txtShirtSize_layout_width"
-                android:layout_height="@dimen/txtShirtSize_layout_height"
+                android:id="@+id/txt_shirt_size_eg"
+                android:layout_width="@dimen/txt_shirt_size_layout_width"
+                android:layout_height="@dimen/txt_shirt_size_layout_height"
                 android:background="@drawable/shape_shirt_size"
                 android:gravity="center|center_vertical"
                 android:text="@string/shirt_size_eg"
                 android:textAllCaps="true"
                 android:textColor="@color/white"
-                android:textSize="@dimen/txtShirtSize_textSize" />
+                android:textSize="@dimen/txt_shirt_size_textSize" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

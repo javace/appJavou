@@ -5,7 +5,7 @@ import android.test.AndroidTestCase;
 import java.util.ArrayList;
 
 import br.com.javace.javou.dao.ParticipantDao;
-import br.com.javace.javou.model.Resume;
+import br.com.javace.javou.model.Resume.Resume;
 import br.com.javace.javou.model.participant.Participant;
 import br.com.javace.javou.model.raffle.Raffle;
 import br.com.javace.javou.util.Constant;

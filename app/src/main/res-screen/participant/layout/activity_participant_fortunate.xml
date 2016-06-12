@@ -11,7 +11,7 @@
         <include layout="@layout/layout_toolbar" />
 
         <ImageView
-            android:id="@+id/imgPhoto"
+            android:id="@+id/img_photo"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:contentDescription="@string/app_name"
@@ -22,7 +22,6 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
             android:padding="@dimen/linear_layout_marginStart"
             android:orientation="vertical">
 
@@ -33,7 +32,7 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:id="@+id/imgName"
+                    android:id="@+id/img_name"
                     android:contentDescription="@string/app_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -48,7 +47,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/txtName"
+                        android:id="@+id/txt_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/name" />
@@ -58,7 +57,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/dividerColor" />
+                android:background="@color/divider" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -67,7 +66,7 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:id="@+id/imgEmail"
+                    android:id="@+id/img_email"
                     android:contentDescription="@string/app_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -82,7 +81,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/txtEmail"
+                        android:id="@+id/txt_email"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/email" />
@@ -92,7 +91,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/dividerColor" />
+                android:background="@color/divider" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -101,7 +100,7 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:id="@+id/imgPhone"
+                    android:id="@+id/img_phone"
                     android:contentDescription="@string/app_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -116,7 +115,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/txtPhone"
+                        android:id="@+id/txt_phone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/phone" />

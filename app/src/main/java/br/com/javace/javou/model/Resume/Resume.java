@@ -1,4 +1,4 @@
-package br.com.javace.javou.model;
+package br.com.javace.javou.model.Resume;
 
 /**
  * Created by danielbaccin on 27/11/15.

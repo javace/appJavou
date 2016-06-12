@@ -52,7 +52,7 @@ public class MainActivity extends BaseActivity{
         actionModeSetTitle(name);
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.colorActionModePrimaryDark));
+            getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.action_mode_primary_dark));
         }
     }
 
@@ -67,7 +67,7 @@ public class MainActivity extends BaseActivity{
         }
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.colorPrimaryDark));
+            getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.primary_dark));
         }
     }
 

@@ -4,27 +4,26 @@
     <item
         android:id="@+id/menu_raffle"
         android:icon="@drawable/ic_stars_white_24dp"
-        app:showAsAction="ifRoom|collapseActionView"
-        android:title="@string/raffle_participant"/>
+        android:title="@string/raffle_participant"
+        app:showAsAction="ifRoom|collapseActionView" />
 
     <item
         android:id="@+id/menu_search"
         android:icon="@drawable/ic_search_white_24dp"
-        app:showAsAction="ifRoom|collapseActionView"
-        android:title="@string/abc_searchview_description_search"/>
+        android:title="@string/abc_searchview_description_search"
+        app:showAsAction="ifRoom|collapseActionView" />
 
     <item
         android:id="@+id/menu_resume"
         android:icon="@drawable/ic_list_white_24dp"
-        app:showAsAction="ifRoom|collapseActionView"
-        android:title="@string/resume_event"/>
+        android:title="@string/resume_event"
+        app:showAsAction="ifRoom|collapseActionView" />
 
     <item
         android:id="@+id/menu_send"
-        android:title="@string/send"
         android:icon="@drawable/ic_mail_white_24dp"
-        app:showAsAction="ifRoom|collapseActionView"/>
-
+        android:title="@string/send"
+        app:showAsAction="ifRoom|collapseActionView" />
 
     <item
         android:id="@+id/menu_discart"

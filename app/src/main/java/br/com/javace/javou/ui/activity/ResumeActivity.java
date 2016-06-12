@@ -6,20 +6,21 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import java.util.Locale;
+
 import br.com.javace.javou.R;
 import br.com.javace.javou.dao.ParticipantDao;
-import br.com.javace.javou.model.Resume;
+import br.com.javace.javou.model.Resume.Resume;
 import br.com.javace.javou.ui.base.BaseActivity;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class ResumeActivity extends BaseActivity {
 
-    @Bind(R.id.shapeTotalRegistrations) TextView shapeTotalRegistrations;
-    @Bind(R.id.shapeTotalAttendence) TextView shapeTotalAttendence;
-    @Bind(R.id.shapeTotalRaffled) TextView shapeTotalReffled;
     @Bind(R.id.toolbar) Toolbar mToolbar;
-
+    @Bind(R.id.txt_shape_total_raffled) TextView mTxtShapeTotalReffled;
+    @Bind(R.id.txt_shape_total_attendence) TextView mTxtShapeTotalAttendence;
+    @Bind(R.id.txt_shape_total_registrations) TextView mTxtShapeTotalRegistrations;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,9 +46,9 @@ public class ResumeActivity extends BaseActivity {
     private void generateResume() {
         ParticipantDao dao = new ParticipantDao(this);
         Resume resume = dao.generateResume();
-        shapeTotalRegistrations.setText("" + resume.getTotalRegistrations());
-        shapeTotalAttendence.setText("" + resume.getTotalAttendance());
-        shapeTotalReffled.setText("" + resume.getTotalRaffled());
+        mTxtShapeTotalRegistrations.setText(String.format(Locale.getDefault(), "%d", resume.getTotalRegistrations()));
+        mTxtShapeTotalAttendence.setText(String.format(Locale.getDefault(), "%d", resume.getTotalAttendance()));
+        mTxtShapeTotalReffled.setText(String.format(Locale.getDefault(), "%d", resume.getTotalRaffled()));
     }
 
     @Override

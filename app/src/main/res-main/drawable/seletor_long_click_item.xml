@@ -4,5 +4,5 @@
     <item android:state_pressed="true"
         android:drawable="@color/transparent" />
     <item android:state_selected="false"
-        android:drawable="@color/dividerColor"/>
+        android:drawable="@color/divider"/>
 </selector>

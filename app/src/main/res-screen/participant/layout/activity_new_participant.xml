@@ -13,7 +13,7 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/windowBackground"
+            android:background="@color/window_background"
             android:fitsSystemWindows="true">
 
             <LinearLayout
@@ -24,7 +24,7 @@
                 android:orientation="vertical">
 
                 <LinearLayout
-                    android:id="@+id/layoutCode"
+                    android:id="@+id/layout_code"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/linear_layout_height"
                     android:layout_marginLeft="@dimen/linear_layout_marginLeft"
@@ -47,19 +47,19 @@
                         android:orientation="vertical">
 
                         <EditText
-                            android:id="@+id/edtCode"
+                            android:id="@+id/edt_code"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="start|center_vertical"
                             android:hint="@string/code"
                             android:inputType="number"
                             android:singleLine="true"
-                            android:textSize="@dimen/txtName_textSize" />
+                            android:textSize="@dimen/txt_name_textSize" />
                     </LinearLayout>
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/layoutName"
+                    android:id="@+id/layout_name"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/linear_layout_height"
                     android:layout_marginLeft="@dimen/linear_layout_marginLeft"
@@ -82,19 +82,19 @@
                         android:orientation="vertical">
 
                         <EditText
-                            android:id="@+id/edtName"
+                            android:id="@+id/edt_name"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="start|center_vertical"
                             android:hint="@string/name"
                             android:inputType="textCapWords"
                             android:singleLine="true"
-                            android:textSize="@dimen/txtName_textSize" />
+                            android:textSize="@dimen/txt_name_textSize" />
                     </LinearLayout>
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/layoutEmail"
+                    android:id="@+id/layout_email"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/linear_layout_height"
                     android:layout_marginLeft="@dimen/linear_layout_marginLeft"
@@ -117,14 +117,14 @@
                         android:orientation="vertical">
 
                         <EditText
-                            android:id="@+id/edtEmail"
+                            android:id="@+id/edt_email"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="start|center_vertical"
                             android:hint="@string/email"
                             android:inputType="text|textEmailAddress"
                             android:singleLine="true"
-                            android:textSize="@dimen/txtName_textSize" />
+                            android:textSize="@dimen/txt_name_textSize" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -151,14 +151,14 @@
                         android:orientation="vertical">
 
                         <EditText
-                            android:id="@+id/edtPhone"
+                            android:id="@+id/edt_phone"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="start|center_vertical"
                             android:hint="@string/phone"
                             android:inputType="phone"
                             android:singleLine="true"
-                            android:textSize="@dimen/txtName_textSize" />
+                            android:textSize="@dimen/txt_name_textSize" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -185,14 +185,14 @@
                         android:orientation="vertical">
 
                         <EditText
-                            android:id="@+id/edtCompany"
+                            android:id="@+id/edt_company"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="start|center_vertical"
                             android:hint="@string/company"
                             android:inputType="textCapWords"
                             android:singleLine="true"
-                            android:textSize="@dimen/txtName_textSize" />
+                            android:textSize="@dimen/txt_name_textSize" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -205,8 +205,8 @@
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:tint="@color/shirtSizeMColor"
-                        android:id="@+id/imgSex"
+                        android:tint="@color/shirt_size_m"
+                        android:id="@+id/img_sex"
                         android:contentDescription="@string/app_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -221,7 +221,7 @@
                         android:orientation="vertical">
 
                         <android.support.v7.widget.SwitchCompat
-                            android:id="@+id/swSex"
+                            android:id="@+id/sw_sex"
                             android:paddingStart="5dp"
                             android:paddingLeft="5dp"
                             android:paddingRight="0dp"
@@ -260,7 +260,7 @@
                         android:orientation="vertical">
 
                         <android.support.v7.widget.SwitchCompat
-                            android:id="@+id/swAttend"
+                            android:id="@+id/sw_attend"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/linear_layout_height"
                             android:textOn="@string/yes"

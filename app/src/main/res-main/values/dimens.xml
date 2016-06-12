@@ -8,21 +8,21 @@
     <dimen name="toolbar_titleMarginStart">16dp</dimen>
 
     <!-- fragment_participant_item.xml -->
-    <dimen name="txtShirtSize_layout_width">40dp</dimen>
-    <dimen name="txtShirtSize_layout_height">40dp</dimen>
-    <dimen name="txtShirtSize_textSize">20sp</dimen>
+    <dimen name="txt_shirt_size_layout_width">40dp</dimen>
+    <dimen name="txt_shirt_size_layout_height">40dp</dimen>
+    <dimen name="txt_shirt_size_textSize">20sp</dimen>
 
-    <dimen name="txtName_textSize">16sp</dimen>
-    <dimen name="txtEmail_textSize">14sp</dimen>
+    <dimen name="txt_name_textSize">16sp</dimen>
+    <dimen name="txt_email_textSize">14sp</dimen>
 
     <dimen name="linear_layout_height">72dp</dimen>
     <dimen name="linear_layout_marginLeft">16dp</dimen>
     <dimen name="linear_layout_marginRight">16dp</dimen>
     <dimen name="linear_layout_marginStart">16dp</dimen>
 
-    <dimen name="viewSeparator_layout_marginLeft">72dp</dimen>
-    <dimen name="viewSeparator_layout_marginStart">72dp</dimen>
-    <dimen name="viewSeparator_layout_marginTop">6dp</dimen>
+    <dimen name="view_separator_layout_marginLeft">72dp</dimen>
+    <dimen name="view_separator_layout_marginStart">72dp</dimen>
+    <dimen name="view_separator_layout_marginTop">6dp</dimen>
 
     <!-- activity_new_participant.xml -->
     <dimen name="linear_editText_layout_marginLeft">28dp</dimen>
@@ -30,7 +30,7 @@
 
     <!-- activity_participant_detail.xml -->
     <dimen name="cardView_layout_margin">16dp</dimen>
-    <dimen name="appBarLayout_layout_height">256dp</dimen>
+    <dimen name="appbar_layout_layout_height">256dp</dimen>
 
     <!-- activity_raffle_main.xml -->
     <dimen name="animatedLoad_layout_height">250dp</dimen>

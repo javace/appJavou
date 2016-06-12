@@ -14,65 +14,64 @@
             xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
+            android:background="@color/cardview_light_background"
             android:gravity="center"
-            tools:context="br.com.javace.javou.ui.activity.ResumeActivity"
-            android:background="@color/cardview_light_background">
+            android:orientation="vertical">
 
 
             <TextView
+                android:id="@+id/txt_total_registrations"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/total_registrations"
-                android:id="@+id/totalRegistrations"
-                android:textSize="20sp"/>
+                android:textSize="20sp" />
 
             <TextView
+                android:id="@+id/txt_shape_total_registrations"
                 android:layout_width="90dp"
                 android:layout_height="90dp"
-                android:gravity="center_vertical|center_horizontal"
-                android:textColor="@color/cardview_light_background"
-                android:textSize="23sp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/shape_circle"
-                android:id="@+id/shapeTotalRegistrations" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/total_attendence"
-                android:id="@+id/totalAttendance"
-                android:textSize="20sp"
-                android:layout_marginTop="20dp" />
-
-            <TextView
-                android:layout_width="90dp"
-                android:layout_height="90dp"
                 android:gravity="center_vertical|center_horizontal"
                 android:textColor="@color/cardview_light_background"
-                android:textSize="23sp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/shape_circle"
-                android:id="@+id/shapeTotalAttendence" />
+                android:textSize="23sp" />
 
             <TextView
+                android:id="@+id/txt_total_attendance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/total_raffled"
-                android:id="@+id/totalRaffled"
                 android:layout_marginTop="20dp"
-                android:textSize="20sp"/>
+                android:text="@string/total_attendence"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/txt_shape_total_attendence"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/shape_circle"
+                android:gravity="center_vertical|center_horizontal"
+                android:textColor="@color/cardview_light_background"
+                android:textSize="23sp" />
+
+            <TextView
+                android:id="@+id/txt_total_raffled"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/total_raffled"
+                android:textSize="20sp" />
 
 
             <TextView
+                android:id="@+id/txt_shape_total_raffled"
                 android:layout_width="90dp"
                 android:layout_height="90dp"
-                android:gravity="center_vertical|center_horizontal"
-                android:textColor="@color/cardview_light_background"
-                android:textSize="23sp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/shape_circle"
-                android:id="@+id/shapeTotalRaffled" />
+                android:gravity="center_vertical|center_horizontal"
+                android:textColor="@color/cardview_light_background"
+                android:textSize="23sp" />
         </LinearLayout>
     </LinearLayout>
 </android.support.design.widget.CoordinatorLayout>

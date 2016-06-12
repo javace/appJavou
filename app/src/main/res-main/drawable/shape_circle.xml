@@ -5,7 +5,7 @@
     android:thicknessRatio="1.9"
     android:useLevel="false">
     <solid
-        android:color="@color/colorPrimary"/>
+        android:color="@color/primary"/>
     <stroke
         android:width="2dp"
         android:color="@color/yellow"/>

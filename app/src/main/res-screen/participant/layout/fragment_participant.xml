@@ -2,7 +2,7 @@
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/mainContent"
+    android:id="@+id/main_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -33,31 +33,31 @@
             </android.support.design.widget.AppBarLayout>
 
             <android.support.v4.widget.SwipeRefreshLayout
-                android:id="@+id/swipeContainer"
+                android:id="@+id/swipe_container"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@+id/appbar"
                 tools:ignore="MergeRootFrame">
 
                 <android.support.v7.widget.RecyclerView
-                    android:id="@+id/recyclerView"
+                    android:id="@+id/recycler_view"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@color/windowBackground"
+                    android:background="@color/window_background"
                     android:scrollbars="vertical" />
             </android.support.v4.widget.SwipeRefreshLayout>
 
         </RelativeLayout>
 
         <br.liveo.searchliveo.SearchLiveo
-            android:id="@+id/searchLiveo"
+            android:id="@+id/search_liveo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
     </FrameLayout>
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatAdd"
+        android:id="@+id/float_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
