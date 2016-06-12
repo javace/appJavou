@@ -19,21 +19,21 @@
     android:orientation="vertical">
 
     <android.support.v7.widget.CardView
-        android:id="@+id/cardSearch"
+        android:id="@+id/card_search"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:background="@android:color/white"
         android:minHeight="?attr/actionBarSize">
 
         <LinearLayout
-            android:id="@+id/linearLayoutSearch"
+            android:id="@+id/linear_layout_search"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:background="@android:color/transparent"
             android:minHeight="?attr/actionBarSize">
 
             <ImageView
-                android:id="@+id/imgArrowSearch"
+                android:id="@+id/img_arrow_search"
                 android:layout_width="48dp"
                 android:layout_height="match_parent"
                 android:background="?android:attr/selectableItemBackground"
@@ -44,7 +44,7 @@
                 android:src="@drawable/ic_arrow_back_color_24dp" />
 
             <EditText
-                android:id="@+id/edtSearch"
+                android:id="@+id/edt_search"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -58,11 +58,11 @@
                 android:paddingRight="8dp"
                 android:paddingStart="12dp"
                 android:singleLine="true"
-                android:textColorHint="@color/colorSearchLiveoTextHint"
+                android:textColorHint="@color/search_liveo_text_hint"
                 android:textSize="16sp" />
 
             <ImageView
-                android:id="@+id/imgVoiceSearch"
+                android:id="@+id/img_voice_search"
                 android:layout_width="48dp"
                 android:layout_height="match_parent"
                 android:background="?android:attr/selectableItemBackground"
@@ -73,7 +73,7 @@
                 android:src="@drawable/ic_keyboard_voice_color_24dp" />
 
             <ImageView
-                android:id="@+id/imgCloseSearch"
+                android:id="@+id/img_close_search"
                 android:layout_width="48dp"
                 android:layout_height="match_parent"
                 android:background="?android:attr/selectableItemBackground"
@@ -88,7 +88,7 @@
     </android.support.v7.widget.CardView>
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerSearchView"
+        android:id="@+id/recycler_search_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@android:color/white"

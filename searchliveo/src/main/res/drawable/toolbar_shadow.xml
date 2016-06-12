@@ -17,6 +17,6 @@
        android:shape="rectangle">
     <gradient
         android:angle="90"
-        android:endColor="@color/toolbarShadowLiveoEndColor"
+        android:endColor="@color/toolbar_shadow_liveo_end"
         android:startColor="@android:color/transparent"/>
 </shape>

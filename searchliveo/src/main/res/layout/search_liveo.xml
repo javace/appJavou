@@ -18,21 +18,19 @@
     android:orientation="vertical">
 
     <RelativeLayout
-        android:id="@+id/viewSearch"
+        android:id="@+id/view_search"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@android:color/white"
-        android:minHeight="?attr/actionBarSize">
+        android:background="@android:color/white">
 
         <LinearLayout
-            android:id="@+id/linearLayoutSearch"
+            android:id="@+id/linear_layout_search"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@android:color/transparent"
-            android:minHeight="?attr/actionBarSize">
+            android:background="@android:color/transparent">
 
             <ImageView
-                android:id="@+id/imgArrowSearch"
+                android:id="@+id/img_arrow_search"
                 android:layout_width="48dp"
                 android:layout_height="match_parent"
                 android:background="?android:attr/selectableItemBackground"
@@ -44,7 +42,7 @@
 
             <EditText
                 android:background="@android:color/transparent"
-                android:id="@+id/edtSearch"
+                android:id="@+id/edt_search"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -57,11 +55,11 @@
                 android:paddingRight="8dp"
                 android:paddingStart="12dp"
                 android:singleLine="true"
-                android:textColorHint="@color/colorSearchLiveoTextHint"
+                android:textColorHint="@color/search_liveo_text_hint"
                 android:textSize="16sp" />
 
             <ImageView
-                android:id="@+id/imgVoiceSearch"
+                android:id="@+id/img_voice_search"
                 android:layout_width="48dp"
                 android:layout_height="match_parent"
                 android:background="?android:attr/selectableItemBackground"
@@ -72,7 +70,7 @@
                 android:src="@drawable/ic_keyboard_voice_color_24dp" />
 
             <ImageView
-                android:id="@+id/imgCloseSearch"
+                android:id="@+id/img_close_search"
                 android:layout_width="48dp"
                 android:layout_height="match_parent"
                 android:background="?android:attr/selectableItemBackground"
@@ -87,14 +85,14 @@
     </RelativeLayout>
 
     <View
-        android:id="@+id/toolbarShadow"
+        android:id="@+id/toolbar_shadow"
         android:layout_width="match_parent"
         android:layout_height="4dp"
         android:background="@drawable/toolbar_shadow"
         android:visibility="gone" />
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerSearchView"
+        android:id="@+id/recycler_search_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@android:color/white"

@@ -16,8 +16,8 @@
 -->
 <resources>
     <!-- Color SearchView -->
-    <color name="colorSearchLiveoText">#6D6D6D</color>
-    <color name="colorSearchLiveoTextHint">#35000000</color>
-    <color name="colorSearchLiveoPrimaryDark">#AFAFAF</color>
-    <color name="toolbarShadowLiveoEndColor">#44333333</color>
+    <color name="search_liveo_text">#6D6D6D</color>
+    <color name="search_liveo_text_hint">#35000000</color>
+    <color name="search_liveo_primary_dark">#AFAFAF</color>
+    <color name="toolbar_shadow_liveo_end">#44333333</color>
 </resources>

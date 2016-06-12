@@ -168,22 +168,24 @@ public class SearchLiveo extends FrameLayout {
     private void init(Context context){
         View view = LayoutInflater.from(context).inflate(R.layout.search_liveo, this, true);
 
-        mEdtSearch = (EditText) view.findViewById(R.id.edtSearch);
+        mEdtSearch = (EditText) view.findViewById(R.id.edt_search);
 
-        mImgArrowSearch = (ImageView) view.findViewById(R.id.imgArrowSearch);
-        mImgVoiceSearch = (ImageView) view.findViewById(R.id.imgVoiceSearch);
+        mImgArrowSearch = (ImageView) view.findViewById(R.id.img_arrow_search);
+        mImgVoiceSearch = (ImageView) view.findViewById(R.id.img_voice_search);
 
-        mImgCloseSearch = (ImageView) view.findViewById(R.id.imgCloseSearch);
+        mImgCloseSearch = (ImageView) view.findViewById(R.id.img_close_search);
         mImgCloseSearch.setVisibility(isVoice() ? View.GONE : View.VISIBLE);
 
-        mRecyclerView = (RecyclerView) view.findViewById(R.id.recyclerSearchView);
+        mRecyclerView = (RecyclerView) view.findViewById(R.id.recycler_search_view);
+
+        View toolbarShadow = view.findViewById(R.id.toolbar_shadow);
+        toolbarShadow.setVisibility(GONE);
 
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
-            View toolbarShadow = view.findViewById(R.id.toolbarShadow);
             toolbarShadow.setVisibility(View.VISIBLE);
         }
 
-        mViewSearch = (RelativeLayout) view.findViewById(R.id.viewSearch);
+        mViewSearch = (RelativeLayout) view.findViewById(R.id.view_search);
         mViewSearch.setVisibility(View.INVISIBLE);
 
         mEdtSearch.setOnKeyListener(onKeyListener);
@@ -198,48 +200,48 @@ public class SearchLiveo extends FrameLayout {
     }
 
     private void initAttribute(Context context, AttributeSet attributeSet, int defStyleAttr) {
-        TypedArray attr = context.obtainStyledAttributes(attributeSet, R.styleable.SearchLiveo, defStyleAttr, 0);
+        TypedArray attr = context.obtainStyledAttributes(attributeSet, R.styleable.search_liveo, defStyleAttr, 0);
         if (attr != null) {
             try {
 
-                if (attr.hasValue(R.styleable.SearchLiveo_searchLiveoHint)) {
-                    hint(attr.getString(R.styleable.SearchLiveo_searchLiveoHint));
+                if (attr.hasValue(R.styleable.search_liveo_search_liveo_hint)) {
+                    hint(attr.getString(R.styleable.search_liveo_search_liveo_hint));
                 }
 
-                if (attr.hasValue(R.styleable.SearchLiveo_searchLiveoTextColor)) {
-                    mEdtSearch.setTextColor(attr.getColor(R.styleable.SearchLiveo_searchLiveoTextColor, -1));
+                if (attr.hasValue(R.styleable.search_liveo_search_liveo_text_color)) {
+                    mEdtSearch.setTextColor(attr.getColor(R.styleable.search_liveo_search_liveo_text_color, -1));
                 }
 
-                if (attr.hasValue(R.styleable.SearchLiveo_searchLiveoHintColor)) {
-                    mEdtSearch.setHintTextColor(attr.getColor(R.styleable.SearchLiveo_searchLiveoHintColor, -1));
+                if (attr.hasValue(R.styleable.search_liveo_search_liveo_hint_color)) {
+                    mEdtSearch.setHintTextColor(attr.getColor(R.styleable.search_liveo_search_liveo_hint_color, -1));
                 }
 
-                if (attr.hasValue(R.styleable.SearchLiveo_searchLiveoColorIcon)) {
-                    setColorIcon(attr.getColor(R.styleable.SearchLiveo_searchLiveoColorIcon, -1));
+                if (attr.hasValue(R.styleable.search_liveo_search_liveo_color_icon)) {
+                    setColorIcon(attr.getColor(R.styleable.search_liveo_search_liveo_color_icon, -1));
                 }
 
-                if (attr.hasValue(R.styleable.SearchLiveo_searchLiveoColorArrow)) {
-                    setColorIconArrow(attr.getColor(R.styleable.SearchLiveo_searchLiveoColorArrow, -1));
+                if (attr.hasValue(R.styleable.search_liveo_search_liveo_color_arrow)) {
+                    setColorIconArrow(attr.getColor(R.styleable.search_liveo_search_liveo_color_arrow, -1));
                 }
 
-                if (attr.hasValue(R.styleable.SearchLiveo_searchLiveoColorVoice)) {
-                    setColorIconVoice(attr.getColor(R.styleable.SearchLiveo_searchLiveoColorVoice, -1));
+                if (attr.hasValue(R.styleable.search_liveo_search_liveo_color_voice)) {
+                    setColorIconVoice(attr.getColor(R.styleable.search_liveo_search_liveo_color_voice, -1));
                 }
 
-                if (attr.hasValue(R.styleable.SearchLiveo_searchLiveoColorClose)) {
-                    setColorIconClose(attr.getColor(R.styleable.SearchLiveo_searchLiveoColorClose, -1));
+                if (attr.hasValue(R.styleable.search_liveo_search_liveo_color_close)) {
+                    setColorIconClose(attr.getColor(R.styleable.search_liveo_search_liveo_color_close, -1));
                 }
 
-                if (attr.hasValue(R.styleable.SearchLiveo_searchLiveoBackground)) {
-                    mViewSearch.setBackgroundColor(attr.getColor(R.styleable.SearchLiveo_searchLiveoBackground, -1));
+                if (attr.hasValue(R.styleable.search_liveo_search_liveo_background)) {
+                    mViewSearch.setBackgroundColor(attr.getColor(R.styleable.search_liveo_search_liveo_background, -1));
                 }
 
-                if (attr.hasValue(R.styleable.SearchLiveo_searchLiveoStatusBarShowColor)) {
-                    setStatusBarShowColor(attr.getColor(R.styleable.SearchLiveo_searchLiveoStatusBarShowColor, -1));
+                if (attr.hasValue(R.styleable.search_liveo_search_liveo_status_bar_show_color)) {
+                    setStatusBarShowColor(attr.getColor(R.styleable.search_liveo_search_liveo_status_bar_show_color, -1));
                 }
 
-                if (attr.hasValue(R.styleable.SearchLiveo_searchLiveoStatusBarHideColor)) {
-                    setStatusBarHideColor(attr.getColor(R.styleable.SearchLiveo_searchLiveoStatusBarHideColor, -1));
+                if (attr.hasValue(R.styleable.search_liveo_search_liveo_status_bar_hide_color)) {
+                    setStatusBarHideColor(attr.getColor(R.styleable.search_liveo_search_liveo_status_bar_hide_color, -1));
                 }
             } finally {
                 attr.recycle();
@@ -663,8 +665,11 @@ public class SearchLiveo extends FrameLayout {
     private void showAnimation(){
         try {
 
-            mContext.getWindow().setStatusBarColor(getStatusBarShowColor() != -1 ?
-                    getStatusBarShowColor() : ContextCompat.getColor(mContext, R.color.colorSearchLiveoPrimaryDark));
+            if (getStatusBarShowColor() != -1) {
+                mContext.getWindow().setStatusBarColor(getStatusBarShowColor());
+            }else {
+                mContext.getWindow().setStatusBarColor(ContextCompat.getColor(mContext, R.color.search_liveo_primary_dark));
+            }
 
             final Animator animator = ViewAnimationUtils.createCircularReveal(mViewSearch,
                     mViewSearch.getWidth() - (int) dpToPixel(24, this.mContext),
@@ -716,8 +721,11 @@ public class SearchLiveo extends FrameLayout {
     private SearchLiveo hideAnimation() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
 
-            mContext.getWindow().setStatusBarColor(getStatusBarHideColor() != -1 ? getStatusBarHideColor() :
-                    getColorPrimaryDark());
+            if (getStatusBarHideColor() != -1) {
+                mContext.getWindow().setStatusBarColor(getStatusBarHideColor());
+            } else {
+                mContext.getWindow().setStatusBarColor(getColorPrimaryDark());
+            }
 
             final Animator animatorHide = ViewAnimationUtils.createCircularReveal(mViewSearch,
                     mViewSearch.getWidth() - (int) dpToPixel(24, mContext),

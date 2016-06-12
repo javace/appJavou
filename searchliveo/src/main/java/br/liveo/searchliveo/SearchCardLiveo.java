@@ -169,17 +169,17 @@ public class SearchCardLiveo extends FrameLayout {
     private void init(Context context){
         View view = LayoutInflater.from(context).inflate(R.layout.search_liveo_card, this, true);
 
-        mEdtSearch = (EditText) view.findViewById(R.id.edtSearch);
+        mEdtSearch = (EditText) view.findViewById(R.id.edt_search);
 
-        mImgArrowSearch = (ImageView) view.findViewById(R.id.imgArrowSearch);
-        mImgVoiceSearch = (ImageView) view.findViewById(R.id.imgVoiceSearch);
+        mImgArrowSearch = (ImageView) view.findViewById(R.id.img_arrow_search);
+        mImgVoiceSearch = (ImageView) view.findViewById(R.id.img_voice_search);
 
-        mImgCloseSearch = (ImageView) view.findViewById(R.id.imgCloseSearch);
+        mImgCloseSearch = (ImageView) view.findViewById(R.id.img_close_search);
         mImgCloseSearch.setVisibility(isVoice() ? View.GONE : View.VISIBLE);
 
-        mRecyclerView = (RecyclerView) view.findViewById(R.id.recyclerSearchView);
+        mRecyclerView = (RecyclerView) view.findViewById(R.id.recycler_search_view);
 
-        mCardSearch = (CardView) view.findViewById(R.id.cardSearch);
+        mCardSearch = (CardView) view.findViewById(R.id.card_search);
         mCardSearch.setVisibility(View.VISIBLE);
 
         mEdtSearch.setOnKeyListener(onKeyListener);
@@ -194,48 +194,48 @@ public class SearchCardLiveo extends FrameLayout {
     }
 
     private void initAttribute(Context context, AttributeSet attributeSet, int defStyleAttr) {
-        TypedArray attr = context.obtainStyledAttributes(attributeSet, R.styleable.SearchCardLiveo, defStyleAttr, 0);
+        TypedArray attr = context.obtainStyledAttributes(attributeSet, R.styleable.search_card_liveo, defStyleAttr, 0);
         if (attr != null) {
             try {
 
-                if (attr.hasValue(R.styleable.SearchCardLiveo_searchCardLiveoHint)) {
-                    hint(attr.getString(R.styleable.SearchCardLiveo_searchCardLiveoHint));
+                if (attr.hasValue(R.styleable.search_card_liveo_search_card_liveo_hint)) {
+                    hint(attr.getString(R.styleable.search_card_liveo_search_card_liveo_hint));
                 }
 
-                if (attr.hasValue(R.styleable.SearchCardLiveo_searchCardLiveoTextColor)) {
-                    mEdtSearch.setTextColor(attr.getColor(R.styleable.SearchCardLiveo_searchCardLiveoTextColor, -1));
+                if (attr.hasValue(R.styleable.search_card_liveo_search_card_liveo_text_color)) {
+                    mEdtSearch.setTextColor(attr.getColor(R.styleable.search_card_liveo_search_card_liveo_text_color, -1));
                 }
 
-                if (attr.hasValue(R.styleable.SearchCardLiveo_searchCardLiveoHintColor)) {
-                    mEdtSearch.setHintTextColor(attr.getColor(R.styleable.SearchCardLiveo_searchCardLiveoHintColor, -1));
+                if (attr.hasValue(R.styleable.search_card_liveo_search_card_liveo_hint_color)) {
+                    mEdtSearch.setHintTextColor(attr.getColor(R.styleable.search_card_liveo_search_card_liveo_hint_color, -1));
                 }
 
-                if (attr.hasValue(R.styleable.SearchCardLiveo_searchCardLiveoColorIcon)) {
-                    setColorIcon(attr.getColor(R.styleable.SearchCardLiveo_searchCardLiveoColorIcon, -1));
+                if (attr.hasValue(R.styleable.search_card_liveo_search_card_liveo_color_icon)) {
+                    setColorIcon(attr.getColor(R.styleable.search_card_liveo_search_card_liveo_color_icon, -1));
                 }
 
-                if (attr.hasValue(R.styleable.SearchCardLiveo_searchCardLiveoColorArrow)) {
-                    setColorIconArrow(attr.getColor(R.styleable.SearchCardLiveo_searchCardLiveoColorArrow, -1));
+                if (attr.hasValue(R.styleable.search_card_liveo_search_card_liveo_color_arrow)) {
+                    setColorIconArrow(attr.getColor(R.styleable.search_card_liveo_search_card_liveo_color_arrow, -1));
                 }
 
-                if (attr.hasValue(R.styleable.SearchCardLiveo_searchCardLiveoColorVoice)) {
-                    setColorIconVoice(attr.getColor(R.styleable.SearchCardLiveo_searchCardLiveoColorVoice, -1));
+                if (attr.hasValue(R.styleable.search_card_liveo_search_card_liveo_color_voice)) {
+                    setColorIconVoice(attr.getColor(R.styleable.search_card_liveo_search_card_liveo_color_voice, -1));
                 }
 
-                if (attr.hasValue(R.styleable.SearchCardLiveo_searchCardLiveoColorClose)) {
-                    setColorIconClose(attr.getColor(R.styleable.SearchCardLiveo_searchCardLiveoColorClose, -1));
+                if (attr.hasValue(R.styleable.search_card_liveo_search_card_liveo_color_close)) {
+                    setColorIconClose(attr.getColor(R.styleable.search_card_liveo_search_card_liveo_color_close, -1));
                 }
 
-                if (attr.hasValue(R.styleable.SearchCardLiveo_searchCardLiveoBackground)) {
-                    mCardSearch.setBackgroundColor(attr.getColor(R.styleable.SearchCardLiveo_searchCardLiveoBackground, -1));
+                if (attr.hasValue(R.styleable.search_card_liveo_search_card_liveo_background)) {
+                    mCardSearch.setBackgroundColor(attr.getColor(R.styleable.search_card_liveo_search_card_liveo_background, -1));
                 }
 
-                if (attr.hasValue(R.styleable.SearchCardLiveo_searchCardLiveoStatusBarShowColor)) {
-                    setStatusBarShowColor(attr.getColor(R.styleable.SearchCardLiveo_searchCardLiveoStatusBarShowColor, -1));
+                if (attr.hasValue(R.styleable.search_card_liveo_search_card_liveo_status_bar_show_color)) {
+                    setStatusBarShowColor(attr.getColor(R.styleable.search_card_liveo_search_card_liveo_status_bar_show_color, -1));
                 }
 
-                if (attr.hasValue(R.styleable.SearchCardLiveo_searchCardLiveoStatusBarHideColor)) {
-                    setStatusBarHideColor(attr.getColor(R.styleable.SearchCardLiveo_searchCardLiveoStatusBarHideColor, -1));
+                if (attr.hasValue(R.styleable.search_card_liveo_search_card_liveo_status_bar_hide_color)) {
+                    setStatusBarHideColor(attr.getColor(R.styleable.search_card_liveo_search_card_liveo_status_bar_hide_color, -1));
                 }
             } finally {
                 attr.recycle();
@@ -659,8 +659,11 @@ public class SearchCardLiveo extends FrameLayout {
     private void showAnimation(){
         try {
 
-            mContext.getWindow().setStatusBarColor(getStatusBarShowColor() != -1 ?
-                    getStatusBarShowColor() : ContextCompat.getColor(mContext, R.color.colorSearchLiveoPrimaryDark));
+            if (getStatusBarShowColor() != -1) {
+                mContext.getWindow().setStatusBarColor(getStatusBarShowColor());
+            }else {
+                mContext.getWindow().setStatusBarColor(ContextCompat.getColor(mContext, R.color.search_liveo_primary_dark));
+            }
 
             final Animator animator = ViewAnimationUtils.createCircularReveal(mCardSearch,
                     mCardSearch.getWidth() - (int) dpToPixel(24, this.mContext),
@@ -712,8 +715,11 @@ public class SearchCardLiveo extends FrameLayout {
     private SearchCardLiveo hideAnimation() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
 
-            mContext.getWindow().setStatusBarColor(getStatusBarHideColor() != -1 ? getStatusBarHideColor() :
-                    getColorPrimaryDark());
+            if (getStatusBarHideColor() != -1) {
+                mContext.getWindow().setStatusBarColor(getStatusBarHideColor());
+            }else {
+                mContext.getWindow().setStatusBarColor(getColorPrimaryDark());
+            }
 
             final Animator animatorHide = ViewAnimationUtils.createCircularReveal(mCardSearch,
                     mCardSearch.getWidth() - (int) dpToPixel(24, mContext),
