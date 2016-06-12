@@ -60,10 +60,9 @@
         android:id="@+id/floatAdd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/floating_layout_margin"
         android:src="@drawable/ic_person_add_white_24dp"
-        app:borderWidth="0dp"
-        app:layout_anchor="@id/mainContent"
-        app:layout_anchorGravity="bottom|right" />
+        app:borderWidth="0dp" />
 
 </android.support.design.widget.CoordinatorLayout>

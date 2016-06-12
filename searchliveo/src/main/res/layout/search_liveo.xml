@@ -100,5 +100,5 @@
         android:background="@android:color/white"
         android:clipToPadding="false"
         android:paddingTop="8dp"
-        android:visibility="gone" />
+        android:visibility="visible" />
 </LinearLayout>
