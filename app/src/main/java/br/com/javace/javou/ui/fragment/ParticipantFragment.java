@@ -51,7 +51,7 @@ import br.com.javace.javou.ui.base.BaseFragment;
 import br.com.javace.javou.util.Constant;
 import br.liveo.searchliveo.SearchLiveo;
 import br.liveo.searchliveo.interfaces.OnSearchListener;
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
@@ -68,11 +68,11 @@ public class ParticipantFragment extends BaseFragment implements OnSearchListene
     private ArrayList<Participant> mParticipants;
     private ParticipantAdapter mParticipantAdapter;
 
-    @Bind(R.id.toolbar) Toolbar mToolbar;
-    @Bind(R.id.search_liveo) SearchLiveo mSearchLiveo;
-    @Bind(R.id.recycler_view) RecyclerView mRecyclerView;
-    @Bind(R.id.float_add) FloatingActionButton mBtnFloatAdd;
-    @Bind(R.id.swipe_container) SwipeRefreshLayout mSwipeRefreshLayout;
+    @BindView(R.id.toolbar) Toolbar mToolbar;
+    @BindView(R.id.search_liveo) SearchLiveo mSearchLiveo;
+    @BindView(R.id.recycler_view) RecyclerView mRecyclerView;
+    @BindView(R.id.float_add) FloatingActionButton mBtnFloatAdd;
+    @BindView(R.id.swipe_container) SwipeRefreshLayout mSwipeRefreshLayout;
 
     public static ParticipantFragment newInstance(){
         return new ParticipantFragment();

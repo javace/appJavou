@@ -12,7 +12,7 @@ import br.com.javace.javou.dao.ParticipantDao;
 import br.com.javace.javou.model.participant.Participant;
 import br.com.javace.javou.ui.base.BaseActivity;
 import br.com.javace.javou.util.Constant;
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
@@ -22,7 +22,7 @@ public class RaffleActivity extends BaseActivity {
 
     private boolean isFinishOk = false;
     private Participant mParticipantFortunate;
-    @Bind(R.id.animated_load) AnimatedCircleLoadingView mAnimatedLoad;
+    @BindView(R.id.animated_load) AnimatedCircleLoadingView mAnimatedLoad;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

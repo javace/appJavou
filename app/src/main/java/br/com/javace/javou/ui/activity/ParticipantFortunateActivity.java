@@ -10,7 +10,7 @@ import br.com.javace.javou.R;
 import br.com.javace.javou.model.participant.Participant;
 import br.com.javace.javou.ui.base.BaseActivity;
 import br.com.javace.javou.util.Constant;
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
@@ -18,11 +18,11 @@ import butterknife.ButterKnife;
  */
 public class ParticipantFortunateActivity extends BaseActivity{
 
-    @Bind(R.id.txt_name) TextView txtName;
-    @Bind(R.id.txt_email) TextView txtEmail;
-    @Bind(R.id.txt_phone) TextView txtPhone;
-    @Bind(R.id.img_photo) ImageView imgPhoto;
-    @Bind(R.id.toolbar) Toolbar mToolbar;
+    @BindView(R.id.txt_name) TextView txtName;
+    @BindView(R.id.txt_email) TextView txtEmail;
+    @BindView(R.id.txt_phone) TextView txtPhone;
+    @BindView(R.id.img_photo) ImageView imgPhoto;
+    @BindView(R.id.toolbar) Toolbar mToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

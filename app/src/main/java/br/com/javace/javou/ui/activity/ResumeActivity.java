@@ -12,15 +12,15 @@ import br.com.javace.javou.R;
 import br.com.javace.javou.dao.ParticipantDao;
 import br.com.javace.javou.model.Resume.Resume;
 import br.com.javace.javou.ui.base.BaseActivity;
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class ResumeActivity extends BaseActivity {
 
-    @Bind(R.id.toolbar) Toolbar mToolbar;
-    @Bind(R.id.txt_shape_total_raffled) TextView mTxtShapeTotalReffled;
-    @Bind(R.id.txt_shape_total_attendence) TextView mTxtShapeTotalAttendence;
-    @Bind(R.id.txt_shape_total_registrations) TextView mTxtShapeTotalRegistrations;
+    @BindView(R.id.toolbar) Toolbar mToolbar;
+    @BindView(R.id.txt_shape_total_raffled) TextView mTxtShapeTotalReffled;
+    @BindView(R.id.txt_shape_total_attendence) TextView mTxtShapeTotalAttendence;
+    @BindView(R.id.txt_shape_total_registrations) TextView mTxtShapeTotalRegistrations;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -29,7 +29,7 @@ import br.com.javace.javou.task.ParticipantUpdateTask;
 import br.com.javace.javou.ui.base.BaseActivity;
 import br.com.javace.javou.util.Constant;
 import br.com.javace.javou.util.Util;
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class NewParticipantActivity extends BaseActivity{
@@ -38,26 +38,26 @@ public class NewParticipantActivity extends BaseActivity{
     private ProgressDialog mDialog;
     private Participant mParticipant;
 
-    @Bind(R.id.img_sex) ImageView mImgSex;
-    @Bind(R.id.toolbar) Toolbar mToolbar;
-    @Bind(R.id.sw_sex) SwitchCompat mSwSex;
+    @BindView(R.id.img_sex) ImageView mImgSex;
+    @BindView(R.id.toolbar) Toolbar mToolbar;
+    @BindView(R.id.sw_sex) SwitchCompat mSwSex;
 
-    @Bind(R.id.edt_code) EditText mEdtCode;
-    @Bind(R.id.edt_name) EditText mEdtName;
-    @Bind(R.id.edt_email) EditText mEdtEmail;
-    @Bind(R.id.edt_phone) EditText mEdtPhone;
-    @Bind(R.id.edt_company) EditText mEdtCompany;
-    @Bind(R.id.sw_attend) SwitchCompat mSwAttend;
+    @BindView(R.id.edt_code) EditText mEdtCode;
+    @BindView(R.id.edt_name) EditText mEdtName;
+    @BindView(R.id.edt_email) EditText mEdtEmail;
+    @BindView(R.id.edt_phone) EditText mEdtPhone;
+    @BindView(R.id.edt_company) EditText mEdtCompany;
+    @BindView(R.id.sw_attend) SwitchCompat mSwAttend;
 
-    @Bind(R.id.txt_shirt_size_p) TextView mTxtShirtSizeP;
-    @Bind(R.id.txt_shirt_size_m) TextView mTxtShirtSizeM;
-    @Bind(R.id.txt_shirt_size_g) TextView mTxtShirtSizeG;
-    @Bind(R.id.txt_shirt_size_gg) TextView mTxtShirtSizeGG;
-    @Bind(R.id.txt_shirt_size_eg) TextView mTxtShirtSizeEG;
+    @BindView(R.id.txt_shirt_size_p) TextView mTxtShirtSizeP;
+    @BindView(R.id.txt_shirt_size_m) TextView mTxtShirtSizeM;
+    @BindView(R.id.txt_shirt_size_g) TextView mTxtShirtSizeG;
+    @BindView(R.id.txt_shirt_size_gg) TextView mTxtShirtSizeGG;
+    @BindView(R.id.txt_shirt_size_eg) TextView mTxtShirtSizeEG;
 
-    @Bind(R.id.layout_code) LinearLayout mLayoutCode;
-    @Bind(R.id.layout_name) LinearLayout mLayoutName;
-    @Bind(R.id.layout_email) LinearLayout mLayoutEmail;
+    @BindView(R.id.layout_code) LinearLayout mLayoutCode;
+    @BindView(R.id.layout_name) LinearLayout mLayoutName;
+    @BindView(R.id.layout_email) LinearLayout mLayoutEmail;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

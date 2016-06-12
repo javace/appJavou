@@ -24,7 +24,7 @@ import br.com.javace.javou.model.participant.Participant;
 import br.com.javace.javou.ui.base.BaseActivity;
 import br.com.javace.javou.util.Constant;
 import br.com.javace.javou.util.Util;
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
@@ -33,14 +33,14 @@ public class ParticipantDetailActivity extends BaseActivity {
     private ProgressDialog mDialog;
     private Participant mParticipant;
 
-    @Bind(R.id.toolbar) Toolbar mToolbar;
-    @Bind(R.id.txt_email) TextView mTxtEmail;
-    @Bind(R.id.txt_phone) TextView mTxtPhone;
-    @Bind(R.id.txt_attend) TextView mTxtAttend;
-    @Bind(R.id.img_photo) ImageView mImgPhoto;
-    @Bind(R.id.txt_shirt_size) TextView mTxtShirtSize;
-    @Bind(R.id.float_edit) FloatingActionButton mFloatEdit;
-    @Bind(R.id.collapsing_toolbar) CollapsingToolbarLayout mCollapsingToolbar;
+    @BindView(R.id.toolbar) Toolbar mToolbar;
+    @BindView(R.id.txt_email) TextView mTxtEmail;
+    @BindView(R.id.txt_phone) TextView mTxtPhone;
+    @BindView(R.id.txt_attend) TextView mTxtAttend;
+    @BindView(R.id.img_photo) ImageView mImgPhoto;
+    @BindView(R.id.txt_shirt_size) TextView mTxtShirtSize;
+    @BindView(R.id.float_edit) FloatingActionButton mFloatEdit;
+    @BindView(R.id.collapsing_toolbar) CollapsingToolbarLayout mCollapsingToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

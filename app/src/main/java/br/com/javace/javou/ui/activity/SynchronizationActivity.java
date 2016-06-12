@@ -15,7 +15,7 @@ import java.util.List;
 import br.com.javace.javou.R;
 import br.com.javace.javou.dao.ParticipantDao;
 import br.com.javace.javou.ui.base.BaseActivity;
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
@@ -23,7 +23,7 @@ import butterknife.ButterKnife;
  */
 public class SynchronizationActivity extends BaseActivity {
 
-    @Bind(R.id.progressBar) ProgressBar mProgressBar;
+    @BindView(R.id.progressBar) ProgressBar mProgressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
