@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'android-apt'
 
 repositories {
     maven { url "http://dl.bintray.com/jlmd/maven" }
@@ -36,7 +37,7 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -59,6 +60,7 @@ dependencies {
 
     //Library injectView {optional}
     compile "com.jakewharton:butterknife:${butterknife_library}"
+    apt "com.jakewharton:butterknife-compiler:${butterknife_library}"
 
     //Library Animated Load
     compile "com.github.jlmd:AnimatedCircleLoadingView:${animated_circle_coading_ciew_library}"

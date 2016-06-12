@@ -94,6 +94,7 @@ public class ParticipantFragment extends BaseFragment implements OnSearchListene
 
         mRecyclerView.setHasFixedSize(true);
         final LinearLayoutManager manager = new LinearLayoutManager(getActivity());
+        manager.setOrientation(LinearLayoutManager.VERTICAL);
 
         mRecyclerView.setLayoutManager(manager);
         mEndlessListener = new OnScrollListener(manager, mBtnFloatAdd) {
