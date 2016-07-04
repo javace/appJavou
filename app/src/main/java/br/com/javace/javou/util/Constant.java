@@ -5,7 +5,7 @@ package br.com.javace.javou.util;
  */
 public class Constant {
     public static String TAG = "Javou";
-    public static final String NAME_EVENT = "Javou #06 - 28/11/2015";
+    public static final String NAME_EVENT = "Javou #07 - 02/07/2016";
 
     public static final int DATABASE_VERSION = 1;
     public static final String DATABASE = "javou.db";

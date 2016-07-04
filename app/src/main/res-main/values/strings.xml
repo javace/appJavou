@@ -106,7 +106,7 @@
 
     <!-- Send file-->
     <string name="send_email">Enviando email…</string>
-    <string name="subject">Javou #06 - Participantes confirmados</string>
+    <string name="subject">Javou #07 - Participantes confirmados</string>
     <string name="text">Arquivo .csv com todos os participantes que tiveram sua presença confirmada no evento.</string>
     <string name="title_activity_resume">ResumeActivity</string>
     <string name="total_registrations">Total de Inscritos</string>

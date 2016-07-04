@@ -65,5 +65,6 @@ public class SynchronizationActivity extends BaseActivity {
             mProgressBar.setVisibility(View.GONE);
             finish(ActivityAnimation.SLIDE_RIGHT);
         }
+
     }
 }

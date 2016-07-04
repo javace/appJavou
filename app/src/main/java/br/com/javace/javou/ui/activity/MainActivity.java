@@ -1,10 +1,18 @@
 package br.com.javace.javou.ui.activity;
 
+import android.Manifest;
+import android.annotation.TargetApi;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.view.ActionMode;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import br.com.javace.javou.R;
 import br.com.javace.javou.ui.base.BaseActivity;
@@ -96,6 +104,15 @@ public class MainActivity extends BaseActivity{
                     }
                 }
                 break;
+        }
+    }
+
+    @TargetApi(Build.VERSION_CODES.M)
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (mParticipantFragment != null){
+            mParticipantFragment.onRequestPermissionsResult(requestCode, permissions, grantResults);
         }
     }
 }

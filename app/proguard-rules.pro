@@ -16,13 +16,13 @@
 #   public *;
 #}
 
-# Glide
+# Glide specific rules #
+# https://github.com/bumptech/glide
 -keep public class * implements com.bumptech.glide.module.GlideModule
 -keep public enum com.bumptech.glide.load.resource.bitmap.ImageHeaderParser$** {
-  **[] $VALUES;
-  public *;
+    **[] $VALUES;
+    public *;
 }
-
 # Keep native methods
 -keepclassmembers class * {
     native <methods>;
@@ -41,15 +41,26 @@
     public <init>(android.content.Context);
 }
 
-# Butterknife
+# class: ButterKnife
+# Retain generated class which implement ViewBinder.
+-keep public class * implements butterknife.internal.ViewBinder { public <init>(); }
+-keep class butterknife.*
 -keep class butterknife.** { *; }
 -dontwarn butterknife.internal.**
 -keep class **$$ViewBinder { *; }
+-keepclasseswithmembernames class * { @butterknife.* <methods>; }
+-keepclasseswithmembernames class * { @butterknife.* <fields>; }
 
--keepclasseswithmembernames class * {
-    @butterknife.* <fields>;
-}
-
--keepclasseswithmembernames class * {
-    @butterknife.* <methods>;
-}
+# class: OpenCsv
+-keep class android.support.v4.** { *; }
+-dontwarn android.support.v4.**
+-dontwarn javax.activation.**
+-dontwarn javax.security.**
+-dontwarn java.awt.**
+-libraryjars <java.home>/lib/rt.jar
+-keep class javax.** {*;}
+-keep class com.sun.** {*;}
+-keep class myjava.** {*;}
+-keep class org.apache.harmony.** {*;}
+-keep public class Mail {*;}
+-dontshrink

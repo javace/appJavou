@@ -2,9 +2,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/menu_raffle"
-        android:icon="@drawable/ic_stars_white_24dp"
-        android:title="@string/raffle_participant"
+        android:id="@+id/menu_resume"
+        android:icon="@drawable/ic_list_white_24dp"
+        android:title="@string/resume_event"
         app:showAsAction="ifRoom|collapseActionView" />
 
     <item
@@ -14,9 +14,9 @@
         app:showAsAction="ifRoom|collapseActionView" />
 
     <item
-        android:id="@+id/menu_resume"
-        android:icon="@drawable/ic_list_white_24dp"
-        android:title="@string/resume_event"
+        android:id="@+id/menu_raffle"
+        android:icon="@drawable/ic_stars_white_24dp"
+        android:title="@string/raffle_participant"
         app:showAsAction="ifRoom|collapseActionView" />
 
     <item

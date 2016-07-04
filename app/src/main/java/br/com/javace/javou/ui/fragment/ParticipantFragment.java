@@ -1,14 +1,18 @@
 package br.com.javace.javou.ui.fragment;
 
+import android.Manifest;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.view.ActionMode;
 import android.support.v7.widget.LinearLayoutManager;
@@ -29,6 +33,7 @@ import com.nineoldandroids.animation.Animator;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
 import br.com.javace.javou.R;
 import br.com.javace.javou.adapter.ParticipantAdapter;
@@ -172,7 +177,9 @@ public class ParticipantFragment extends BaseFragment implements OnSearchListene
                 raffleParticipant();
                 break;
             case R.id.menu_send:
-                generateSendingFile();
+                if (checkPermission()) {
+                    generateSendingFile();
+                }
                 break;
             case R.id.menu_resume:
                 generateResume();
@@ -518,6 +525,26 @@ public class ParticipantFragment extends BaseFragment implements OnSearchListene
         hideSearch();
     }
 
+    private boolean checkPermission(){
+        try {
+            List<String> permissoes = new ArrayList<>();
+            if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                permissoes.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
+            }
+
+            if (!permissoes.isEmpty()) {
+                String[] array = new String[permissoes.size()];
+                permissoes.toArray(array);
+                ActivityCompat.requestPermissions(getActivity(), array, 0);
+                return false;
+            }
+        }catch (Exception e){
+            e.getStackTrace();
+        }
+
+        return true;
+    }
+
     private void generateSendingFile(){
 
         if (mParticipants != null && mParticipants.size() > 0) {
@@ -552,4 +579,21 @@ public class ParticipantFragment extends BaseFragment implements OnSearchListene
             Toast.makeText(getActivity(), R.string.warning_not_participante_attend, Toast.LENGTH_SHORT).show();
         }
     }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        boolean isPermission = true;
+        for (int i = 0; i < permissions.length; i++){
+            if (grantResults[i] != PackageManager.PERMISSION_GRANTED){
+                isPermission = false;
+                break;
+            }
+        }
+
+        if (isPermission){
+            generateSendingFile();
+        }
+    }
 }
+

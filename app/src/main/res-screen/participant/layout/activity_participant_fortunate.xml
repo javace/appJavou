@@ -17,13 +17,13 @@
             android:contentDescription="@string/app_name"
             android:fitsSystemWindows="true"
             android:scaleType="centerCrop"
-            android:src="@drawable/ic_suricate"/>
+            android:src="@drawable/ic_suricate" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="@dimen/linear_layout_marginStart"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="@dimen/linear_layout_marginStart">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -33,11 +33,12 @@
 
                 <ImageView
                     android:id="@+id/img_name"
-                    android:contentDescription="@string/app_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:contentDescription="@string/app_name"
+                    android:gravity="center|center_vertical"
                     android:src="@drawable/ic_person_grey600_24dp"
-                    android:gravity="center|center_vertical" />
+                    android:tint="@color/primary" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -67,11 +68,12 @@
 
                 <ImageView
                     android:id="@+id/img_email"
-                    android:contentDescription="@string/app_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:contentDescription="@string/app_name"
+                    android:gravity="center|center_vertical"
                     android:src="@drawable/ic_email_grey600_24dp"
-                    android:gravity="center|center_vertical" />
+                    android:tint="@color/primary" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -94,6 +96,7 @@
                 android:background="@color/divider" />
 
             <LinearLayout
+                android:id="@+id/layout_phone"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/linear_layout_height"
                 android:gravity="center_vertical"
@@ -101,11 +104,12 @@
 
                 <ImageView
                     android:id="@+id/img_phone"
-                    android:contentDescription="@string/app_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:contentDescription="@string/app_name"
+                    android:gravity="center|center_vertical"
                     android:src="@drawable/ic_phone_grey600_24dp"
-                    android:gravity="center|center_vertical" />
+                    android:tint="@color/primary" />
 
                 <LinearLayout
                     android:layout_width="match_parent"

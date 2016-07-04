@@ -57,10 +57,10 @@ public class RaffleActivity extends BaseActivity {
                 try {
                     Thread.sleep(1500);
                     for (int i = 0; i <= 100; i++) {
-                        Thread.sleep(65);
+                        Thread.sleep(10);
                         changePercent(i);
                     }
-                    Thread.sleep(2000);
+                    Thread.sleep(3000);
                     ParticipantDao participantDao = new ParticipantDao(getApplicationContext());
                     participantDao.updateAsRaffled(mParticipantFortunate);
                     Intent intent = new Intent(getBaseContext(), ParticipantFortunateActivity.class);

@@ -17,10 +17,10 @@ import br.com.javace.javou.R;
  */
 public class Util {
     public static int[] shirtSize = new int[] {
-            R.string.shirt_size_p, R.string.shirt_size_m, R.string.shirt_size_g, R.string.shirt_size_gg, R.string.shirt_size_eg, R.string.shirt_size_x};
+            R.string.shirt_size_p, R.string.shirt_size_m, R.string.shirt_size_g, R.string.shirt_size_gg, R.string.shirt_size_eg, R.string.shirt_size_x, R.string.shirt_size_p};
 
     public static int[] shirtSizeColor = new int[] {
-            R.color.shirt_size_p, R.color.shirt_size_m, R.color.shirt_size_g, R.color.shirt_size_gg, R.color.shirt_size_eg, R.color.divider};
+            R.color.shirt_size_p, R.color.shirt_size_m, R.color.shirt_size_g, R.color.shirt_size_gg, R.color.shirt_size_eg, R.color.divider, R.color.pink};
 
     public static boolean checkConnection(Context context) throws NoConnectionPendingException {
 
@@ -76,6 +76,10 @@ public class Util {
 
             case "GG":
                 shirtSize = 3;
+                break;
+
+            case "Babylook P":
+                shirtSize = 6;
                 break;
 
             default:
