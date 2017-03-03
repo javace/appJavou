@@ -20,6 +20,12 @@
         app:showAsAction="ifRoom|collapseActionView" />
 
     <item
+        android:id="@+id/menu_woman"
+        android:icon="@drawable/ic_stars_white_24dp"
+        android:title="@string/raffle_participant_woman"
+        app:showAsAction="ifRoom|collapseActionView" />
+
+    <item
         android:id="@+id/menu_send"
         android:icon="@drawable/ic_mail_white_24dp"
         android:title="@string/send"

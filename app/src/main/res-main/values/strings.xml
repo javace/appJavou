@@ -90,7 +90,8 @@
     <string name="warning_no_connection">Sem conexão de internet.</string>
     <string name="error_list_participant">Erro ao consultar participantes. Por favor, tente mais tarde.</string>
     <string name="error_list_presentations">Erro ao consultar palestras. Por favor, tente mais tarde.</string>
-    <string name="raffle_participant">Sorteia participante</string>
+    <string name="raffle_participant">Sorteio todos</string>
+    <string name="raffle_participant_woman">Sorteio mulher</string>
 
     <!-- login user administrator-->
     <string name="field_user">Digite seu usuario</string>

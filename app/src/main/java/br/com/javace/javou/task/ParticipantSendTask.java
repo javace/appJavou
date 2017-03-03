@@ -19,7 +19,7 @@ public class ParticipantSendTask extends AsyncTask<Void, Void, Boolean> {
 
     private ArrayList<Participant> mParticipant;
 
-    public ParticipantSendTask(ArrayList<Participant> participant){
+    protected ParticipantSendTask(ArrayList<Participant> participant){
         this.mParticipant = participant;
     }
 

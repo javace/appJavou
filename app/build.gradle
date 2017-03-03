@@ -6,8 +6,8 @@ repositories {
 }
 
 android {
-    compileSdkVersion 24
-    buildToolsVersion "24.0.0"
+    compileSdkVersion 25
+    buildToolsVersion "25.0.1"
     compileOptions.encoding = 'windows-1251'
 
     sourceSets {
@@ -26,7 +26,7 @@ android {
     defaultConfig {
         applicationId "br.com.javace.javou"
         minSdkVersion 14
-        targetSdkVersion 24
+        targetSdkVersion 25
         versionCode 1
         versionName "1.0"
     }

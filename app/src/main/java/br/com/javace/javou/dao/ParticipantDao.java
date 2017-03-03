@@ -81,24 +81,23 @@ public class ParticipantDao {
                             campos.put(Constant.PARTICIPANT_email, participant[1].toLowerCase());
                             campos.put(Constant.PARTICIPANT_code, participant[5]);
 
-                            campos.put(Constant.PARTICIPANT_phone, "");
-                            //campos.put(Constant.PARTICIPANT_phone, Util.replacePhone(participant[11]));
+                            //campos.put(Constant.PARTICIPANT_phone, "");
+                            campos.put(Constant.PARTICIPANT_phone, Util.replacePhone(participant[13]));
 
-                            campos.put(Constant.PARTICIPANT_photo, "");
                             campos.put(Constant.PARTICIPANT_attend, 0);
-                            campos.put(Constant.PARTICIPANT_nameEvent, Constant.NAME_EVENT);
+                            campos.put(Constant.PARTICIPANT_nameEvent, "JAVOU! #09 - Casos de Sucesso");
 
-                            //String birthDate = participant[13];
-                            campos.put(Constant.PARTICIPANT_birthDate, "");
+                            String birthDate = participant[16];
+                            campos.put(Constant.PARTICIPANT_birthDate, birthDate);
 
-                            String company = WordUtils.capitalizeFully(participant[14].toLowerCase());
+                            String company = WordUtils.capitalizeFully(participant[17].toLowerCase());
                             campos.put(Constant.PARTICIPANT_company, company);
 
-                            campos.put(Constant.PARTICIPANT_sex, !participant[16].equals("Masculino"));
+                            campos.put(Constant.PARTICIPANT_sex, !participant[20].equals("Masculino"));
 
                             int shirtSize = 5;
-                            if (participant[3].contains("COM Blusa")) {
-                                shirtSize = Util.replaceShirtSize(participant[13]);
+                            if (!participant[3].contains("SEM Blusa")) {
+                                shirtSize = Util.replaceShirtSize(participant[21]);
                             }
                             campos.put(Constant.PARTICIPANT_shirtSize, shirtSize);
 

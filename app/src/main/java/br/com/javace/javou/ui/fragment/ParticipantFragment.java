@@ -37,6 +37,7 @@ import java.util.List;
 
 import br.com.javace.javou.R;
 import br.com.javace.javou.adapter.ParticipantAdapter;
+import br.com.javace.javou.dao.ParticipantDao;
 import br.com.javace.javou.interfaces.OnItemClickListener;
 import br.com.javace.javou.interfaces.OnItemLongClickListener;
 import br.com.javace.javou.interfaces.OnScrollListener;
@@ -49,6 +50,7 @@ import br.com.javace.javou.task.ParticipantTask;
 import br.com.javace.javou.ui.activity.MainActivity;
 import br.com.javace.javou.ui.activity.NewParticipantActivity;
 import br.com.javace.javou.ui.activity.ParticipantDetailActivity;
+import br.com.javace.javou.ui.activity.ParticipantFortunateActivity;
 import br.com.javace.javou.ui.activity.RaffleActivity;
 import br.com.javace.javou.ui.activity.ResumeActivity;
 import br.com.javace.javou.ui.base.BaseActivity;
@@ -174,7 +176,11 @@ public class ParticipantFragment extends BaseFragment implements OnSearchListene
                 mSearchLiveo.show();
                 break;
             case R.id.menu_raffle:
-                raffleParticipant();
+                raffleParticipant(true);
+                break;
+
+            case R.id.menu_woman:
+                raffleParticipant(false);
                 break;
             case R.id.menu_send:
                 if (checkPermission()) {
@@ -212,8 +218,6 @@ public class ParticipantFragment extends BaseFragment implements OnSearchListene
                     mParticipants = participants;
 
                     resultAdapter(mParticipants);
-                }else{
-                    //Implementar warning
                 }
 
                 mSwipeRefreshLayout.setRefreshing(false);
@@ -237,21 +241,35 @@ public class ParticipantFragment extends BaseFragment implements OnSearchListene
         mRecyclerView.setAdapter(getParticipantAdapter());
     }
 
-    private void raffleParticipant() {
+    private void raffleParticipant(boolean isMan) {
         if (mParticipants != null && mParticipants.size() > 0) {
             Raffle raffle = new Raffle(mParticipants);
-            if(raffle.isValid()){
-                Intent intent = new Intent(getActivity(), RaffleActivity.class);
-                intent.putExtra(Constant.PARTICIPANT, raffle.getFortunate());
+
+            if (raffle.isValid() && isMan) {
+
+                Participant participant = raffle.getFortunate();
+                ParticipantDao participantDao = new ParticipantDao(getActivity());
+                participantDao.updateAsRaffled(participant);
+
+                Intent intent = new Intent(getActivity(), ParticipantFortunateActivity.class);
+                intent.putExtra(Constant.PARTICIPANT, participant);
                 startActivityForResult(intent, 0, BaseActivity.ActivityAnimation.SLIDE_LEFT);
-            }else{
+
+            } else if (raffle.isValidSex() && !isMan) {
+
+                Participant participant = raffle.getFortunateSex();
+                ParticipantDao participantDao = new ParticipantDao(getActivity());
+                participantDao.updateAsRaffled(participant);
+
+                Intent intent = new Intent(getActivity(), ParticipantFortunateActivity.class);
+                intent.putExtra(Constant.PARTICIPANT, participant);
+                startActivityForResult(intent, 0, BaseActivity.ActivityAnimation.SLIDE_LEFT);
+            } else {
                 Toast.makeText(getActivity(), R.string.warning_not_participante_fortunate, Toast.LENGTH_SHORT).show();
             }
-        }else{
+        } else {
             Toast.makeText(getActivity(), R.string.warning_not_participante_fortunate, Toast.LENGTH_SHORT).show();
         }
-
-
     }
 
     private OnItemClickListener onClickListener = new OnItemClickListener() {

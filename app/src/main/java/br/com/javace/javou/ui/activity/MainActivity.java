@@ -35,6 +35,7 @@ public class MainActivity extends BaseActivity{
     }
 
     private void setupInit(Bundle savedInstanceState){
+        //setupFragment(savedInstanceState);
         Preference preference = new Preference(this);
         if (preference.getString(Constant.FIRST_RUN) == null){
             startActivityForResult(new Intent(this, SynchronizationActivity.class), 0);

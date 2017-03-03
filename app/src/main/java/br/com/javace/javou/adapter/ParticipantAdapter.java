@@ -53,15 +53,15 @@ public class ParticipantAdapter extends RecyclerView.Adapter<ParticipantAdapter.
         }
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        public View mContainer;
+    class ViewHolder extends RecyclerView.ViewHolder {
+        View mContainer;
 
-        public TextView mTitle;
-        public TextView mName;
-        public TextView mEmail;
-        public TextView mShirtSize;
+        TextView mTitle;
+        TextView mName;
+        TextView mEmail;
+        TextView mShirtSize;
 
-        public ViewHolder(View view) {
+        ViewHolder(View view) {
             super(view);
 
             mContainer = view;
@@ -122,7 +122,7 @@ public class ParticipantAdapter extends RecyclerView.Adapter<ParticipantAdapter.
         return new ViewHolder(view);
     }
 
-    public boolean isHeader(int position) {
+    private boolean isHeader(int position) {
         return position == 0;
     }
 

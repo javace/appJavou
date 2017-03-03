@@ -11,18 +11,27 @@ import br.com.javace.javou.model.participant.Participant;
  */
 public class Raffle{
 
-    private ArrayList<Participant> participants;
     private Random randomGenerator;
+    private ArrayList<Participant> participants;
 
     public Raffle(ArrayList<Participant> participants) {
+        this.randomGenerator = new Random();
         this.participants = participants;
-        randomGenerator = new Random();
     }
 
     private List<Participant> getParticipantsAttend(){
         List<Participant> attendees = new ArrayList<>();
         for (Participant participant : participants) {
             if(participant.isAttend() && !participant.isRaffled()) //It can be drawn
+                attendees.add(participant);
+        }
+        return attendees;
+    }
+
+    private List<Participant> getParticipantsAttendSex(){
+        List<Participant> attendees = new ArrayList<>();
+        for (Participant participant : participants) {
+            if(participant.isAttend() && !participant.isRaffled() && participant.getSex()) //It can be drawn
                 attendees.add(participant);
         }
         return attendees;
@@ -36,11 +45,34 @@ public class Raffle{
         return false;
     }
 
+    public boolean isValidSex(){
+        for (Participant participant : participants) {
+            if(participant.isAttend() && !participant.isRaffled() && participant.getSex())
+                return true;
+        }
+        return false;
+    }
 
     public Participant getFortunate() {
         List<Participant> participantsAttend = getParticipantsAttend();
-        if(participantsAttend.isEmpty())
+
+        if(participantsAttend.isEmpty()) {
             return null;
+        }
+
+        int index = randomGenerator.nextInt(participantsAttend.size());
+        Participant participantFortunate = participantsAttend.get(index);
+        participantFortunate.setRaffled(true);
+        return participantFortunate;
+    }
+
+    public Participant getFortunateSex() {
+        List<Participant> participantsAttend = getParticipantsAttendSex();
+
+        if(participantsAttend.isEmpty()) {
+            return null;
+        }
+
         int index = randomGenerator.nextInt(participantsAttend.size());
         Participant participantFortunate = participantsAttend.get(index);
         participantFortunate.setRaffled(true);
